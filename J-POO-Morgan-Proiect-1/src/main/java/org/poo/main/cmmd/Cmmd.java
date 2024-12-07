@@ -1,19 +1,17 @@
-package org.poo.main;
+package org.poo.main.cmmd;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.poo.fileio.CommandInput;
 import org.poo.fileio.ObjectInput;
 
-import java.util.Arrays;
-
-public class Command {
+public class Cmmd {
     CommandHandler commandHandler;
 
     public ArrayNode execute(final ObjectInput objectInput) {
         for(CommandInput cmd : objectInput.getCommands()) {
             switch(cmd.getCommand()) {
                 case "printUsers":
-                    commandHandler.printUsers();
+//                    commandHandler.printUsers();
                     break;
                 case "remove":
                     break;

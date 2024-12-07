@@ -5,8 +5,9 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
-import org.poo.fileio.CommandInput;
 import org.poo.fileio.ObjectInput;
+import org.poo.main.cmmd.Cmmd;
+import org.poo.main.cmmd.CommandHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,8 +77,8 @@ public final class Main {
         ArrayNode output = objectMapper.createArrayNode();
 
 
-        Command cmd = new Command();
-        output = cmd.execute(inputData);
+        CommandHandler cmd = new CommandHandler();
+        output = cmd.execute(inputData, output);
 
 
         /*
