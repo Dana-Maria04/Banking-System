@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
+import org.poo.fileio.CommandInput;
 import org.poo.fileio.ObjectInput;
 
 import java.io.File;
@@ -73,6 +74,11 @@ public final class Main {
         ObjectInput inputData = objectMapper.readValue(file, ObjectInput.class);
 
         ArrayNode output = objectMapper.createArrayNode();
+
+
+        Command cmd = new Command();
+        output = cmd.execute(inputData);
+
 
         /*
          * TODO Implement your function here
