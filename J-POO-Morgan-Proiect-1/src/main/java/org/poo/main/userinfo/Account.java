@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Account {
     private String iban;
     private double balance;
+    private double minimumBalance;
     private String currency;
     private String accountType;
     private ArrayList<Card> cards;

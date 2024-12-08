@@ -49,7 +49,7 @@ public class CommandHandler {
                     addFunds.execute();
                     break;
                 case "createCard":
-                    CreateCard createCard = new CreateCard(users, commandNode, output, cmd, objectMapper);
+                    CreateCard createCard = new CreateCard(users, commandNode, output, cmd, objectMapper, 0);
                     createCard.execute();
                     break;
                 case "addAccount":
@@ -59,6 +59,18 @@ public class CommandHandler {
                 case "deleteAccount":
                     DeleteAccount deleteAccount = new DeleteAccount(users, commandNode, output, cmd, objectMapper);
                     deleteAccount.execute();
+                    break;
+                case "createOneTimeCard":
+                    CreateCard createOneTimeCard = new CreateCard(users, commandNode, output, cmd, objectMapper, 1);
+                    createOneTimeCard.execute();
+                    break;
+                case "deleteCard":
+                    DeleteCard deleteCard = new DeleteCard(users, commandNode, output, cmd, objectMapper);
+                    deleteCard.execute();
+                    break;
+                case "setMinimumBalanmce":
+                    SetMinimumBalance setMinimumBalance = new SetMinimumBalance(users, commandNode, output, cmd, objectMapper);
+                    setMinimumBalance.execute();
                     break;
                 default:
                     break;

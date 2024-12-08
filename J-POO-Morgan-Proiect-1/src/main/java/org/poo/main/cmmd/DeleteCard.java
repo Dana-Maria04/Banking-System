@@ -7,54 +7,43 @@ import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
 import org.poo.main.userinfo.User;
-import org.poo.utils.Utils;
 
 import java.util.ArrayList;
 
-public class CreateCard implements Command {
+public class DeleteCard implements Command{
     private ArrayList<User> users;
     private ObjectNode commandNode;
     private ArrayNode output;
     private CommandInput command;
     private ObjectMapper objectMapper;
-    private int oneTime;
 
-    public CreateCard(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
-                      ObjectMapper objectMapper, int oneTime) {
+    public DeleteCard(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
         this.users = users;
         this.commandNode = commandNode;
         this.output = output;
         this.command = command;
         this.objectMapper = objectMapper;
-        this.oneTime = oneTime;
     }
-
-
-
 
     @Override
     public void execute() {
-
         for(User user : users) {
             if(user.getUser().getEmail().equals(command.getEmail())) {
                 for(Account account : user.getAccounts()) {
-
-                    if(account.getIban().equals(command.getAccount())) {
-
-
-                        Card newCard = new Card(Utils.generateCardNumber(), "active", oneTime);
-                        account.getCards().add(newCard);
-                        break;
+                    for(Card card : account.getCards()) {
+                        if(card.getCardNumber().equals(command.getCardNumber())) {
+                            account.getCards().remove(card);
+                            break;
+                        }
                     }
                 }
             }
         }
-
-//        return this.users;
     }
 
     @Override
     public void undo() {
 
     }
+
 }

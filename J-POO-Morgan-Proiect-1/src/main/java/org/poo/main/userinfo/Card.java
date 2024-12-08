@@ -9,25 +9,12 @@ public class Card {
 
     private String cardNumber;
     private String status;
+    private int oneTime;
 
-    public Card(String cardNumber, String status) {
+    public Card(String cardNumber, String status, int oneTime) {
         this.cardNumber = cardNumber;
         this.status = status;
+        this.oneTime = oneTime;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }
