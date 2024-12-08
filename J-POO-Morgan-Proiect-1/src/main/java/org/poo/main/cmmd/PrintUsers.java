@@ -8,14 +8,16 @@ import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
 import org.poo.main.userinfo.User;
 
+import java.util.ArrayList;
+
 public class PrintUsers implements Command{
-    private User[] users;
+    private ArrayList<User> users;
     private ObjectNode commandNode;
     private ArrayNode output;
     private CommandInput command;
     private ObjectMapper objectMapper;
 
-    public PrintUsers(User[] users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
+    public PrintUsers(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
         this.users = users;
         this.commandNode = commandNode;
         this.output = output;
@@ -24,7 +26,7 @@ public class PrintUsers implements Command{
     }
 
     @Override
-    public User[] execute() {
+    public void execute() {
         commandNode.put("command", command.getCommand());
 
         ArrayNode usersOutput = objectMapper.createArrayNode();
@@ -68,7 +70,7 @@ public class PrintUsers implements Command{
 
         output.add(commandNode);
 
-        return users;
+//        return users;
     }
 
 

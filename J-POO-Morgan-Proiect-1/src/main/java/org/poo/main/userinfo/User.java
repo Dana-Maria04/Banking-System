@@ -5,24 +5,26 @@ import lombok.Getter;
 import lombok.Setter;
 import org.poo.fileio.UserInput;
 
+import java.util.ArrayList;
+
 @Getter
 @Setter
 public class User {
 
     private UserInput user;
-    private Account[] accounts;
+    private ArrayList<Account> accounts;
 
 
-    public User(UserInput user, Account[] accounts) {
+    public User(UserInput user, ArrayList<Account> accounts) {
         this.user = user;
         this.accounts = accounts;
     }
     
-    public User(Account[] accounts){
+    public User(ArrayList<Account> accounts){
         if(this.accounts != null){
             this.accounts = accounts;
         } else {
-            this.accounts = new Account[0];
+            this.accounts = new ArrayList<>();
         }
     }
 
@@ -34,11 +36,11 @@ public class User {
         this.user = user;
     }
 
-    public Account[] getAccounts() {
+    public ArrayList<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Account[] accounts) {
+    public void setAccounts(ArrayList<Account> accounts) {
         this.accounts = accounts;
     }
 

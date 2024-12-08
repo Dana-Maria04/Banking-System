@@ -9,14 +9,16 @@ import org.poo.main.userinfo.Card;
 import org.poo.main.userinfo.User;
 import org.poo.utils.Utils;
 
+import java.util.ArrayList;
+
 public class CreateCard implements Command {
-    private User[] users;
+    private ArrayList<User> users;
     private ObjectNode commandNode;
     private ArrayNode output;
     private CommandInput command;
     private ObjectMapper objectMapper;
 
-    public CreateCard(User[] users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
+    public CreateCard(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
         this.users = users;
         this.commandNode = commandNode;
         this.output = output;
@@ -28,7 +30,7 @@ public class CreateCard implements Command {
 
 
     @Override
-    public User[] execute() {
+    public void execute() {
 
         for(User user : users) {
             if(user.getUser().getEmail().equals(command.getEmail())) {
@@ -38,16 +40,7 @@ public class CreateCard implements Command {
 
 
                         Card newCard = new Card(Utils.generateCardNumber(), "active");
-                        Card[] existingCards = account.getCards();
-                        if (existingCards == null) {
-                            existingCards = new Card[0];
-                        }
-                        Card[] updatedCards = new Card[existingCards.length + 1];
-                        for(int i = 0; i < existingCards.length; i++) {
-                            updatedCards[i] = existingCards[i];
-                        }
-                        updatedCards[existingCards.length] = newCard;
-                        account.setCards(updatedCards);
+                        account.getCards().add(newCard);
                         break;
 
 
@@ -57,7 +50,7 @@ public class CreateCard implements Command {
             }
         }
 
-        return this.users;
+//        return this.users;
     }
 
     @Override

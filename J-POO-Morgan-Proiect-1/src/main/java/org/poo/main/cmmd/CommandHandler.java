@@ -8,40 +8,38 @@ import org.poo.fileio.ObjectInput;
 import org.poo.fileio.UserInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
+import org.poo.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-// invoker
 public class CommandHandler {
 
-    private User[] users;
+    private ArrayList<User> users;
     private ArrayList<CommandInput> commands;
 
+    public ArrayNode handle(final ObjectInput objectInput, ArrayNode output) {
+        users = new ArrayList<>();
 
-    public ArrayNode execute(final ObjectInput objectInput, ArrayNode output) {
-
-
-        users = new User[objectInput.getUsers().length];
-        for (int i = 0; i < objectInput.getUsers().length; i++) {
-            UserInput userInput = objectInput.getUsers()[i];
-            User user = new User(new Account[0]);
+        for (UserInput userInput : objectInput.getUsers()) {
+            User user = new User(new ArrayList<>());
             user.setUser(userInput);
-//            user.setAccounts(new Account[0]);
-            users[i] = user;
-
+            users.add(user);
         }
-        // set the commands from the input
-        commands = new ArrayList<>(Arrays.asList(objectInput.getCommands()));
+
+
+        commands = new ArrayList<>(objectInput.getCommands().length);
+        for (CommandInput commandInput : objectInput.getCommands()) {
+            commands.add(commandInput);
+        }
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        for(CommandInput cmd : commands) {
+        Utils.resetRandom();
 
+        for (CommandInput cmd : commands) {
             ObjectNode commandNode = objectMapper.createObjectNode();
 
-
-            switch(cmd.getCommand()) {
+            switch (cmd.getCommand()) {
                 case "printUsers":
                     PrintUsers printUsers = new PrintUsers(users, commandNode, output, cmd, objectMapper);
                     printUsers.execute();
@@ -57,15 +55,16 @@ public class CommandHandler {
                 case "addAccount":
                     AddAccount addAccount = new AddAccount(users, commandNode, output, cmd, objectMapper);
                     addAccount.execute();
-
+                    break;
+                case "deleteAccount":
+                    DeleteAccount deleteAccount = new DeleteAccount(users, commandNode, output, cmd, objectMapper);
+                    deleteAccount.execute();
                     break;
                 default:
                     break;
-
             }
         }
 
         return output;
     }
-
 }

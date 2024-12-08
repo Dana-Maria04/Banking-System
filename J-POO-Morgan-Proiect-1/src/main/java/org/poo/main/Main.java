@@ -78,7 +78,7 @@ public final class Main {
 
 
         CommandHandler cmd = new CommandHandler();
-        output = cmd.execute(inputData, output);
+        output = cmd.handle(inputData, output);
 
 
         /*

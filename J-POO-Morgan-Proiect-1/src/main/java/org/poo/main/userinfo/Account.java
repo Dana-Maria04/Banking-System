@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.poo.fileio.CommandInput;
 
+import java.util.ArrayList;
+
 @Setter
 @Getter
 
@@ -12,16 +14,17 @@ public class Account {
     private double balance;
     private String currency;
     private String accountType;
-    private Card[] cards;
+    private ArrayList<Card> cards;
 
     // pentru add account
-    public Account(String iban, String accountType, String currency) {
+    public Account(String iban, String accountType, String currency, double balance) {
         this.iban = iban;
         this.accountType = accountType;
         this.currency = currency;
+        this.balance = balance;
     }
 
-    public Account(String iban, String accountType, String currency, double balance, Card[] cards) {
+    public Account(String iban, String accountType, String currency, double balance, ArrayList<Card> cards) {
         this.iban = iban;
         this.accountType = accountType;
         this.currency = currency;
@@ -29,43 +32,4 @@ public class Account {
         this.cards = cards;
     }
 
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public Card[] getCards() {
-        return cards;
-    }
-
-    public void setCards(Card[] cards) {
-        this.cards = cards;
-    }
-
-    public String getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
-    }
 }
