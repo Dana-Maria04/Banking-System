@@ -72,6 +72,10 @@ public class CommandHandler {
                     SetMinimumBalance setMinimumBalance = new SetMinimumBalance(users, commandNode, output, cmd, objectMapper);
                     setMinimumBalance.execute();
                     break;
+                case "payOnline":
+                    PayOnline payOnline = new PayOnline(users, commandNode, output, cmd, objectMapper);
+                    payOnline.execute();
+                    break;
                 default:
                     break;
             }

@@ -33,4 +33,11 @@ public class Account {
         this.cards = cards;
     }
 
+    public void pay(double amount, String cardNumber, ArrayList<Card> Cards) {
+        for(Card card : Cards) {
+            if(card.getCardNumber().equals(cardNumber)) {
+              this.setBalance(this.balance - amount);
+            }
+        }
+    }
 }
