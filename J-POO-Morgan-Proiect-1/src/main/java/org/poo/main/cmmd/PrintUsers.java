@@ -10,53 +10,43 @@ import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
 
-public class PrintUsers implements Command{
-    private ArrayList<User> users;
-    private ObjectNode commandNode;
-    private ArrayNode output;
-    private CommandInput command;
-    private ObjectMapper objectMapper;
+public class PrintUsers extends Command {
 
     public PrintUsers(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
-        this.users = users;
-        this.commandNode = commandNode;
-        this.output = output;
-        this.command = command;
-        this.objectMapper = objectMapper;
+        super(users, commandNode, output, command, objectMapper, null);
     }
 
     @Override
     public void execute() {
-        commandNode.put("command", command.getCommand());
+        getCommandNode().put("command", getCommand().getCommand());
 
-        ArrayNode usersOutput = objectMapper.createArrayNode();
+        ArrayNode usersOutput = getObjectMapper().createArrayNode();
 
-        for (User user : users) {
-            ObjectNode userNode = objectMapper.createObjectNode();
+        for (User user : getUsers()) {
+            ObjectNode userNode = getObjectMapper().createObjectNode();
             userNode.put("firstName", user.getUser().getFirstName());
             userNode.put("lastName", user.getUser().getLastName());
             userNode.put("email", user.getUser().getEmail());
 
-            ArrayNode accountsNode = objectMapper.createArrayNode();
+            ArrayNode accountsNode = getObjectMapper().createArrayNode();
 
             for (Account account : user.getAccounts()) {
-                ObjectNode accountNode = objectMapper.createObjectNode();
+                ObjectNode accountNode = getObjectMapper().createObjectNode();
                 accountNode.put("IBAN", account.getIban());
                 accountNode.put("balance", account.getBalance());
                 accountNode.put("currency", account.getCurrency());
                 accountNode.put("type", account.getAccountType());
 
-                ArrayNode cardsNode = objectMapper.createArrayNode();
+                ArrayNode cardsNode = getObjectMapper().createArrayNode();
 
                 if (account.getCards() != null) {
                     for (Card card : account.getCards()) {
-                        ObjectNode cardNode = objectMapper.createObjectNode();
+                        ObjectNode cardNode = getObjectMapper().createObjectNode();
                         cardNode.put("cardNumber", card.getCardNumber());
                         cardNode.put("status", card.getStatus());
                         cardsNode.add(cardNode);
                     }
                 }
-
 
                 accountNode.set("cards", cardsNode);
                 accountsNode.add(accountNode);
@@ -65,14 +55,12 @@ public class PrintUsers implements Command{
             userNode.set("accounts", accountsNode);
             usersOutput.add(userNode);
         }
-        commandNode.set("output", usersOutput);
-        commandNode.put("timestamp", command.getTimestamp());
 
-        output.add(commandNode);
+        getCommandNode().set("output", usersOutput);
+        getCommandNode().put("timestamp", getCommand().getTimestamp());
 
-//        return users;
+        getOutput().add(getCommandNode());
     }
-
 
     @Override
     public void undo() {

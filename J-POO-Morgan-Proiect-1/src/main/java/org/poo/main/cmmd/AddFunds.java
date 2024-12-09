@@ -9,35 +9,23 @@ import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
 
-public class AddFunds implements Command{
-    private ArrayList<User> users;
-    private ObjectNode commandNode;
-    private ArrayNode output;
-    private CommandInput command;
-    private ObjectMapper objectMapper;
+public class AddFunds extends Command {
 
     public AddFunds(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
-        this.users = users;
-        this.commandNode = commandNode;
-        this.output = output;
-        this.command = command;
-        this.objectMapper = objectMapper;
+        super(users, commandNode, output, command, objectMapper, null);
     }
-
 
     @Override
     public void execute() {
+        for (User user : getUsers()) {
+            for (Account account : user.getAccounts()) {
+                if (account.getIban().equals(getCommand().getAccount())) {
+                    account.setBalance(account.getBalance() + getCommand().getAmount());
 
-        for(User user : users) {
-            for(Account account : user.getAccounts()) {
-                if(account.getIban().equals(command.getAccount())) {
-                    account.setBalance(account.getBalance() + command.getAmount());
-                    break;
+                    return;
                 }
             }
         }
-
-//        return this.users;
     }
 
     @Override

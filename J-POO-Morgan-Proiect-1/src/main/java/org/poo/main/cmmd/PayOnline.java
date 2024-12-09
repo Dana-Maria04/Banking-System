@@ -5,36 +5,50 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.Card;
+import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
 
-public class PayOnline implements Command {
-    private ArrayList<User> users;
-    private ObjectNode commandNode;
-    private ArrayNode output;
-    private CommandInput command;
-    private ObjectMapper objectMapper;
+public class PayOnline extends Command {
 
-    public PayOnline(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
-        this.users = users;
-        this.commandNode = commandNode;
-        this.output = output;
-        this.command = command;
-        this.objectMapper = objectMapper;
+    public PayOnline(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
+                     ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode) {
+        super(users, commandNode, output, command, objectMapper, exchangeGraph);
     }
-
 
     @Override
     public void execute() {
-        for(User user : users) {
-            if(user.getUser().getEmail().equals(command.getEmail())) {
-                for(Account account : user.getAccounts()) {
-                    account.pay(command.getAmount(), command.getCardNumber(), account.getCards());
+
+        ExchangeGraph exchangeGraph = getGraph();
+
+        for (User user : getUsers()) {
+            if (user.getUser().getEmail().equals(getCommand().getEmail())) {
+                for (Account account : user.getAccounts()) {
+
+                    double convertedAmount = exchangeGraph.convertCurrency(
+                            getCommand().getAmount(),
+                            getCommand().getCurrency(),
+                            account.getCurrency()
+                    );
+
+                    account.pay(convertedAmount, getCommand().getCardNumber(), account.getCards());
+                    if(account.getFoundCard() == 1 || account.getInsufficientFunds() == 1) {
+                        return;
+                    }
                 }
             }
         }
+
+
+        ObjectNode errorNode = getObjectMapper().createObjectNode();
+        errorNode.put("timestamp", getCommand().getTimestamp());
+        errorNode.put("description", "Card not found");
+        getCommandNode().set("output", errorNode);
+        getCommandNode().put("command", "payOnline");
+        getCommandNode().put("timestamp", getCommand().getTimestamp());
+
+        getOutput().add(getCommandNode());
     }
 
     @Override
