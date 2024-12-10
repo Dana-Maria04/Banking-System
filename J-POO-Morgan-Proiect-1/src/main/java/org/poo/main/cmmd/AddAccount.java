@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
+import org.poo.main.userinfo.Transaction;
 import org.poo.main.userinfo.User;
 import org.poo.utils.Utils;
 
@@ -27,6 +28,12 @@ public class AddAccount extends Command {
                 ArrayList<Account> existingAccounts = user.getAccounts();
                 existingAccounts.add(newAccount);
                 user.setAccounts(existingAccounts);
+
+                Transaction transaction = new Transaction();
+                transaction.setDescription("New account created");
+                transaction.setTimestamp(getCommand().getTimestamp());
+
+                user.getTransactions().add(transaction);
 
                 break;
             }

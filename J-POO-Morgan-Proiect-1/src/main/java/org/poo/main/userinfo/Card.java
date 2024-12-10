@@ -10,6 +10,7 @@ public class Card {
     private String cardNumber;
     private String status;
     private int oneTime;
+    private int frozen;
 
     public Card(String cardNumber, String status, int oneTime) {
         this.cardNumber = cardNumber;

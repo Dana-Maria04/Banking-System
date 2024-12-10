@@ -21,13 +21,21 @@ public class DeleteAccount extends Command {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
                 ArrayList<Account> accounts = user.getAccounts();
 
-                boolean accountDeleted = accounts.removeIf(account -> account.getIban().equals(getCommand().getAccount()));
+                Account targetAccount = null;
+                for (Account acc : accounts) {
+                    if (acc.getIban().equals(getCommand().getAccount())) {
+                        targetAccount = acc;
+                        break;
+                    }
+                }
 
-                if (accountDeleted) {
+                if (targetAccount.getBalance() == 0) {
+                    accounts.remove(targetAccount);
                     addResponseToOutput("success", "Account deleted");
                 } else {
-                    addResponseToOutput("error", "Account not found");
+                    addResponseToOutput("error", "Account couldn't be deleted - see org.poo.transactions for details");
                 }
+
                 return;
             }
         }

@@ -36,16 +36,42 @@ public class Account {
         this.cards = cards;
     }
 
-    public void pay(double amount, String cardNumber, ArrayList<Card> Cards) {
+    public void pay(double amount, String cardNumber, ArrayList<Card> Cards, User user, CommandInput command) {
         this.foundCard = 0;
         this.insufficientFunds = 0;
         for(Card card : Cards) {
             if(card.getCardNumber().equals(cardNumber)) {
 
+                if(card.getFrozen() == 1) {
+                    Transaction transaction = new Transaction();
+                    transaction.setTimestamp(command.getTimestamp());
+                    transaction.setDescription("The card is frozen");
+                    this.foundCard = 1;
+                    user.getTransactions().add(transaction);
+
+                    return;
+                }
+
+
                 if(minimumBalance > balance - amount) {
+
+                    Transaction transaction = new Transaction();
+                    transaction.setTimestamp(command.getTimestamp());
+                    transaction.setDescription("Insufficient funds");
+                    user.getTransactions().add(transaction);
+
                     this.insufficientFunds = 1;
                     return;
                 }
+
+                Transaction transaction = new Transaction();
+                transaction.setTimestamp(command.getTimestamp());
+                transaction.setAmountPayOnline(amount);
+                transaction.setDescription("Card payment");
+                transaction.setCommerciant(command.getCommerciant());
+
+                user.getTransactions().add(transaction);
+
                 this.foundCard = 1;
                 this.setBalance(this.balance - amount);
                 return;
@@ -61,6 +87,14 @@ public class Account {
         }
         return null;
 
+    }
+
+    public void incBalance (double amount) {
+            this.balance += amount;
+    }
+
+    public void decBalance (double amount) {
+            this.balance -= amount;
     }
 
 }

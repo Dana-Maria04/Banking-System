@@ -27,6 +27,9 @@ public class CommandHandler {
         for (UserInput userInput : objectInput.getUsers()) {
             User user = new User(new ArrayList<>());
             user.setUser(userInput);
+
+            user.setTransactions(new ArrayList<>());
+
             users.add(user);
         }
 
@@ -96,6 +99,14 @@ public class CommandHandler {
                 case "sendMoney":
                     SendMoney sendMoney = new SendMoney(users, cmd, graph, output, objectMapper, commandNode);
                     sendMoney.execute();
+                    break;
+                case "printTransactions":
+                    PrintTransactions printTransactions = new PrintTransactions(users, commandNode, output, cmd, objectMapper);
+                    printTransactions.execute();
+                    break;
+                case "checkCardStatus":
+                    CheckCardStatus checkCardStatus = new CheckCardStatus(users, commandNode, output, cmd, objectMapper);
+                    checkCardStatus.execute();
                     break;
                 default:
                     break;
