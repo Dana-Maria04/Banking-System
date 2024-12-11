@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.poo.fileio.CommandInput;
+import org.poo.main.userinfo.transactions.FrozenPayOnlineTransaction;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
+import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 
@@ -36,48 +39,58 @@ public class Account {
         this.cards = cards;
     }
 
-    public void pay(double amount, String cardNumber, ArrayList<Card> Cards, User user, CommandInput command) {
+    public void pay(double amount, String cardNumber, ArrayList<Card> cards, User user, CommandInput command,
+                    ArrayList<Transaction> transactions) {
         this.foundCard = 0;
         this.insufficientFunds = 0;
-        for(Card card : Cards) {
-            if(card.getCardNumber().equals(cardNumber)) {
 
-                if(card.getFrozen() == 1) {
-                    Transaction transaction = new Transaction();
-                    transaction.setTimestamp(command.getTimestamp());
-                    transaction.setDescription("The card is frozen");
+        for (Card card : cards) {
+            if (card.getCardNumber().equals(cardNumber)) {
+
+                if (card.getFrozen() == 1) {
+                    FrozenPayOnlineTransaction transaction = new FrozenPayOnlineTransaction(
+                            "The card is frozen",
+                            command.getTimestamp(),
+                            user.getUser().getEmail()
+                    );
+
+                    transactions.add(transaction);
                     this.foundCard = 1;
-                    user.getTransactions().add(transaction);
-
                     return;
                 }
 
+                if (minimumBalance > balance - amount) {
+                    PayOnlineTransaction transaction = new PayOnlineTransaction(
+                            "Insufficient funds",
+                            command.getTimestamp(),
+                            user.getUser().getEmail(),
+                            amount,
+                            command.getCommerciant()
+                    );
 
-                if(minimumBalance > balance - amount) {
-
-                    Transaction transaction = new Transaction();
-                    transaction.setTimestamp(command.getTimestamp());
-                    transaction.setDescription("Insufficient funds");
-                    user.getTransactions().add(transaction);
-
+                    transactions.add(transaction);
                     this.insufficientFunds = 1;
                     return;
                 }
 
-                Transaction transaction = new Transaction();
-                transaction.setTimestamp(command.getTimestamp());
-                transaction.setAmountPayOnline(amount);
-                transaction.setDescription("Card payment");
-                transaction.setCommerciant(command.getCommerciant());
+                PayOnlineTransaction transaction = new PayOnlineTransaction(
+                        "Card payment",
+                        command.getTimestamp(),
+                        user.getUser().getEmail(),
+                        amount,
+                        command.getCommerciant()
+                );
 
-                user.getTransactions().add(transaction);
-
+                transactions.add(transaction);
                 this.foundCard = 1;
+
                 this.setBalance(this.balance - amount);
                 return;
             }
         }
     }
+
+
 
     public static Account searchAccount(String iban, ArrayList<Account> accounts) {
         for(Account account : accounts) {

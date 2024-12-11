@@ -6,20 +6,22 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.ExchangeGraph;
-import org.poo.main.userinfo.Transaction;
+import org.poo.main.userinfo.transactions.MoneyTransferTransaction;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 
 public class SendMoney extends Command {
     public SendMoney(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
-                     ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode) {
-        super(users, commandNode, output, command, objectMapper, exchangeGraph);
+                     ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode,
+                     ArrayList<Transaction> transactions) {
+        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions);
     }
 
     @Override
     public void execute() {
-        Account receiver = new Account();
+        Account receiver = null;
         for (User user : getUsers()) {
             receiver = Account.searchAccount(getCommand().getReceiver(), user.getAccounts());
             if (receiver != null) {
@@ -27,8 +29,8 @@ public class SendMoney extends Command {
             }
         }
 
-        Account sender = new Account();
-        User senderUser = new User();
+        Account sender = null;
+        User senderUser = null;
         for (User user : getUsers()) {
             sender = Account.searchAccount(getCommand().getAccount(), user.getAccounts());
             if (sender != null) {
@@ -37,48 +39,56 @@ public class SendMoney extends Command {
             }
         }
 
-        if(receiver == null || sender == null) {
+        if (receiver == null || sender == null) {
             return;
         }
 
-        if(sender.getBalance() < getCommand().getAmount()) {
+        if (sender.getBalance() < getCommand().getAmount()) {
+            MoneyTransferTransaction transaction = new MoneyTransferTransaction(
+                    "Insufficient funds",
+                    getCommand().getTimestamp(),
+                    0,
+                    sender.getCurrency(),
+                    sender.getIban(),
+                    receiver.getIban(),
+                    "failed"
+            );
 
-            Transaction transaction = new Transaction();
-            transaction.setDescription("Insufficient funds");
-            transaction.setTimestamp(getCommand().getTimestamp());
-
-            senderUser.getTransactions().add(transaction);
+            transaction.setEmail(senderUser.getUser().getEmail());
+            getTransactions().add(transaction);
             return;
         }
 
-        if(sender.getMinimumBalance() > sender.getBalance() - getCommand().getAmount()) {
+        if (sender.getMinimumBalance() > sender.getBalance() - getCommand().getAmount()) {
+            MoneyTransferTransaction transaction = new MoneyTransferTransaction(
+                    "Insufficient funds",
+                    getCommand().getTimestamp(),
+                    0,
+                    sender.getCurrency(),
+                    sender.getIban(),
+                    receiver.getIban(),
+                    "failed"
+            );
 
-            Transaction transaction = new Transaction();
-            transaction.setDescription("Insufficient funds");
-            transaction.setTimestamp(getCommand().getTimestamp());
-
-            senderUser.getTransactions().add(transaction);
-
+            transaction.setEmail(senderUser.getUser().getEmail());
+            getTransactions().add(transaction);
             return;
         }
-
-
-
-
 
         double amount = getGraph().convertCurrency(getCommand().getAmount(), sender.getCurrency(), receiver.getCurrency());
 
+        MoneyTransferTransaction transaction = new MoneyTransferTransaction(
+                getCommand().getDescription(),
+                getCommand().getTimestamp(),
+                getCommand().getAmount(),
+                sender.getCurrency(),
+                sender.getIban(),
+                receiver.getIban(),
+                "sent"
+        );
 
-        Transaction transaction = new Transaction();
-        transaction.setDescription(getCommand().getDescription());
-        transaction.setTimestamp(getCommand().getTimestamp());
-        transaction.setCurrency(sender.getCurrency());
-        transaction.setAmount(getCommand().getAmount());
-        transaction.setSenderIban(sender.getIban());
-        transaction.setReceiverIban(receiver.getIban());
-        transaction.setTransferType("sent");
-
-        senderUser.getTransactions().add(transaction);
+        transaction.setEmail(senderUser.getUser().getEmail());
+        getTransactions().add(transaction);
 
         receiver.incBalance(amount);
         sender.decBalance(getCommand().getAmount());

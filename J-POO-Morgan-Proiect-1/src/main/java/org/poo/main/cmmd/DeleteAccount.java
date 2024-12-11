@@ -6,13 +6,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 
 public class DeleteAccount extends Command {
 
-    public DeleteAccount(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
-        super(users, commandNode, output, command, objectMapper, null);
+    public DeleteAccount(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
+        super(users, commandNode, output, command, objectMapper, null, transactions);
     }
 
     @Override

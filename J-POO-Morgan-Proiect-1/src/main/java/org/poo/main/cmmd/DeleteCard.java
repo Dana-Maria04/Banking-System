@@ -3,15 +3,16 @@ package org.poo.main.cmmd;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
-import org.poo.main.userinfo.Transaction;
+import org.poo.main.userinfo.transactions.CardDeletionTransaction;
+import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
 
 public class DeleteCard extends Command {
 
-    public DeleteCard(ArrayList<User> users, CommandInput command) {
-        super(users, null, null, command, null, null);
+    public DeleteCard(ArrayList<User> users, CommandInput command, ArrayList<Transaction> transactions) {
+        super(users, null, null, command, null, null, transactions);
     }
 
     @Override
@@ -30,14 +31,15 @@ public class DeleteCard extends Command {
                     if (cardToDelete != null) {
                         account.getCards().remove(cardToDelete);
 
-                        Transaction transaction = new Transaction();
-                        transaction.setAccount(account.getIban());
-                        transaction.setCardHolder(user.getUser().getEmail());
-                        transaction.setCardNumber(cardToDelete.getCardNumber());
-                        transaction.setDescription("The card has been destroyed");
-                        transaction.setTimestamp(getCommand().getTimestamp());
+                        CardDeletionTransaction transaction = new CardDeletionTransaction(
+                                "The card has been destroyed",
+                                getCommand().getTimestamp(),
+                                user.getUser().getEmail(),
+                                account.getIban(),
+                                cardToDelete.getCardNumber()
+                        );
 
-                        user.getTransactions().add(transaction);
+                        getTransactions().add(transaction);
                     }
                 }
                 return;

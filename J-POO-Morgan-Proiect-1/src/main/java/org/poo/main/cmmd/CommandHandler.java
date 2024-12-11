@@ -7,9 +7,9 @@ import org.poo.fileio.CommandInput;
 import org.poo.fileio.ExchangeInput;
 import org.poo.fileio.ObjectInput;
 import org.poo.fileio.UserInput;
-import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ public class CommandHandler {
     private ArrayList<CommandInput> commands;
     private ArrayList<ExchangeInput> exchangeRates;
     private ExchangeGraph graph;
+    private ArrayList<Transaction> transactions;
 
     public ArrayNode handle(final ObjectInput objectInput, ArrayNode output) {
         users = new ArrayList<>();
@@ -36,6 +37,7 @@ public class CommandHandler {
         exchangeRates = new ArrayList<>();
 
         for(ExchangeInput exchangeInput : objectInput.getExchangeRates()){
+           // constructor for ExchangeInput
             ExchangeInput exchange = new ExchangeInput();
             exchange.setTo(exchangeInput.getTo());
             exchange.setRate(exchangeInput.getRate());
@@ -46,6 +48,8 @@ public class CommandHandler {
         }
 
         graph = new ExchangeGraph(exchangeRates);
+
+        transactions = new ArrayList<>();
 
         commands = new ArrayList<>(objectInput.getCommands().length);
         for (CommandInput commandInput : objectInput.getCommands()) {
@@ -69,23 +73,23 @@ public class CommandHandler {
                     addFunds.execute();
                     break;
                 case "createCard":
-                    CreateCard createCard = new CreateCard(users, cmd, 0);
+                    CreateCard createCard = new CreateCard(users, cmd, 0, transactions);
                     createCard.execute();
                     break;
                 case "addAccount":
-                    AddAccount addAccount = new AddAccount(users, commandNode, output, cmd, objectMapper);
+                    AddAccount addAccount = new AddAccount(users, commandNode, output, cmd, objectMapper, transactions);
                     addAccount.execute();
                     break;
                 case "deleteAccount":
-                    DeleteAccount deleteAccount = new DeleteAccount(users, commandNode, output, cmd, objectMapper);
+                    DeleteAccount deleteAccount = new DeleteAccount(users, commandNode, output, cmd, objectMapper, transactions);
                     deleteAccount.execute();
                     break;
                 case "createOneTimeCard":
-                    CreateCard createOneTimeCard = new CreateCard(users, cmd, 1);
+                    CreateCard createOneTimeCard = new CreateCard(users, cmd, 1, transactions);
                     createOneTimeCard.execute();
                     break;
                 case "deleteCard":
-                    DeleteCard deleteCard = new DeleteCard(users, cmd);
+                    DeleteCard deleteCard = new DeleteCard(users, cmd, transactions);
                     deleteCard.execute();
                     break;
                 case "setMinimumBalanmce":
@@ -93,19 +97,19 @@ public class CommandHandler {
                     setMinimumBalance.execute();
                     break;
                 case "payOnline":
-                    PayOnline payOnline = new PayOnline(users, cmd, graph, output, objectMapper, commandNode);
+                    PayOnline payOnline = new PayOnline(users, cmd, graph, output, objectMapper, commandNode, transactions);
                     payOnline.execute();
                     break;
                 case "sendMoney":
-                    SendMoney sendMoney = new SendMoney(users, cmd, graph, output, objectMapper, commandNode);
+                    SendMoney sendMoney = new SendMoney(users, cmd, graph, output, objectMapper, commandNode, transactions);
                     sendMoney.execute();
                     break;
                 case "printTransactions":
-                    PrintTransactions printTransactions = new PrintTransactions(users, commandNode, output, cmd, objectMapper);
+                    PrintTransactions printTransactions = new PrintTransactions(users, commandNode, output, cmd, objectMapper, transactions);
                     printTransactions.execute();
                     break;
                 case "checkCardStatus":
-                    CheckCardStatus checkCardStatus = new CheckCardStatus(users, commandNode, output, cmd, objectMapper);
+                    CheckCardStatus checkCardStatus = new CheckCardStatus(users, commandNode, output, cmd, objectMapper, transactions);
                     checkCardStatus.execute();
                     break;
                 default:

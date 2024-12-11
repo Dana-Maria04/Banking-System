@@ -6,15 +6,17 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
-import org.poo.main.userinfo.Transaction;
+import org.poo.main.userinfo.transactions.CheckCardStatusTransaction;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 
 public class CheckCardStatus extends Command {
 
-    public CheckCardStatus(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
-        super(users, commandNode, output, command, objectMapper, null);
+    public CheckCardStatus(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
+                           ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
+        super(users, commandNode, output, command, objectMapper, null, transactions);
     }
 
     @Override
@@ -26,12 +28,19 @@ public class CheckCardStatus extends Command {
                 for (Card card : account.getCards()) {
                     if (card.getCardNumber().equals(getCommand().getCardNumber())) {
                         cardFound = true;
-                        if (account.getBalance() - account.getMinimumBalance() <= 30) {
-                            Transaction transaction = new Transaction();
-                            transaction.setDescription("You have reached the minimum amount of funds, the card will be frozen");
-                            transaction.setTimestamp(getCommand().getTimestamp());
 
-                            user.getTransactions().add(transaction);
+                        if (account.getBalance() - account.getMinimumBalance() <= 30) {
+                            CheckCardStatusTransaction transaction = new CheckCardStatusTransaction(
+                                    "You have reached the minimum amount of funds, the card will be frozen",
+                                    getCommand().getTimestamp(),
+                                    user.getUser().getEmail(),
+                                    card.getCardNumber(),
+                                    account.getIban(),
+                                    "frozen"
+                            );
+
+                            getTransactions().add(transaction);
+
                             card.setFrozen(1);
                             card.setStatus("frozen");
                         }
@@ -52,7 +61,6 @@ public class CheckCardStatus extends Command {
             getOutput().add(commandOutput);
         }
     }
-
 
     @Override
     public void undo() {

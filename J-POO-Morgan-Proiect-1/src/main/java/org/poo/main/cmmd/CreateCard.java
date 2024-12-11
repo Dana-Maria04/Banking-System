@@ -3,17 +3,18 @@ package org.poo.main.cmmd;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
-import org.poo.main.userinfo.Transaction;
+import org.poo.main.userinfo.transactions.CreateCardTransaction;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.utils.Utils;
-import org.poo.main.cmmd.Command;
+
 import java.util.ArrayList;
 
 public class CreateCard extends Command {
     private int oneTime;
 
-    public CreateCard(ArrayList<User> users, CommandInput command, int oneTime) {
-        super(users, null, null, command, null, null);
+    public CreateCard(ArrayList<User> users, CommandInput command, int oneTime, ArrayList<Transaction> transactions) {
+        super(users, null, null, command, null, null, transactions);
         this.oneTime = oneTime;
     }
 
@@ -26,14 +27,17 @@ public class CreateCard extends Command {
 
                         Card newCard = new Card(Utils.generateCardNumber(), "active", oneTime);
                         newCard.setFrozen(0);
-                        Transaction transaction = new Transaction();
-                        transaction.setAccount(account.getIban());
-                        transaction.setCardHolder(user.getUser().getEmail());
-                        transaction.setCardNumber(newCard.getCardNumber());
-                        transaction.setDescription("New card created");
-                        transaction.setTimestamp(getCommand().getTimestamp());
 
-                        user.getTransactions().add(transaction);
+                        CreateCardTransaction transaction = new CreateCardTransaction(
+                                "New card created",
+                                getCommand().getTimestamp(),
+                                user.getUser().getEmail(),
+                                account.getIban(),
+                                newCard.getCardNumber(),
+                                user.getUser().getEmail()
+                        );
+
+                        getTransactions().add(transaction);
 
                         account.getCards().add(newCard);
                         return;

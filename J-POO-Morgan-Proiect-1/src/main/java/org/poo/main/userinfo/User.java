@@ -1,10 +1,10 @@
 package org.poo.main.userinfo;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.poo.fileio.UserInput;
+import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 

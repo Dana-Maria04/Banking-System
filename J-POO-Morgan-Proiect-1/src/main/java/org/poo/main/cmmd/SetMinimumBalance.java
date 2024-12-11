@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class SetMinimumBalance extends Command {
 
     public SetMinimumBalance(ArrayList<User> users, CommandInput command) {
-        super(users, null, null, command, null, null);
+        super(users, null, null, command, null, null, null);
     }
 
     @Override
