@@ -37,7 +37,7 @@ public class CommandHandler {
         exchangeRates = new ArrayList<>();
 
         for(ExchangeInput exchangeInput : objectInput.getExchangeRates()){
-           // constructor for ExchangeInput
+            // constructor for ExchangeInput
             ExchangeInput exchange = new ExchangeInput();
             exchange.setTo(exchangeInput.getTo());
             exchange.setRate(exchangeInput.getRate());
@@ -111,6 +111,10 @@ public class CommandHandler {
                 case "checkCardStatus":
                     CheckCardStatus checkCardStatus = new CheckCardStatus(users, commandNode, output, cmd, objectMapper, transactions);
                     checkCardStatus.execute();
+                    break;
+                case "splitPayment":
+                    SplitPayment splitPayment = new SplitPayment(graph, users, commandNode, output, cmd, objectMapper, transactions);
+                    splitPayment.execute();
                     break;
                 default:
                     break;

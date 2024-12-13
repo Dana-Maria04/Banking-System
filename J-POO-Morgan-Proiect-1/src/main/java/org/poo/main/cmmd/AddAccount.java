@@ -5,12 +5,15 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.transactions.AddAccountTransaction;
+import org.poo.main.userinfo.transactions.ITransactionFactory;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.TransactionFactory;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddAccount extends Command {
 
@@ -29,15 +32,15 @@ public class AddAccount extends Command {
 
                 user.getAccounts().add(newAccount);
 
-                AddAccountTransaction transaction = new AddAccountTransaction(
-                        "New account created",
-                        getCommand().getTimestamp(),
-                        user.getUser().getEmail(),
-                        getCommand().getAccountType(),
-                        getCommand().getCurrency(),
-                        newAccount.getIban()
-                );
+                Map<String, Object> params = new HashMap<>();
+                params.put("description", "New account created");
+                params.put("timestamp", getCommand().getTimestamp());
+                params.put("email", user.getUser().getEmail());
+                params.put("accountType", getCommand().getAccountType());
+                params.put("currency", getCommand().getCurrency());
+                params.put("iban", newAccount.getIban());
 
+                Transaction transaction = TransactionFactory.getInstance().createTransaction("AddAccount", params);
                 getTransactions().add(transaction);
 
                 break;
