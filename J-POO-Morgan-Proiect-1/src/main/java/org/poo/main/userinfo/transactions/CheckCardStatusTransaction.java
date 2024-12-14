@@ -12,8 +12,7 @@ public class CheckCardStatusTransaction extends Transaction {
     private String status;
 
     public CheckCardStatusTransaction(String description, int timestamp, String email, String cardNumber, String iban, String status) {
-        super(description, timestamp);
-        setEmail(email);
+        super(description, timestamp, email, iban);
         this.cardNumber = cardNumber;
         this.iban = iban;
         this.status = status;

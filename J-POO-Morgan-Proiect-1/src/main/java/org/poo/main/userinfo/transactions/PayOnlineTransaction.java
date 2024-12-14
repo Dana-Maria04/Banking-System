@@ -10,9 +10,9 @@ public class PayOnlineTransaction extends Transaction {
     private double amountPayOnline;
     private String commerciant;
 
-    public PayOnlineTransaction(String description, int timestamp, String email, double amountPayOnline, String commerciant) {
-        super(description, timestamp);
-        setEmail(email);
+    public PayOnlineTransaction(String description, int timestamp, String email,
+                                double amountPayOnline, String commerciant, String iban) {
+        super(description, timestamp, email, iban);
         this.amountPayOnline = amountPayOnline;
         this.commerciant = commerciant;
     }

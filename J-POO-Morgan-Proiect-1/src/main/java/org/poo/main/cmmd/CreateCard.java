@@ -14,7 +14,7 @@ public class CreateCard extends Command {
     private int oneTime;
 
     public CreateCard(ArrayList<User> users, CommandInput command, int oneTime, ArrayList<Transaction> transactions) {
-        super(users, null, null, command, null, null, transactions);
+        super(users, null, null, command, null, null, transactions, null);
         this.oneTime = oneTime;
     }
 
@@ -34,7 +34,8 @@ public class CreateCard extends Command {
                                 user.getUser().getEmail(),
                                 account.getIban(),
                                 newCard.getCardNumber(),
-                                user.getUser().getEmail()
+                                user.getUser().getEmail(),
+                                account.getIban()
                         );
 
                         getTransactions().add(transaction);

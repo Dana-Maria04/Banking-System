@@ -39,8 +39,10 @@ public class Account {
         this.cards = cards;
     }
 
-    public void pay(double amount, String cardNumber, ArrayList<Card> cards, User user, CommandInput command,
-                    ArrayList<Transaction> transactions) {
+    public void pay(double amount, String cardNumber, ArrayList<Card> cards, User user,
+                    CommandInput command,
+                    ArrayList<Transaction> transactions, String iban,
+                    ArrayList<PayOnlineTransaction> payOnlineTransactions) {
         this.foundCard = 0;
         this.insufficientFunds = 0;
 
@@ -51,7 +53,9 @@ public class Account {
                     FrozenPayOnlineTransaction transaction = new FrozenPayOnlineTransaction(
                             "The card is frozen",
                             command.getTimestamp(),
-                            user.getUser().getEmail()
+                            user.getUser().getEmail(),
+                            iban
+
                     );
 
                     transactions.add(transaction);
@@ -65,10 +69,12 @@ public class Account {
                             command.getTimestamp(),
                             user.getUser().getEmail(),
                             amount,
-                            command.getCommerciant()
+                            command.getCommerciant(),
+                            iban
                     );
 
                     transactions.add(transaction);
+                    payOnlineTransactions.add(transaction);
                     this.insufficientFunds = 1;
                     return;
                 }
@@ -78,10 +84,12 @@ public class Account {
                         command.getTimestamp(),
                         user.getUser().getEmail(),
                         amount,
-                        command.getCommerciant()
+                        command.getCommerciant(),
+                        iban
                 );
 
                 transactions.add(transaction);
+                payOnlineTransactions.add(transaction);
                 this.foundCard = 1;
 
                 this.setBalance(this.balance - amount);
@@ -103,11 +111,11 @@ public class Account {
     }
 
     public void incBalance (double amount) {
-            this.balance += amount;
+        this.balance += amount;
     }
 
     public void decBalance (double amount) {
-            this.balance -= amount;
+        this.balance -= amount;
     }
 
 }

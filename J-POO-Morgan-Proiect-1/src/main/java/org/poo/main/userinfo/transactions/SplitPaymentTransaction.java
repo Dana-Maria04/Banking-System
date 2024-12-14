@@ -13,8 +13,8 @@ public class SplitPaymentTransaction extends Transaction{
 
     public SplitPaymentTransaction(String description, int timestamp, String email,
                                    double amount, String currency,
-                                   List<String> involvedAccounts) {
-        super(description, timestamp, email);
+                                   List<String> involvedAccounts, String iban) {
+        super(description, timestamp, email, iban);
         this.amount = amount;
         this.currency = currency;
         this.involvedAccounts = involvedAccounts;

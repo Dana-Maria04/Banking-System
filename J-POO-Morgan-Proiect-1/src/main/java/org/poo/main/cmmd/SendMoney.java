@@ -16,7 +16,7 @@ public class SendMoney extends Command {
     public SendMoney(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
                      ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode,
                      ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions);
+        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions, null);
     }
 
     @Override
@@ -47,11 +47,13 @@ public class SendMoney extends Command {
             MoneyTransferTransaction transaction = new MoneyTransferTransaction(
                     "Insufficient funds",
                     getCommand().getTimestamp(),
+                    senderUser.getUser().getEmail(),
                     0,
                     sender.getCurrency(),
                     sender.getIban(),
                     receiver.getIban(),
-                    "failed"
+                    "failed",
+                    sender.getIban()
             );
 
             transaction.setEmail(senderUser.getUser().getEmail());
@@ -63,11 +65,13 @@ public class SendMoney extends Command {
             MoneyTransferTransaction transaction = new MoneyTransferTransaction(
                     "Insufficient funds",
                     getCommand().getTimestamp(),
+                    senderUser.getUser().getEmail(),
                     0,
                     sender.getCurrency(),
                     sender.getIban(),
                     receiver.getIban(),
-                    "failed"
+                    "failed",
+                    sender.getIban()
             );
 
             transaction.setEmail(senderUser.getUser().getEmail());
@@ -80,11 +84,13 @@ public class SendMoney extends Command {
         MoneyTransferTransaction transaction = new MoneyTransferTransaction(
                 getCommand().getDescription(),
                 getCommand().getTimestamp(),
+                senderUser.getUser().getEmail(),
                 getCommand().getAmount(),
                 sender.getCurrency(),
                 sender.getIban(),
                 receiver.getIban(),
-                "sent"
+                "sent",
+                receiver.getIban()
         );
 
         transaction.setEmail(senderUser.getUser().getEmail());

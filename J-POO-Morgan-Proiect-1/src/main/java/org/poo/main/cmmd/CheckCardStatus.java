@@ -16,7 +16,7 @@ public class CheckCardStatus extends Command {
 
     public CheckCardStatus(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
                            ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, null, transactions);
+        super(users, commandNode, output, command, objectMapper, null, transactions, null);
     }
 
     @Override

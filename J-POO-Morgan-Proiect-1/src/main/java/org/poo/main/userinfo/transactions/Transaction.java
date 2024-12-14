@@ -10,16 +10,13 @@ public abstract class Transaction {
     private String description;
     private int timestamp;
     private String email;
+    private String reportIban;
 
-    public Transaction(String description, int timestamp) {
-        this.description = description;
-        this.timestamp = timestamp;
-    }
-
-    public Transaction(String description, int timestamp, String email) {
+    public Transaction(String description, int timestamp, String email, String reportIban) {
         this.description = description;
         this.timestamp = timestamp;
         this.email = email;
+        this.reportIban = reportIban;
     }
 
     public void addDetailsToNode(ObjectNode transactionNode) {

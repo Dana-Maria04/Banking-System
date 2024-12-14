@@ -12,8 +12,7 @@ public class AddAccountTransaction extends Transaction {
     private String iban;
 
     public AddAccountTransaction(String description, int timestamp, String email, String accountType, String currency, String iban) {
-        super(description, timestamp);
-        setEmail(email);
+        super(description, timestamp, email, iban);
         this.accountType = accountType;
         this.currency = currency;
         this.iban = iban;

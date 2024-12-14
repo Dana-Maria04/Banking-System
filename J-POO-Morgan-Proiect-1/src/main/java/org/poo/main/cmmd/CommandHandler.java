@@ -9,6 +9,7 @@ import org.poo.fileio.ObjectInput;
 import org.poo.fileio.UserInput;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.utils.Utils;
 
@@ -21,6 +22,7 @@ public class CommandHandler {
     private ArrayList<ExchangeInput> exchangeRates;
     private ExchangeGraph graph;
     private ArrayList<Transaction> transactions;
+    private ArrayList<PayOnlineTransaction> spendingsReportTransactions;
 
     public ArrayNode handle(final ObjectInput objectInput, ArrayNode output) {
         users = new ArrayList<>();
@@ -35,6 +37,7 @@ public class CommandHandler {
         }
 
         exchangeRates = new ArrayList<>();
+        spendingsReportTransactions = new ArrayList<>();
 
         for(ExchangeInput exchangeInput : objectInput.getExchangeRates()){
             // constructor for ExchangeInput
@@ -97,7 +100,8 @@ public class CommandHandler {
                     setMinimumBalance.execute();
                     break;
                 case "payOnline":
-                    PayOnline payOnline = new PayOnline(users, cmd, graph, output, objectMapper, commandNode, transactions);
+                    PayOnline payOnline = new PayOnline(users, cmd, graph, output,
+                            objectMapper, commandNode, transactions, spendingsReportTransactions);
                     payOnline.execute();
                     break;
                 case "sendMoney":
@@ -119,6 +123,10 @@ public class CommandHandler {
                 case "report":
                     Report report = new Report(users, cmd, graph, output, objectMapper, commandNode, transactions);
                     report.execute();
+                    break;
+                case "spendingsReport":
+                    SpendingsReport spendingReport = new SpendingsReport(users, commandNode, output, cmd, objectMapper, transactions, spendingsReportTransactions);
+                    spendingReport.execute();
                     break;
                 default:
                     break;

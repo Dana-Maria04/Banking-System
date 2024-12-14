@@ -7,6 +7,7 @@ import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ public class PayOnline extends Command {
 
     public PayOnline(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
                      ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode,
-                     ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions);
+                     ArrayList<Transaction> transactions,
+                     ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+        super(users, commandNode, output, command, objectMapper,
+                exchangeGraph, transactions, payOnlineTransactions);
     }
 
     @Override
@@ -34,7 +37,9 @@ public class PayOnline extends Command {
                             account.getCurrency()
                     );
 
-                    account.pay(convertedAmount, getCommand().getCardNumber(), account.getCards(), user, getCommand(), getTransactions());
+                    account.pay(convertedAmount, getCommand().getCardNumber(), account.getCards(),
+                            user, getCommand(), getTransactions(), account.getIban(),
+                            getSpendingsReportTransactions());
                     if(account.getFoundCard() == 1 || account.getInsufficientFunds() == 1) {
                         return;
                     }

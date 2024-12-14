@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
@@ -22,11 +23,12 @@ public abstract class Command {
     private ObjectMapper objectMapper;
     private ExchangeGraph graph;
     private ArrayList<Transaction> transactions;
-
+    private ArrayList<PayOnlineTransaction> spendingsReportTransactions;
 
     public Command(ArrayList<User> users, ObjectNode commandNode, ArrayNode output,
                    CommandInput command, ObjectMapper objectMapper, ExchangeGraph graph,
-                   ArrayList<Transaction> transactions) {
+                   ArrayList<Transaction> transactions,
+                   ArrayList<PayOnlineTransaction> spendingsReportTransactions) {
         this.users = users;
         this.commandNode = commandNode;
         this.output = output;
@@ -34,6 +36,7 @@ public abstract class Command {
         this.objectMapper = objectMapper;
         this.graph = graph;
         this.transactions = transactions;
+        this.spendingsReportTransactions = spendingsReportTransactions;
     }
 
     protected void addResponseToOutput(String key, String message) {

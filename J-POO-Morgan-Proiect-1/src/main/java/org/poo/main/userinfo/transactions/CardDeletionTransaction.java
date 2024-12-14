@@ -11,8 +11,7 @@ public class CardDeletionTransaction extends Transaction {
     private String iban;
 
     public CardDeletionTransaction(String description, int timestamp, String email, String iban, String cardNumber) {
-        super(description, timestamp);
-        setEmail(email);
+        super(description, timestamp, email, iban);
         this.iban = iban;
         this.cardNumber = cardNumber;
     }

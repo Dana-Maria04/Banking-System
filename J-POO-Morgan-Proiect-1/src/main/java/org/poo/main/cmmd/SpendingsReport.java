@@ -5,20 +5,22 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.ReportTransaction;
+import org.poo.main.userinfo.transactions.SpendingReportTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 
-public class Report extends Command {
+public class SpendingsReport extends Command {
 
-    public Report(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
-                  ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode,
-                  ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions, null);
+    public SpendingsReport(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
+                           ObjectMapper objectMapper, ArrayList<Transaction> transactions,
+                           ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+        super(users, commandNode, output, command, objectMapper, null, transactions, payOnlineTransactions);
     }
+
 
     @Override
     public void execute() {
@@ -29,7 +31,8 @@ public class Report extends Command {
         for (User user : getUsers()) {
             for (Account account : user.getAccounts()) {
                 if (account.getIban().equals(targetIban)) {
-                    ReportTransaction reportTransaction = new ReportTransaction(
+
+                    SpendingReportTransaction SpendingReportTransaction = new SpendingReportTransaction(
                             getCommand().getDescription(),
                             getCommand().getTimestamp(),
                             user.getUser().getEmail(),
@@ -37,13 +40,14 @@ public class Report extends Command {
                             startTimestamp,
                             endTimestamp,
                             account,
-                            new ArrayList<>(getTransactions()),
+                            getTransactions(),
                             user,
-                            account.getIban()
+                            account.getIban(),
+                            getSpendingsReportTransactions()
                     );
 
                     ObjectNode transactionNode = getObjectMapper().createObjectNode();
-                    reportTransaction.addDetailsToNode(transactionNode);
+                    SpendingReportTransaction.addDetailsToNode(transactionNode);
                     getOutput().add(transactionNode);
                     return;
                 }

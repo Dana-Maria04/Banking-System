@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class FrozenPayOnlineTransaction extends Transaction {
 
-    public FrozenPayOnlineTransaction(String description, int timestamp, String email) {
-        super(description, timestamp);
-        setEmail(email);
+    public FrozenPayOnlineTransaction(String description, int timestamp,
+                                      String email, String reportIban) {
+        super(description, timestamp, email, reportIban);
     }
 
     @Override

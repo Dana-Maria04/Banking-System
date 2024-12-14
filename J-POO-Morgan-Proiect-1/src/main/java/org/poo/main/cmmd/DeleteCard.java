@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class DeleteCard extends Command {
 
     public DeleteCard(ArrayList<User> users, CommandInput command, ArrayList<Transaction> transactions) {
-        super(users, null, null, command, null, null, transactions);
+        super(users, null, null, command, null, null, transactions, null);
     }
 
     @Override

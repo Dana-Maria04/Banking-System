@@ -5,10 +5,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.transactions.ITransactionFactory;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
-import org.poo.main.userinfo.transactions.TransactionFactory;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
@@ -17,8 +15,9 @@ import java.util.Map;
 
 public class AddAccount extends Command {
 
-    public AddAccount(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, null, transactions);
+    public AddAccount(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
+                      ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
+        super(users, commandNode, output, command, objectMapper, null, transactions, null);
     }
 
     @Override

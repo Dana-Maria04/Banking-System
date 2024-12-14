@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class AddFunds extends Command {
 
     public AddFunds(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
-        super(users, commandNode, output, command, objectMapper, null, null);
+        super(users, commandNode, output, command, objectMapper, null, null, null);
     }
 
     @Override

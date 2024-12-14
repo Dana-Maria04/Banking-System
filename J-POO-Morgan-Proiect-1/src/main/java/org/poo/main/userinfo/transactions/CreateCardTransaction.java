@@ -11,9 +11,10 @@ public class CreateCardTransaction extends Transaction {
     private String cardNumber;
     private String cardHolder;
 
-    public CreateCardTransaction(String description, int timestamp, String email, String account, String cardNumber, String cardHolder) {
-        super(description, timestamp);
-        setEmail(email);
+    public CreateCardTransaction(String description, int timestamp, String email,
+                                 String account, String cardNumber,
+                                 String cardHolder, String reportIban) {
+        super(description, timestamp, email, reportIban);
         this.account = account;
         this.cardNumber = cardNumber;
         this.cardHolder = cardHolder;

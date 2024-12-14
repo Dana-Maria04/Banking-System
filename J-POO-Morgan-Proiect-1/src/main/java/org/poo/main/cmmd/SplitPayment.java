@@ -16,7 +16,7 @@ import java.util.List;
 public class SplitPayment extends Command{
 
     public SplitPayment(ExchangeGraph graph, ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, graph, transactions);
+        super(users, commandNode, output, command, objectMapper, graph, transactions, null);
     }
 
     @Override
@@ -54,7 +54,8 @@ public class SplitPayment extends Command{
                                 user.getUser().getEmail(),
                                 amountForEach,
                                 getCommand().getCurrency(),
-                                accounts
+                                accounts,
+                                account.getIban()
                         );
 
 

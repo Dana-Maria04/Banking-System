@@ -18,8 +18,9 @@ public class ReportTransaction extends Transaction{
 
     public ReportTransaction(String description, int timestamp, String email, String targetIban,
                              int startTimestamp, int endTimestamp,
-                             Account account, ArrayList<Transaction> transactions, User user) {
-        super(description, timestamp, email);
+                             Account account, ArrayList<Transaction> transactions, User user,
+                             String reportIban) {
+        super(description, timestamp, email, reportIban);
         this.targetIban = targetIban;
         this.startTimestamp = startTimestamp;
         this.endTimestamp = endTimestamp;
