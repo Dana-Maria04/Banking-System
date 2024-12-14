@@ -116,6 +116,10 @@ public class CommandHandler {
                     SplitPayment splitPayment = new SplitPayment(graph, users, commandNode, output, cmd, objectMapper, transactions);
                     splitPayment.execute();
                     break;
+                case "report":
+                    Report report = new Report(users, cmd, graph, output, objectMapper, commandNode, transactions);
+                    report.execute();
+                    break;
                 default:
                     break;
             }
