@@ -13,7 +13,7 @@ import org.poo.main.userinfo.transactions.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplitPayment extends Command{
+public class SplitPayment extends Command {
 
     public SplitPayment(ExchangeGraph graph, ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper, graph, transactions, null);
@@ -26,27 +26,54 @@ public class SplitPayment extends Command{
         double amountForEach = getCommand().getAmount() / rate;
         String totalDescription = String.format("Split payment of %.2f %s", getCommand().getAmount(), getCommand().getCurrency());
 
-
-        for(String iban : accounts){
-            for(User user : getUsers()){
-                for(Account account : user.getAccounts()){
-                    if(account.getIban().equals(iban)){
+        Account errorAccount = new Account();
+        User errorUser = new User();
+        boolean insufficientFunds = false;
+        for (String iban : accounts) {
+            for (User user : getUsers()) {
+                for (Account account : user.getAccounts()) {
+                    if (account.getIban().equals(iban)) {
                         double convertedAmount = getGraph().convertCurrency(amountForEach, getCommand().getCurrency(), account.getCurrency());
-                        if(account.getMinimumBalance() > account.getBalance() - convertedAmount) {
-//                            addResponseToOutput("error", "Insufficient funds");
-
-
-                            return;
+                        if (account.getMinimumBalance() > account.getBalance() - convertedAmount) {
+                            errorAccount = account;
+                            insufficientFunds = true;
+                            errorUser = user;
                         }
                     }
                 }
             }
         }
 
-        for(String iban : accounts){
-            for(User user : getUsers()){
-                for(Account account : user.getAccounts()){
-                    if(account.getIban().equals(iban)){
+        if (insufficientFunds) {
+
+            for (String iban : accounts) {
+                for (User user : getUsers()) {
+                    for (Account account : user.getAccounts()) {
+                        if (account.getIban().equals(iban)) {
+                            SplitPaymentTransaction transaction = new SplitPaymentTransaction(
+                                    totalDescription,
+                                    getCommand().getTimestamp(),
+                                    user.getUser().getEmail(),
+                                    amountForEach,
+                                    getCommand().getCurrency(),
+                                    accounts,
+                                    account.getIban(),
+                                    "Account " + errorAccount.getIban() + " has insufficient funds for a split payment."
+                            );
+                            getTransactions().add(transaction);
+
+                        }
+                    }
+                }
+            }
+            return ;
+        }
+
+
+        for (String iban : accounts) {
+            for (User user : getUsers()) {
+                for (Account account : user.getAccounts()) {
+                    if (account.getIban().equals(iban)) {
 
                         SplitPaymentTransaction transaction = new SplitPaymentTransaction(
                                 totalDescription,
@@ -55,7 +82,8 @@ public class SplitPayment extends Command{
                                 amountForEach,
                                 getCommand().getCurrency(),
                                 accounts,
-                                account.getIban()
+                                account.getIban(),
+                                null
                         );
 
 
@@ -67,8 +95,6 @@ public class SplitPayment extends Command{
                 }
             }
         }
-
-
 
 
     }

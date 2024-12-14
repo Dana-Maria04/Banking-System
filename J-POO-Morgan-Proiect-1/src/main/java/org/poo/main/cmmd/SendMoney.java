@@ -22,9 +22,11 @@ public class SendMoney extends Command {
     @Override
     public void execute() {
         Account receiver = null;
+        User receiverUser = null;
         for (User user : getUsers()) {
             receiver = Account.searchAccount(getCommand().getReceiver(), user.getAccounts());
             if (receiver != null) {
+                receiverUser = user;
                 break;
             }
         }
@@ -81,7 +83,7 @@ public class SendMoney extends Command {
 
         double amount = getGraph().convertCurrency(getCommand().getAmount(), sender.getCurrency(), receiver.getCurrency());
 
-        MoneyTransferTransaction transaction = new MoneyTransferTransaction(
+        MoneyTransferTransaction senderTransaction = new MoneyTransferTransaction(
                 getCommand().getDescription(),
                 getCommand().getTimestamp(),
                 senderUser.getUser().getEmail(),
@@ -90,11 +92,26 @@ public class SendMoney extends Command {
                 sender.getIban(),
                 receiver.getIban(),
                 "sent",
+                sender.getIban()
+        );
+        senderTransaction.setEmail(senderUser.getUser().getEmail());
+
+        MoneyTransferTransaction receiverTransaction = new MoneyTransferTransaction(
+                getCommand().getDescription(),
+                getCommand().getTimestamp(),
+                receiverUser.getUser().getEmail(),
+                amount,
+                receiver.getCurrency(),
+                sender.getIban(),
+                receiver.getIban(),
+                "received",
                 receiver.getIban()
         );
+        receiverTransaction.setEmail(receiverUser.getUser().getEmail());
 
-        transaction.setEmail(senderUser.getUser().getEmail());
-        getTransactions().add(transaction);
+        getTransactions().add(senderTransaction);
+        getTransactions().add(receiverTransaction);
+
 
         receiver.incBalance(amount);
         sender.decBalance(getCommand().getAmount());

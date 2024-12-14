@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.DeleteAccountTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
@@ -35,6 +36,13 @@ public class DeleteAccount extends Command {
                     addResponseToOutput("success", "Account deleted");
                 } else {
                     addResponseToOutput("error", "Account couldn't be deleted - see org.poo.transactions for details");
+                    DeleteAccountTransaction transaction = new DeleteAccountTransaction(
+                            "Account couldn't be deleted - there are funds remaining",
+                            getCommand().getTimestamp(),
+                            user.getUser().getEmail(),
+                            targetAccount.getIban()
+                    );
+                    getTransactions().add(transaction);
                 }
 
                 return;

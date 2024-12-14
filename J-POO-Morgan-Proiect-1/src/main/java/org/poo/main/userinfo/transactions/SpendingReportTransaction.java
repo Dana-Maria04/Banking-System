@@ -8,8 +8,9 @@ import org.poo.main.userinfo.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class SpendingReportTransaction extends Transaction{
+public class SpendingReportTransaction extends Transaction {
     private String targetIban;
     private int startTimestamp;
     private int endTimestamp;
@@ -17,7 +18,6 @@ public class SpendingReportTransaction extends Transaction{
     private ArrayList<Transaction> transactions;
     private ArrayList<PayOnlineTransaction> payOnlineTransactions;
     private User user;
-
 
     public SpendingReportTransaction(String description, int timestamp, String email, String targetIban,
                                      int startTimestamp, int endTimestamp,
@@ -41,7 +41,7 @@ public class SpendingReportTransaction extends Transaction{
                 commerciantTotals.merge(transaction.getCommerciant(), transaction.getAmountPayOnline(), Double::sum);
             }
         }
-        return commerciantTotals;
+        return new TreeMap<>(commerciantTotals);
     }
 
     @Override
@@ -50,7 +50,6 @@ public class SpendingReportTransaction extends Transaction{
         outputNode.put("balance", account.getBalance());
         outputNode.put("currency", account.getCurrency());
         outputNode.put("IBAN", account.getIban());
-
 
         Map<String, Double> commerciantTotals = calculateCommerciantTotals();
         ArrayNode commerciantsArray = outputNode.putArray("commerciants");

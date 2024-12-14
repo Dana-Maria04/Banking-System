@@ -1,0 +1,51 @@
+package org.poo.main.cmmd;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.poo.fileio.CommandInput;
+import org.poo.main.userinfo.Account;
+import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AddInterestRate extends Command{
+    public AddInterestRate(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
+                      ObjectMapper objectMapper) {
+        super(users, commandNode, output, command, objectMapper, null, null, null);
+    }
+
+    @Override
+    public void execute() {
+        for (User user : getUsers()) {
+            for (Account account : user.getAccounts()) {
+                if (account.getIban().equals(getCommand().getAccount())) {
+
+                    if(account.getAccountType().equals("classic")) {
+                        ObjectNode outputNode = getObjectMapper().createObjectNode();
+                        getCommandNode().put("command", getCommand().getCommand());
+                        outputNode.put("description", "This is not a savings account");
+                        outputNode.put("timestamp", getCommand().getTimestamp());
+                        getCommandNode().put("timestamp", getCommand().getTimestamp());
+                        getCommandNode().set("output", outputNode);
+                        getOutput().add(getCommandNode());
+                        return;
+                    }
+
+                    account.setBalance(account.getBalance() + account.getBalance() * account.getInterestRate());
+
+                    return;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void undo() {
+
+    }
+}

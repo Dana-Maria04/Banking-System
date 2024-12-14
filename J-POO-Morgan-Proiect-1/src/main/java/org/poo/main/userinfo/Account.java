@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.poo.fileio.CommandInput;
-import org.poo.main.userinfo.transactions.FrozenPayOnlineTransaction;
-import org.poo.main.userinfo.transactions.PayOnlineTransaction;
-import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.cmmd.DeleteCard;
+import org.poo.main.userinfo.transactions.*;
+import org.poo.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -22,6 +22,7 @@ public class Account {
     private ArrayList<Card> cards;
     private int foundCard;
     private int insufficientFunds;
+    private double interestRate;
 
     // pentru add account
     public Account(String iban, String accountType, String currency, double balance) {
@@ -42,7 +43,7 @@ public class Account {
     public void pay(double amount, String cardNumber, ArrayList<Card> cards, User user,
                     CommandInput command,
                     ArrayList<Transaction> transactions, String iban,
-                    ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+                    ArrayList<PayOnlineTransaction> payOnlineTransactions, Account account) {
         this.foundCard = 0;
         this.insufficientFunds = 0;
 
@@ -93,6 +94,40 @@ public class Account {
                 this.foundCard = 1;
 
                 this.setBalance(this.balance - amount);
+
+
+                if(card.getOneTime() == 1) {
+                    account.getCards().remove(card);
+
+                    CardDeletionTransaction deleteCardTransaction = new CardDeletionTransaction(
+                            "The card has been destroyed",
+                            command.getTimestamp(),
+                            user.getUser().getEmail(),
+                            account.getIban(),
+                            card.getCardNumber()
+                    );
+
+                    transactions.add(deleteCardTransaction);
+
+                    Card newCard = new Card(Utils.generateCardNumber(), "active", 1);
+                    newCard.setFrozen(0);
+
+                    CreateCardTransaction createCardTransaction = new CreateCardTransaction(
+                            "New card created",
+                            command.getTimestamp(),
+                            user.getUser().getEmail(),
+                            account.getIban(),
+                            newCard.getCardNumber(),
+                            user.getUser().getEmail(),
+                            account.getIban()
+                    );
+                    account.getCards().add(newCard);
+
+                    transactions.add(createCardTransaction );
+                }
+
+
+
                 return;
             }
         }

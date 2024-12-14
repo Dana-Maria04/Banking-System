@@ -39,7 +39,7 @@ public class PayOnline extends Command {
 
                     account.pay(convertedAmount, getCommand().getCardNumber(), account.getCards(),
                             user, getCommand(), getTransactions(), account.getIban(),
-                            getSpendingsReportTransactions());
+                            getSpendingsReportTransactions(), account);
                     if(account.getFoundCard() == 1 || account.getInsufficientFunds() == 1) {
                         return;
                     }

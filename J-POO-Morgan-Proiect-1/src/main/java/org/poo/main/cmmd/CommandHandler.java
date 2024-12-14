@@ -128,6 +128,14 @@ public class CommandHandler {
                     SpendingsReport spendingReport = new SpendingsReport(users, commandNode, output, cmd, objectMapper, transactions, spendingsReportTransactions);
                     spendingReport.execute();
                     break;
+                case "addInterest":
+                    AddInterestRate addInterest = new AddInterestRate(users, commandNode, output, cmd, objectMapper);
+                    addInterest.execute();
+                    break;
+                case "changeInterestRate":
+                    ChangeInterestRate changeInterestRate = new ChangeInterestRate(users, commandNode, output, cmd, objectMapper, transactions);
+                    changeInterestRate.execute();
+                    break;
                 default:
                     break;
             }

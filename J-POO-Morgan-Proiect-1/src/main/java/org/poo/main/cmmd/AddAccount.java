@@ -7,6 +7,7 @@ import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.TransactionFactory;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class AddAccount extends Command {
 
                 Account newAccount = new Account(Utils.generateIBAN(), getCommand().getAccountType(), getCommand().getCurrency(), 0);
                 newAccount.setCards(new ArrayList<>());
+                newAccount.setInterestRate(getCommand().getInterestRate());
 
                 user.getAccounts().add(newAccount);
 

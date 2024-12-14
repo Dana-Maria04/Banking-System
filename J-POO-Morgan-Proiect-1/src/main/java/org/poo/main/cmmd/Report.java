@@ -51,7 +51,11 @@ public class Report extends Command {
         }
 
         ObjectNode errorNode = getObjectMapper().createObjectNode();
-        errorNode.put("error", "No account found");
+        errorNode.put("command", "report");
+        ObjectNode outputDetails = errorNode.putObject("output");
+        outputDetails.put("description", "Account not found");
+        outputDetails.put("timestamp", getCommand().getTimestamp());
+        errorNode.put("timestamp", getCommand().getTimestamp());
         getOutput().add(errorNode);
     }
 

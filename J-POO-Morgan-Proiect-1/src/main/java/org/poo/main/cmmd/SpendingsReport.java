@@ -53,9 +53,12 @@ public class SpendingsReport extends Command {
                 }
             }
         }
-
         ObjectNode errorNode = getObjectMapper().createObjectNode();
-        errorNode.put("error", "No account found");
+        errorNode.put("command", "spendingsReport");
+        ObjectNode outputNode = errorNode.putObject("output");
+        outputNode.put("description", "Account not found");
+        outputNode.put("timestamp", getCommand().getTimestamp());
+        errorNode.put("timestamp", getCommand().getTimestamp());
         getOutput().add(errorNode);
     }
 
