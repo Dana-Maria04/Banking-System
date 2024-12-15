@@ -6,11 +6,13 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
-import org.poo.main.userinfo.transactions.CheckCardStatusTransaction;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CheckCardStatus extends Command {
 
@@ -21,24 +23,20 @@ public class CheckCardStatus extends Command {
 
     @Override
     public void execute() {
-        boolean cardFound = false;
-
         for (User user : getUsers()) {
             for (Account account : user.getAccounts()) {
                 for (Card card : account.getCards()) {
                     if (card.getCardNumber().equals(getCommand().getCardNumber())) {
-                        cardFound = true;
-
                         if (account.getBalance() - account.getMinimumBalance() <= 30) {
-                            CheckCardStatusTransaction transaction = new CheckCardStatusTransaction(
-                                    "You have reached the minimum amount of funds, the card will be frozen",
-                                    getCommand().getTimestamp(),
-                                    user.getUser().getEmail(),
-                                    card.getCardNumber(),
-                                    account.getIban(),
-                                    "frozen"
-                            );
+                            Map<String, Object> params = new HashMap<>();
+                            params.put("description", "You have reached the minimum amount of funds, the card will be frozen");
+                            params.put("timestamp", getCommand().getTimestamp());
+                            params.put("email", user.getUser().getEmail());
+                            params.put("cardNumber", card.getCardNumber());
+                            params.put("iban", account.getIban());
+                            params.put("status", "frozen");
 
+                            Transaction transaction = CreateTransaction.getInstance().createTransaction("CheckCardStatus", params);
                             getTransactions().add(transaction);
 
                             card.setFrozen(1);
@@ -50,16 +48,14 @@ public class CheckCardStatus extends Command {
             }
         }
 
-        if (!cardFound) {
-            ObjectNode outputNode = getObjectMapper().createObjectNode();
-            outputNode.put("description", "Card not found");
-            outputNode.put("timestamp", getCommand().getTimestamp());
-            ObjectNode commandOutput = getObjectMapper().createObjectNode();
-            commandOutput.set("output", outputNode);
-            commandOutput.put("command", "checkCardStatus");
-            commandOutput.put("timestamp", getCommand().getTimestamp());
-            getOutput().add(commandOutput);
-        }
+        ObjectNode outputNode = getObjectMapper().createObjectNode();
+        outputNode.put("description", "Card not found");
+        outputNode.put("timestamp", getCommand().getTimestamp());
+        ObjectNode commandOutput = getObjectMapper().createObjectNode();
+        commandOutput.set("output", outputNode);
+        commandOutput.put("command", "checkCardStatus");
+        commandOutput.put("timestamp", getCommand().getTimestamp());
+        getOutput().add(commandOutput);
     }
 
     @Override

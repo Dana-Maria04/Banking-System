@@ -6,12 +6,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.PayOnlineTransaction;
-import org.poo.main.userinfo.transactions.ReportTransaction;
-import org.poo.main.userinfo.transactions.SpendingReportTransaction;
-import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SpendingsReport extends Command {
 
@@ -42,23 +41,24 @@ public class SpendingsReport extends Command {
                         return ;
                     }
 
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("description", getCommand().getDescription());
+                    params.put("timestamp", getCommand().getTimestamp());
+                    params.put("email", user.getUser().getEmail());
+                    params.put("targetIban", targetIban);
+                    params.put("startTimestamp", startTimestamp);
+                    params.put("endTimestamp", endTimestamp);
+                    params.put("account", account);
+                    params.put("transactions", getTransactions());
+                    params.put("user", user);
+                    params.put("reportIban", account.getIban());
+                    params.put("payOnlineTransactions", getSpendingsReportTransactions());
 
-                    SpendingReportTransaction SpendingReportTransaction = new SpendingReportTransaction(
-                            getCommand().getDescription(),
-                            getCommand().getTimestamp(),
-                            user.getUser().getEmail(),
-                            targetIban,
-                            startTimestamp,
-                            endTimestamp,
-                            account,
-                            getTransactions(),
-                            user,
-                            account.getIban(),
-                            getSpendingsReportTransactions()
-                    );
+                    SpendingReportTransaction spendingTransaction = (SpendingReportTransaction)
+                            CreateTransaction.getInstance().createTransaction("SpendingsReport", params);
 
                     ObjectNode transactionNode = getObjectMapper().createObjectNode();
-                    SpendingReportTransaction.addDetailsToNode(transactionNode);
+                    spendingTransaction.addDetailsToNode(transactionNode);
                     getOutput().add(transactionNode);
                     return;
                 }

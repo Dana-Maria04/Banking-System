@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 

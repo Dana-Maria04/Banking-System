@@ -6,10 +6,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.DeleteAccountTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DeleteAccount extends Command {
 
@@ -36,12 +38,14 @@ public class DeleteAccount extends Command {
                     addResponseToOutput("success", "Account deleted");
                 } else {
                     addResponseToOutput("error", "Account couldn't be deleted - see org.poo.transactions for details");
-                    DeleteAccountTransaction transaction = new DeleteAccountTransaction(
-                            "Account couldn't be deleted - there are funds remaining",
-                            getCommand().getTimestamp(),
-                            user.getUser().getEmail(),
-                            targetAccount.getIban()
-                    );
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("description", "Account couldn't be deleted - there are funds remaining");
+                    params.put("timestamp", getCommand().getTimestamp());
+                    params.put("email", user.getUser().getEmail());
+                    params.put("iban", targetAccount.getIban());
+
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction("DeleteAccount", params);
+
                     getTransactions().add(transaction);
                 }
 

@@ -9,9 +9,12 @@ import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.SplitPaymentTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SplitPayment extends Command {
 
@@ -27,7 +30,6 @@ public class SplitPayment extends Command {
         String totalDescription = String.format("Split payment of %.2f %s", getCommand().getAmount(), getCommand().getCurrency());
 
         Account errorAccount = new Account();
-        User errorUser = new User();
         boolean insufficientFunds = false;
         for (String iban : accounts) {
             for (User user : getUsers()) {
@@ -37,7 +39,6 @@ public class SplitPayment extends Command {
                         if (account.getMinimumBalance() > account.getBalance() - convertedAmount) {
                             errorAccount = account;
                             insufficientFunds = true;
-                            errorUser = user;
                         }
                     }
                 }
@@ -50,16 +51,18 @@ public class SplitPayment extends Command {
                 for (User user : getUsers()) {
                     for (Account account : user.getAccounts()) {
                         if (account.getIban().equals(iban)) {
-                            SplitPaymentTransaction transaction = new SplitPaymentTransaction(
-                                    totalDescription,
-                                    getCommand().getTimestamp(),
-                                    user.getUser().getEmail(),
-                                    amountForEach,
-                                    getCommand().getCurrency(),
-                                    accounts,
-                                    account.getIban(),
-                                    "Account " + errorAccount.getIban() + " has insufficient funds for a split payment."
-                            );
+                            Map<String, Object> params = new HashMap<>();
+                            params.put("description", totalDescription);
+                            params.put("timestamp", getCommand().getTimestamp());
+                            params.put("email", user.getUser().getEmail());
+                            params.put("amount", amountForEach);
+                            params.put("currency", getCommand().getCurrency());
+                            params.put("involvedAccounts", accounts);
+                            params.put("iban", account.getIban());
+                            params.put("error", "Account " + errorAccount.getIban() + " has insufficient funds for a split payment.");
+
+                            SplitPaymentTransaction transaction = (SplitPaymentTransaction)
+                                    CreateTransaction.getInstance().createTransaction("SplitPayment", params);
                             getTransactions().add(transaction);
 
                         }
@@ -75,16 +78,18 @@ public class SplitPayment extends Command {
                 for (Account account : user.getAccounts()) {
                     if (account.getIban().equals(iban)) {
 
-                        SplitPaymentTransaction transaction = new SplitPaymentTransaction(
-                                totalDescription,
-                                getCommand().getTimestamp(),
-                                user.getUser().getEmail(),
-                                amountForEach,
-                                getCommand().getCurrency(),
-                                accounts,
-                                account.getIban(),
-                                null
-                        );
+                        Map<String, Object> params = new HashMap<>();
+                        params.put("description", totalDescription);
+                        params.put("timestamp", getCommand().getTimestamp());
+                        params.put("email", user.getUser().getEmail());
+                        params.put("amount", amountForEach);
+                        params.put("currency", getCommand().getCurrency());
+                        params.put("involvedAccounts", accounts);
+                        params.put("iban", account.getIban());
+                        params.put("error", null);
+
+                        SplitPaymentTransaction transaction = (SplitPaymentTransaction)
+                                CreateTransaction.getInstance().createTransaction("SplitPayment", params);
 
 
                         double convertedAmount = getGraph().convertCurrency(amountForEach, getCommand().getCurrency(), account.getCurrency());

@@ -6,12 +6,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.Transaction;
-import org.poo.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AddInterestRate extends Command{
     public AddInterestRate(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,

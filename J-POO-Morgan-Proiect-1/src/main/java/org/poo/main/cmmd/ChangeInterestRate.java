@@ -6,10 +6,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.ChangeInterestRateTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChangeInterestRate extends Command {
     public ChangeInterestRate(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
@@ -36,13 +38,16 @@ public class ChangeInterestRate extends Command {
 
                     account.setInterestRate(getCommand().getInterestRate());
 
-                    ChangeInterestRateTransaction transaction = new ChangeInterestRateTransaction(
-                            "Interest rate of the account changed to " + getCommand().getInterestRate(),
-                            getCommand().getTimestamp(),
-                            user.getUser().getEmail(),
-                            account.getIban(),
-                            getCommand().getInterestRate()
-                    );
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("description", "Interest rate of the account changed to " + getCommand().getInterestRate());
+                    params.put("timestamp", getCommand().getTimestamp());
+                    params.put("email", user.getUser().getEmail());
+                    params.put("iban", account.getIban());
+                    params.put("interestRate", getCommand().getInterestRate());
+
+                    // Use TransactionFactory to create the transaction
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction("ChangeInterestRate", params);
+
                     getTransactions().add(transaction);
                     return;
                 }

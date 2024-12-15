@@ -4,11 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.poo.fileio.CommandInput;
-import org.poo.main.cmmd.DeleteCard;
 import org.poo.main.userinfo.transactions.*;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Setter
 @Getter
@@ -23,14 +24,6 @@ public class Account {
     private int foundCard;
     private int insufficientFunds;
     private double interestRate;
-
-    // pentru add account
-    public Account(String iban, String accountType, String currency, double balance) {
-        this.iban = iban;
-        this.accountType = accountType;
-        this.currency = currency;
-        this.balance = balance;
-    }
 
     public Account(String iban, String accountType, String currency, double balance, ArrayList<Card> cards) {
         this.iban = iban;
@@ -51,42 +44,45 @@ public class Account {
             if (card.getCardNumber().equals(cardNumber)) {
 
                 if (card.getFrozen() == 1) {
-                    FrozenPayOnlineTransaction transaction = new FrozenPayOnlineTransaction(
-                            "The card is frozen",
-                            command.getTimestamp(),
-                            user.getUser().getEmail(),
-                            iban
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("description", "The card is frozen");
+                    params.put("timestamp", command.getTimestamp());
+                    params.put("email", user.getUser().getEmail());
+                    params.put("iban", iban);
 
-                    );
-
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction("FrozePayOnline", params);
                     transactions.add(transaction);
                     this.foundCard = 1;
                     return;
                 }
 
                 if (minimumBalance > balance - amount) {
-                    PayOnlineTransaction transaction = new PayOnlineTransaction(
-                            "Insufficient funds",
-                            command.getTimestamp(),
-                            user.getUser().getEmail(),
-                            amount,
-                            command.getCommerciant(),
-                            account.getIban()
-                    );
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("description", "Insufficient funds");
+                    params.put("timestamp", command.getTimestamp());
+                    params.put("email", user.getUser().getEmail());
+                    params.put("amount", amount);
+                    params.put("commerciant", command.getCommerciant());
+                    params.put("iban", account.getIban());
+
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction("PayOnline", params);
+
 
                     transactions.add(transaction);
                     this.insufficientFunds = 1;
                     return;
                 }
 
-                PayOnlineTransaction transaction = new PayOnlineTransaction(
-                        "Card payment",
-                        command.getTimestamp(),
-                        user.getUser().getEmail(),
-                        amount,
-                        command.getCommerciant(),
-                        iban
-                );
+                Map<String, Object> params = new HashMap<>();
+                params.put("description", "Card payment");
+                params.put("timestamp", command.getTimestamp());
+                params.put("email", user.getUser().getEmail());
+                params.put("amount", amount);
+                params.put("commerciant", command.getCommerciant());
+                params.put("iban", iban);
+
+                PayOnlineTransaction transaction = (PayOnlineTransaction) CreateTransaction.getInstance().createTransaction("PayOnline", params);
+
 
                 transactions.add(transaction);
                 payOnlineTransactions.add(transaction);

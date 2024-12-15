@@ -9,8 +9,11 @@ import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.ReportTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Report extends Command {
 
@@ -30,19 +33,20 @@ public class Report extends Command {
             for (Account account : user.getAccounts()) {
                 if (account.getIban().equals(targetIban)) {
 
-                    ReportTransaction reportTransaction = new ReportTransaction(
-                            getCommand().getDescription(),
-                            getCommand().getTimestamp(),
-                            user.getUser().getEmail(),
-                            targetIban,
-                            startTimestamp,
-                            endTimestamp,
-                            account,
-                            new ArrayList<>(getTransactions()),
-                            user,
-                            account.getIban()
-                    );
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("description", getCommand().getDescription());
+                    params.put("timestamp", getCommand().getTimestamp());
+                    params.put("email", user.getUser().getEmail());
+                    params.put("targetIban", targetIban);
+                    params.put("startTimestamp", startTimestamp);
+                    params.put("endTimestamp", endTimestamp);
+                    params.put("account", account);
+                    params.put("transactions", new ArrayList<>(getTransactions()));
+                    params.put("user", user);
+                    params.put("reportIban", account.getIban());
 
+                    ReportTransaction reportTransaction = (ReportTransaction) CreateTransaction.getInstance()
+                            .createTransaction("ReportTransaction", params);
                     ObjectNode transactionNode = getObjectMapper().createObjectNode();
                     reportTransaction.addDetailsToNode(transactionNode);
                     getOutput().add(transactionNode);

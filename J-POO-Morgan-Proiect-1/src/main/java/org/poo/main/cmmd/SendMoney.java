@@ -9,8 +9,11 @@ import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.transactions.MoneyTransferTransaction;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SendMoney extends Command {
     public SendMoney(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
@@ -46,17 +49,19 @@ public class SendMoney extends Command {
         }
 
         if (sender.getBalance() < getCommand().getAmount()) {
-            MoneyTransferTransaction transaction = new MoneyTransferTransaction(
-                    "Insufficient funds",
-                    getCommand().getTimestamp(),
-                    senderUser.getUser().getEmail(),
-                    0,
-                    sender.getCurrency(),
-                    sender.getIban(),
-                    receiver.getIban(),
-                    "failed",
-                    sender.getIban()
-            );
+            Map<String, Object> params = new HashMap<>();
+            params.put("description", "Insufficient funds");
+            params.put("timestamp", getCommand().getTimestamp());
+            params.put("email", senderUser.getUser().getEmail());
+            params.put("amount", 0.0);
+            params.put("currency", sender.getCurrency());
+            params.put("senderIban", sender.getIban());
+            params.put("receiverIban", receiver.getIban());
+            params.put("status", "failed");
+            params.put("accountIban", sender.getIban());
+
+            Transaction transaction = CreateTransaction.getInstance().createTransaction("MoneyTransfer", params);
+
 
             transaction.setEmail(senderUser.getUser().getEmail());
             getTransactions().add(transaction);
@@ -64,17 +69,19 @@ public class SendMoney extends Command {
         }
 
         if (sender.getMinimumBalance() > sender.getBalance() - getCommand().getAmount()) {
-            MoneyTransferTransaction transaction = new MoneyTransferTransaction(
-                    "Insufficient funds",
-                    getCommand().getTimestamp(),
-                    senderUser.getUser().getEmail(),
-                    0,
-                    sender.getCurrency(),
-                    sender.getIban(),
-                    receiver.getIban(),
-                    "failed",
-                    sender.getIban()
-            );
+            Map<String, Object> params = new HashMap<>();
+            params.put("description", "Insufficient funds (below minimum balance)");
+            params.put("timestamp", getCommand().getTimestamp());
+            params.put("email", senderUser.getUser().getEmail());
+            params.put("amount", 0.0);
+            params.put("currency", sender.getCurrency());
+            params.put("senderIban", sender.getIban());
+            params.put("receiverIban", receiver.getIban());
+            params.put("status", "failed");
+            params.put("accountIban", sender.getIban());
+
+            Transaction transaction = CreateTransaction.getInstance().createTransaction("MoneyTransfer", params);
+
 
             transaction.setEmail(senderUser.getUser().getEmail());
             getTransactions().add(transaction);
@@ -83,30 +90,34 @@ public class SendMoney extends Command {
 
         double amount = getGraph().convertCurrency(getCommand().getAmount(), sender.getCurrency(), receiver.getCurrency());
 
-        MoneyTransferTransaction senderTransaction = new MoneyTransferTransaction(
-                getCommand().getDescription(),
-                getCommand().getTimestamp(),
-                senderUser.getUser().getEmail(),
-                getCommand().getAmount(),
-                sender.getCurrency(),
-                sender.getIban(),
-                receiver.getIban(),
-                "sent",
-                sender.getIban()
-        );
+        Map<String, Object> senderParams = new HashMap<>();
+        senderParams.put("description", getCommand().getDescription());
+        senderParams.put("timestamp", getCommand().getTimestamp());
+        senderParams.put("email", senderUser.getUser().getEmail());
+        senderParams.put("amount", getCommand().getAmount());
+        senderParams.put("currency", sender.getCurrency());
+        senderParams.put("senderIban", sender.getIban());
+        senderParams.put("receiverIban", receiver.getIban());
+        senderParams.put("status", "sent");
+        senderParams.put("accountIban", sender.getIban());
+
+        MoneyTransferTransaction senderTransaction = (MoneyTransferTransaction) CreateTransaction.getInstance().createTransaction("MoneyTransfer", senderParams);
+
         senderTransaction.setEmail(senderUser.getUser().getEmail());
 
-        MoneyTransferTransaction receiverTransaction = new MoneyTransferTransaction(
-                getCommand().getDescription(),
-                getCommand().getTimestamp(),
-                receiverUser.getUser().getEmail(),
-                amount,
-                receiver.getCurrency(),
-                sender.getIban(),
-                receiver.getIban(),
-                "received",
-                receiver.getIban()
-        );
+        Map<String, Object> receiverParams = new HashMap<>();
+        receiverParams.put("description", getCommand().getDescription());
+        receiverParams.put("timestamp", getCommand().getTimestamp());
+        receiverParams.put("email", receiverUser.getUser().getEmail());
+        receiverParams.put("amount", amount);
+        receiverParams.put("currency", receiver.getCurrency());
+        receiverParams.put("senderIban", sender.getIban());
+        receiverParams.put("receiverIban", receiver.getIban());
+        receiverParams.put("status", "received");
+        receiverParams.put("accountIban", receiver.getIban());
+
+        MoneyTransferTransaction receiverTransaction = (MoneyTransferTransaction) CreateTransaction.getInstance().createTransaction("MoneyTransfer", receiverParams);
+
         receiverTransaction.setEmail(receiverUser.getUser().getEmail());
 
         getTransactions().add(senderTransaction);

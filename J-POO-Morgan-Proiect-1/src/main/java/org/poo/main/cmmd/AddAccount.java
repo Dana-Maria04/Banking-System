@@ -7,7 +7,7 @@ import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
-import org.poo.main.userinfo.transactions.TransactionFactory;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
@@ -27,7 +27,8 @@ public class AddAccount extends Command {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
 
 
-                Account newAccount = new Account(Utils.generateIBAN(), getCommand().getAccountType(), getCommand().getCurrency(), 0);
+                Account newAccount = new Account(Utils.generateIBAN(), getCommand().getAccountType(),
+                        getCommand().getCurrency(), 0, new ArrayList<>());
                 newAccount.setCards(new ArrayList<>());
                 newAccount.setInterestRate(getCommand().getInterestRate());
 
@@ -41,7 +42,7 @@ public class AddAccount extends Command {
                 params.put("currency", getCommand().getCurrency());
                 params.put("iban", newAccount.getIban());
 
-                Transaction transaction = TransactionFactory.getInstance().createTransaction("AddAccount", params);
+                Transaction transaction = CreateTransaction.getInstance().createTransaction("AddAccount", params);
                 getTransactions().add(transaction);
 
                 break;
