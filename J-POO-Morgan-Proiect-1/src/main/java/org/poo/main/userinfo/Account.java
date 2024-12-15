@@ -71,11 +71,10 @@ public class Account {
                             user.getUser().getEmail(),
                             amount,
                             command.getCommerciant(),
-                            iban
+                            account.getIban()
                     );
 
                     transactions.add(transaction);
-                    payOnlineTransactions.add(transaction);
                     this.insufficientFunds = 1;
                     return;
                 }

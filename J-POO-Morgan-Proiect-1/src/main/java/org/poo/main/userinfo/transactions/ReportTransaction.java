@@ -41,7 +41,8 @@ public class ReportTransaction extends Transaction{
         for (Transaction transaction : transactions) {
             if (transaction.getTimestamp() >= startTimestamp &&
                     transaction.getTimestamp() <= endTimestamp &&
-                    transaction.getEmail().equals(user.getUser().getEmail())) {
+                    transaction.getEmail().equals(user.getUser().getEmail())
+                    && transaction.getReportIban().equals(targetIban)) {
                 ObjectNode txnNode = transactionNode.objectNode();
                 transaction.addDetailsToNode(txnNode);
                 transactionsArray.add(txnNode);

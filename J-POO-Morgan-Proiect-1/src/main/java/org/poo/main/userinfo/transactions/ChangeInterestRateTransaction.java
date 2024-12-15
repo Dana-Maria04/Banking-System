@@ -12,7 +12,8 @@ public class ChangeInterestRateTransaction extends Transaction {
 
     @Override
     public void addDetailsToNode(ObjectNode transactionNode) {
-        super.addDetailsToNode(transactionNode);
-        transactionNode.put("newInterestRate", newInterestRate);
+        transactionNode.put("description", getDescription());
+        transactionNode.put("timestamp", getTimestamp());
     }
+
 }

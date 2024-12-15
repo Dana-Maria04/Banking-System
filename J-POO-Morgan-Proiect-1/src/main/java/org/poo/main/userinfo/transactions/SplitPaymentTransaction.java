@@ -39,7 +39,6 @@ public class SplitPaymentTransaction extends Transaction{
             accountsArray.add(account);
         }
         transactionNode.set("involvedAccounts", accountsArray);
-
     }
 
 }

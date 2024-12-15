@@ -29,6 +29,7 @@ public class Report extends Command {
         for (User user : getUsers()) {
             for (Account account : user.getAccounts()) {
                 if (account.getIban().equals(targetIban)) {
+
                     ReportTransaction reportTransaction = new ReportTransaction(
                             getCommand().getDescription(),
                             getCommand().getTimestamp(),

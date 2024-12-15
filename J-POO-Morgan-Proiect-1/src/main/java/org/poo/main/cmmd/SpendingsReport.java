@@ -32,6 +32,17 @@ public class SpendingsReport extends Command {
             for (Account account : user.getAccounts()) {
                 if (account.getIban().equals(targetIban)) {
 
+                    if(account.getAccountType().equals("savings")) {
+                        ObjectNode errorNode = getObjectMapper().createObjectNode();
+                        errorNode.put("command", getCommand().getCommand());
+                        ObjectNode outputNode = errorNode.putObject("output");
+                        outputNode.put("error", "This kind of report is not supported for a saving account");
+                        errorNode.put("timestamp", getCommand().getTimestamp());
+                        getOutput().add(errorNode);
+                        return ;
+                    }
+
+
                     SpendingReportTransaction SpendingReportTransaction = new SpendingReportTransaction(
                             getCommand().getDescription(),
                             getCommand().getTimestamp(),

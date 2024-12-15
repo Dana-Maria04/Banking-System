@@ -36,7 +36,6 @@ public class PayOnline extends Command {
                             getCommand().getCurrency(),
                             account.getCurrency()
                     );
-
                     account.pay(convertedAmount, getCommand().getCardNumber(), account.getCards(),
                             user, getCommand(), getTransactions(), account.getIban(),
                             getSpendingsReportTransactions(), account);
