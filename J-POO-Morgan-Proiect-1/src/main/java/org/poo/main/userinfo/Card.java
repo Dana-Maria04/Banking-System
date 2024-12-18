@@ -1,10 +1,12 @@
 package org.poo.main.userinfo;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Card {
 
     private String cardNumber;

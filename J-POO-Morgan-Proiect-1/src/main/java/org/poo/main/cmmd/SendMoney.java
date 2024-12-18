@@ -24,8 +24,8 @@ public class SendMoney extends Command {
 
     @Override
     public void execute() {
-        Account receiver = null;
-        User receiverUser = null;
+        Account receiver = new Account();
+        User receiverUser = new User();
         for (User user : getUsers()) {
             receiver = Account.searchAccount(getCommand().getReceiver(), user.getAccounts());
             if (receiver != null) {
@@ -34,8 +34,8 @@ public class SendMoney extends Command {
             }
         }
 
-        Account sender = null;
-        User senderUser = null;
+        Account sender = new Account();
+        User senderUser = new User();
         for (User user : getUsers()) {
             sender = Account.searchAccount(getCommand().getAccount(), user.getAccounts());
             if (sender != null) {

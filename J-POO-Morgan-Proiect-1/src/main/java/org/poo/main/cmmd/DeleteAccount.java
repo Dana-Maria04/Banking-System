@@ -25,7 +25,7 @@ public class DeleteAccount extends Command {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
                 ArrayList<Account> accounts = user.getAccounts();
 
-                Account targetAccount = null;
+                Account targetAccount = new Account();
                 for (Account acc : accounts) {
                     if (acc.getIban().equals(getCommand().getAccount())) {
                         targetAccount = acc;

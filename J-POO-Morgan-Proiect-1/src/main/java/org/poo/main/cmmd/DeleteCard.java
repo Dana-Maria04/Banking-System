@@ -20,7 +20,7 @@ public class DeleteCard extends Command {
         for (User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
                 for (Account account : user.getAccounts()) {
-                    Card cardToDelete = null;
+                    Card cardToDelete = new Card();
                     for (Card c : account.getCards()) {
                         if (c.getCardNumber().equals(getCommand().getCardNumber())) {
                             cardToDelete = c;

@@ -100,8 +100,6 @@ public class SplitPayment extends Command {
                 }
             }
         }
-
-
     }
 
     @Override
