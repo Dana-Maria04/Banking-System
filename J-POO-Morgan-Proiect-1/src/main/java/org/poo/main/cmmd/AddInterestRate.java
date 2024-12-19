@@ -22,13 +22,7 @@ public class AddInterestRate extends Command{
                 if (account.getIban().equals(getCommand().getAccount())) {
 
                     if(account.getAccountType().equals("classic")) {
-                        ObjectNode outputNode = getObjectMapper().createObjectNode();
-                        getCommandNode().put("command", getCommand().getCommand());
-                        outputNode.put("description", "This is not a savings account");
-                        outputNode.put("timestamp", getCommand().getTimestamp());
-                        getCommandNode().put("timestamp", getCommand().getTimestamp());
-                        getCommandNode().set("output", outputNode);
-                        getOutput().add(getCommandNode());
+                        account.addResponseToOutput(getObjectMapper(), getCommandNode(), getOutput(), getCommand(), "This is not a savings account");
                         return;
                     }
 

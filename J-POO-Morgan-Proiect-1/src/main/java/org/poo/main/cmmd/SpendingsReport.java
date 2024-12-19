@@ -9,7 +9,6 @@ import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class SpendingsReport extends Command {
@@ -41,18 +40,19 @@ public class SpendingsReport extends Command {
                         return ;
                     }
 
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("description", getCommand().getDescription());
-                    params.put("timestamp", getCommand().getTimestamp());
-                    params.put("email", user.getUser().getEmail());
-                    params.put("targetIban", targetIban);
-                    params.put("startTimestamp", startTimestamp);
-                    params.put("endTimestamp", endTimestamp);
-                    params.put("account", account);
-                    params.put("transactions", getTransactions());
-                    params.put("user", user);
-                    params.put("reportIban", account.getIban());
-                    params.put("payOnlineTransactions", getSpendingsReportTransactions());
+                    Map<String, Object> params = constructParams(
+                            getCommand().getDescription(),
+                            Map.of(
+                                "targetIban", targetIban,
+                                "startTimestamp", startTimestamp,
+                                "endTimestamp", endTimestamp,
+                                "account", account,
+                                "transactions", getTransactions(),
+                                "user", user,
+                                "reportIban", account.getIban(),
+                                "payOnlineTransactions", getSpendingsReportTransactions()
+                            )
+                    );
 
                     SpendingReportTransaction spendingTransaction = (SpendingReportTransaction)
                             CreateTransaction.getInstance().createTransaction("SpendingsReport", params);
@@ -64,13 +64,14 @@ public class SpendingsReport extends Command {
                 }
             }
         }
-        ObjectNode errorNode = getObjectMapper().createObjectNode();
-        errorNode.put("command", "spendingsReport");
-        ObjectNode outputNode = errorNode.putObject("output");
-        outputNode.put("description", "Account not found");
-        outputNode.put("timestamp", getCommand().getTimestamp());
-        errorNode.put("timestamp", getCommand().getTimestamp());
-        getOutput().add(errorNode);
+        Account tempAccount = new Account();
+        tempAccount.addResponseToOutput(
+                getObjectMapper(),
+                getCommandNode(),
+                getOutput(),
+                getCommand(),
+                "Account not found"
+        );
     }
 
     @Override

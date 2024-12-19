@@ -1,5 +1,8 @@
 package org.poo.main.userinfo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +11,6 @@ import org.poo.main.userinfo.transactions.*;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 @Setter
@@ -44,54 +46,54 @@ public class Account {
             if (card.getCardNumber().equals(cardNumber)) {
 
                 if (card.getFrozen() == 1) {
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("description", "The card is frozen");
-                    params.put("timestamp", command.getTimestamp());
-                    params.put("email", user.getUser().getEmail());
-                    params.put("iban", iban);
-
-                    Transaction transaction = CreateTransaction.getInstance().createTransaction("FrozePayOnline", params);
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction(
+                            "FrozePayOnline",
+                            Map.of(
+                                    "description", "The card is frozen",
+                                    "timestamp", command.getTimestamp(),
+                                    "email", user.getUser().getEmail(),
+                                    "iban", iban
+                            )
+                    );
                     transactions.add(transaction);
                     this.foundCard = 1;
                     return;
                 }
 
                 if (minimumBalance > balance - amount) {
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("description", "Insufficient funds");
-                    params.put("timestamp", command.getTimestamp());
-                    params.put("email", user.getUser().getEmail());
-                    params.put("amount", amount);
-                    params.put("commerciant", command.getCommerciant());
-                    params.put("iban", account.getIban());
-
-                    Transaction transaction = CreateTransaction.getInstance().createTransaction("PayOnline", params);
-
-
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction(
+                            "PayOnline",
+                            Map.of(
+                                    "description", "Insufficient funds",
+                                    "timestamp", command.getTimestamp(),
+                                    "email", user.getUser().getEmail(),
+                                    "amount", amount,
+                                    "commerciant", command.getCommerciant(),
+                                    "iban", account.getIban()
+                            )
+                    );
                     transactions.add(transaction);
                     this.insufficientFunds = 1;
                     return;
                 }
 
-                Map<String, Object> params = new HashMap<>();
-                params.put("description", "Card payment");
-                params.put("timestamp", command.getTimestamp());
-                params.put("email", user.getUser().getEmail());
-                params.put("amount", amount);
-                params.put("commerciant", command.getCommerciant());
-                params.put("iban", iban);
-
-                PayOnlineTransaction transaction = (PayOnlineTransaction) CreateTransaction.getInstance().createTransaction("PayOnline", params);
-
-
+                PayOnlineTransaction transaction = (PayOnlineTransaction) CreateTransaction.getInstance().createTransaction(
+                        "PayOnline",
+                        Map.of(
+                                "description", "Card payment",
+                                "timestamp", command.getTimestamp(),
+                                "email", user.getUser().getEmail(),
+                                "amount", amount,
+                                "commerciant", command.getCommerciant(),
+                                "iban", iban
+                        )
+                );
                 transactions.add(transaction);
                 payOnlineTransactions.add(transaction);
                 this.foundCard = 1;
-
                 this.setBalance(this.balance - amount);
 
-
-                if(card.getOneTime() == 1) {
+                if (card.getOneTime() == 1) {
                     account.getCards().remove(card);
 
                     CardDeletionTransaction deleteCardTransaction = new CardDeletionTransaction(
@@ -101,7 +103,6 @@ public class Account {
                             account.getIban(),
                             card.getCardNumber()
                     );
-
                     transactions.add(deleteCardTransaction);
 
                     Card newCard = new Card(Utils.generateCardNumber(), "active", 1);
@@ -117,17 +118,22 @@ public class Account {
                             account.getIban()
                     );
                     account.getCards().add(newCard);
-
-                    transactions.add(createCardTransaction );
+                    transactions.add(createCardTransaction);
                 }
-
-
-
                 return;
             }
         }
     }
 
+    public void addResponseToOutput(ObjectMapper objectMapper, ObjectNode commandNode, ArrayNode output, CommandInput command, String description) {
+        ObjectNode outputNode = objectMapper.createObjectNode();
+        commandNode.put("command", command.getCommand());
+        outputNode.put("description", description);
+        outputNode.put("timestamp", command.getTimestamp());
+        commandNode.put("timestamp", command.getTimestamp());
+        commandNode.set("output", outputNode);
+        output.add(commandNode);
+    }
 
 
     public static Account searchAccount(String iban, ArrayList<Account> accounts) {

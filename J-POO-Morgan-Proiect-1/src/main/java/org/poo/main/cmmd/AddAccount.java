@@ -11,7 +11,6 @@ import org.poo.main.userinfo.transactions.CreateTransaction;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class AddAccount extends Command {
@@ -34,13 +33,14 @@ public class AddAccount extends Command {
 
                 user.getAccounts().add(newAccount);
 
-                Map<String, Object> params = new HashMap<>();
-                params.put("description", "New account created");
-                params.put("timestamp", getCommand().getTimestamp());
-                params.put("email", user.getUser().getEmail());
-                params.put("accountType", getCommand().getAccountType());
-                params.put("currency", getCommand().getCurrency());
-                params.put("iban", newAccount.getIban());
+                Map<String, Object> additionalParams = Map.of(
+                        "accountType", getCommand().getAccountType(),
+                        "currency", getCommand().getCurrency(),
+                        "iban", newAccount.getIban()
+                );
+
+                Map<String, Object> params = constructParams("New account created", additionalParams);
+
 
                 Transaction transaction = CreateTransaction.getInstance().createTransaction("AddAccount", params);
                 getTransactions().add(transaction);

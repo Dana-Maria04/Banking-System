@@ -45,16 +45,14 @@ public class PayOnline extends Command {
                 }
             }
         }
-
-
-        ObjectNode errorNode = getObjectMapper().createObjectNode();
-        errorNode.put("timestamp", getCommand().getTimestamp());
-        errorNode.put("description", "Card not found");
-        getCommandNode().set("output", errorNode);
-        getCommandNode().put("command", "payOnline");
-        getCommandNode().put("timestamp", getCommand().getTimestamp());
-
-        getOutput().add(getCommandNode());
+        Account tempAccount = new Account();
+        tempAccount.addResponseToOutput(
+                getObjectMapper(),
+                getCommandNode(),
+                getOutput(),
+                getCommand(),
+                "Card not found"
+        );
     }
 
     @Override

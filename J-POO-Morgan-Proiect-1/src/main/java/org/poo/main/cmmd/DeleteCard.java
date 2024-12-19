@@ -27,20 +27,17 @@ public class DeleteCard extends Command {
                             break;
                         }
                     }
+                    account.getCards().remove(cardToDelete);
 
-                    if (cardToDelete != null) {
-                        account.getCards().remove(cardToDelete);
+                    CardDeletionTransaction transaction = new CardDeletionTransaction(
+                            "The card has been destroyed",
+                            getCommand().getTimestamp(),
+                            user.getUser().getEmail(),
+                            account.getIban(),
+                            cardToDelete.getCardNumber()
+                    );
 
-                        CardDeletionTransaction transaction = new CardDeletionTransaction(
-                                "The card has been destroyed",
-                                getCommand().getTimestamp(),
-                                user.getUser().getEmail(),
-                                account.getIban(),
-                                cardToDelete.getCardNumber()
-                        );
-
-                        getTransactions().add(transaction);
-                    }
+                    getTransactions().add(transaction);
                 }
                 return;
             }

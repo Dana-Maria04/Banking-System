@@ -12,7 +12,6 @@ import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Report extends Command {
@@ -29,43 +28,49 @@ public class Report extends Command {
         int startTimestamp = getCommand().getStartTimestamp();
         int endTimestamp = getCommand().getEndTimestamp();
 
+        Account foundAccount = new Account();
+        User associatedUser = new User();
+
+        boolean accountFound = false;
+
         for (User user : getUsers()) {
             for (Account account : user.getAccounts()) {
                 if (account.getIban().equals(targetIban)) {
-
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("description", getCommand().getDescription());
-                    params.put("timestamp", getCommand().getTimestamp());
-                    params.put("email", user.getUser().getEmail());
-                    params.put("targetIban", targetIban);
-                    params.put("startTimestamp", startTimestamp);
-                    params.put("endTimestamp", endTimestamp);
-                    params.put("account", account);
-                    params.put("transactions", new ArrayList<>(getTransactions()));
-                    params.put("user", user);
-                    params.put("reportIban", account.getIban());
-
-                    ReportTransaction reportTransaction = (ReportTransaction) CreateTransaction.getInstance()
-                            .createTransaction("ReportTransaction", params);
-                    ObjectNode transactionNode = getObjectMapper().createObjectNode();
-                    reportTransaction.addDetailsToNode(transactionNode);
-                    getOutput().add(transactionNode);
-                    return;
+                    foundAccount = account;
+                    associatedUser = user;
+                    accountFound = true;
+                    break;
                 }
+            }
+            if (accountFound) {
+                break;
             }
         }
 
-        ObjectNode errorNode = getObjectMapper().createObjectNode();
-        errorNode.put("command", "report");
-        ObjectNode outputDetails = errorNode.putObject("output");
-        outputDetails.put("description", "Account not found");
-        outputDetails.put("timestamp", getCommand().getTimestamp());
-        errorNode.put("timestamp", getCommand().getTimestamp());
-        getOutput().add(errorNode);
+        if (!accountFound) {
+            foundAccount.addResponseToOutput(getObjectMapper(), getCommandNode(), getOutput(), getCommand(), "Account not found");
+            return;
+        }
+
+        Map<String, Object> params = constructParams(getCommand().getDescription(), Map.of(
+                "targetIban", targetIban,
+                "startTimestamp", startTimestamp,
+                "endTimestamp", endTimestamp,
+                "account", foundAccount,
+                "transactions", new ArrayList<>(getTransactions()),
+                "user", associatedUser,
+                "reportIban", foundAccount.getIban()
+        ));
+
+        ReportTransaction reportTransaction = (ReportTransaction) CreateTransaction.getInstance()
+                .createTransaction("ReportTransaction", params);
+        ObjectNode transactionNode = getObjectMapper().createObjectNode();
+        reportTransaction.addDetailsToNode(transactionNode);
+        getOutput().add(transactionNode);
     }
 
     @Override
     public void undo() {
-
+        // Undo functionality not required
     }
 }

@@ -9,11 +9,10 @@ import org.poo.main.userinfo.transactions.CreateTransaction;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CreateCard extends Command {
-    private int oneTime;
+    private final int oneTime;
 
     public CreateCard(ArrayList<User> users, CommandInput command, int oneTime, ArrayList<Transaction> transactions) {
         super(users, null, null, command, null, null, transactions, null);
@@ -30,13 +29,14 @@ public class CreateCard extends Command {
                         Card newCard = new Card(Utils.generateCardNumber(), "active", oneTime);
                         newCard.setFrozen(0);
 
-                        Map<String, Object> params = new HashMap<>();
-                        params.put("description", "New card created");
-                        params.put("timestamp", getCommand().getTimestamp());
-                        params.put("email", user.getUser().getEmail());
-                        params.put("iban", account.getIban());
-                        params.put("cardNumber", newCard.getCardNumber());
-                        params.put("userEmail", user.getUser().getEmail());
+                        Map<String, Object> params = Map.of(
+                                "description", "New card created",
+                                "timestamp", getCommand().getTimestamp(),
+                                "email", user.getUser().getEmail(),
+                                "iban", account.getIban(),
+                                "cardNumber", newCard.getCardNumber(),
+                                "userEmail", user.getUser().getEmail()
+                        );
 
                         Transaction transaction = CreateTransaction.getInstance().createTransaction("CreateCard", params);
 

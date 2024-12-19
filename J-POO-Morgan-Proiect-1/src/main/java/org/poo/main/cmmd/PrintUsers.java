@@ -7,7 +7,6 @@ import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.Card;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 

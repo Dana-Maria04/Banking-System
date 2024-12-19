@@ -12,7 +12,6 @@ import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,18 +50,22 @@ public class SplitPayment extends Command {
                 for (User user : getUsers()) {
                     for (Account account : user.getAccounts()) {
                         if (account.getIban().equals(iban)) {
-                            Map<String, Object> params = new HashMap<>();
-                            params.put("description", totalDescription);
-                            params.put("timestamp", getCommand().getTimestamp());
-                            params.put("email", user.getUser().getEmail());
-                            params.put("amount", amountForEach);
-                            params.put("currency", getCommand().getCurrency());
-                            params.put("involvedAccounts", accounts);
-                            params.put("iban", account.getIban());
-                            params.put("error", "Account " + errorAccount.getIban() + " has insufficient funds for a split payment.");
+                            Map<String, Object> params = constructParams(
+                                    totalDescription,
+                                    Map.of(
+                                        "amount", amountForEach,
+                                        "currency", getCommand().getCurrency(),
+                                        "involvedAccounts", accounts,
+                                        "iban", account.getIban(),
+                                        "error", "Account " + errorAccount.getIban() + " has insufficient funds for a split payment.",
+                                        "email", user.getUser().getEmail(),
+                                        "timestamp", getCommand().getTimestamp()
+                                    )
+                            );
 
                             SplitPaymentTransaction transaction = (SplitPaymentTransaction)
                                     CreateTransaction.getInstance().createTransaction("SplitPayment", params);
+
                             getTransactions().add(transaction);
 
                         }
@@ -78,15 +81,17 @@ public class SplitPayment extends Command {
                 for (Account account : user.getAccounts()) {
                     if (account.getIban().equals(iban)) {
 
-                        Map<String, Object> params = new HashMap<>();
-                        params.put("description", totalDescription);
-                        params.put("timestamp", getCommand().getTimestamp());
-                        params.put("email", user.getUser().getEmail());
-                        params.put("amount", amountForEach);
-                        params.put("currency", getCommand().getCurrency());
-                        params.put("involvedAccounts", accounts);
-                        params.put("iban", account.getIban());
-                        params.put("error", null);
+                        Map<String, Object> params = constructParams(
+                                totalDescription,
+                                Map.of(
+                                    "amount", amountForEach,
+                                    "currency", getCommand().getCurrency(),
+                                    "involvedAccounts", accounts,
+                                    "iban", account.getIban(),
+                                    "email", user.getUser().getEmail(),
+                                    "timestamp", getCommand().getTimestamp()
+                                )
+                        );
 
                         SplitPaymentTransaction transaction = (SplitPaymentTransaction)
                                 CreateTransaction.getInstance().createTransaction("SplitPayment", params);

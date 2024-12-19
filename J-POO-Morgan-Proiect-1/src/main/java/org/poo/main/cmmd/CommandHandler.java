@@ -14,6 +14,7 @@ import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CommandHandler {
 
@@ -55,9 +56,8 @@ public class CommandHandler {
         transactions = new ArrayList<>();
 
         commands = new ArrayList<>(objectInput.getCommands().length);
-        for (CommandInput commandInput : objectInput.getCommands()) {
-            commands.add(commandInput);
-        }
+        commands.addAll(Arrays.asList(objectInput.getCommands()));
+
 
         ObjectMapper objectMapper = new ObjectMapper();
 

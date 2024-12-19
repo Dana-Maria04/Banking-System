@@ -12,6 +12,8 @@ import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -49,6 +51,25 @@ public abstract class Command {
         commandNode.put("timestamp", command.getTimestamp());
         output.add(commandNode);
 
+    }
+
+    protected Map<String, Object> constructParams(String description, Map<String, Object> additionalParams) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("description", description);
+        params.put("timestamp", command.getTimestamp());
+
+        if (command.getEmail() != null) {
+            params.put("email", command.getEmail());
+        }
+        if (command.getAccount() != null) {
+            params.put("iban", command.getAccount());
+        }
+
+        if (additionalParams != null) {
+            params.putAll(additionalParams);
+        }
+
+        return params;
     }
 
     public abstract void execute();

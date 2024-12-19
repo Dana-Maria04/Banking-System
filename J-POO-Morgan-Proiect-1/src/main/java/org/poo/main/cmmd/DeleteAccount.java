@@ -10,7 +10,6 @@ import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class DeleteAccount extends Command {
@@ -25,7 +24,7 @@ public class DeleteAccount extends Command {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
                 ArrayList<Account> accounts = user.getAccounts();
 
-                Account targetAccount = new Account();
+                Account targetAccount = null;
                 for (Account acc : accounts) {
                     if (acc.getIban().equals(getCommand().getAccount())) {
                         targetAccount = acc;
@@ -33,16 +32,23 @@ public class DeleteAccount extends Command {
                     }
                 }
 
+                if (targetAccount == null) {
+                    addResponseToOutput("error", "Account not found");
+                    return;
+                }
+
                 if (targetAccount.getBalance() == 0) {
                     accounts.remove(targetAccount);
                     addResponseToOutput("success", "Account deleted");
                 } else {
                     addResponseToOutput("error", "Account couldn't be deleted - see org.poo.transactions for details");
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("description", "Account couldn't be deleted - there are funds remaining");
-                    params.put("timestamp", getCommand().getTimestamp());
-                    params.put("email", user.getUser().getEmail());
-                    params.put("iban", targetAccount.getIban());
+
+                    Map<String, Object> params = Map.of(
+                            "description", "Account couldn't be deleted - there are funds remaining",
+                            "timestamp", getCommand().getTimestamp(),
+                            "email", user.getUser().getEmail(),
+                            "iban", targetAccount.getIban()
+                    );
 
                     Transaction transaction = CreateTransaction.getInstance().createTransaction("DeleteAccount", params);
 
