@@ -6,41 +6,69 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.*;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
+import org.poo.main.userinfo.transactions.SpendingReportTransaction;
+import org.poo.main.userinfo.transactions.Transaction;
+import org.poo.main.userinfo.transactions.CreateTransaction;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Generates a report for a specific account's
+ * spending activity within a given time period. It is executed based on the provided account IBAN,
+ * start and end timestamps.
+ */
 public class SpendingsReport extends Command {
 
-    public SpendingsReport(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
-                           ObjectMapper objectMapper, ArrayList<Transaction> transactions,
-                           ArrayList<PayOnlineTransaction> payOnlineTransactions) {
-        super(users, commandNode, output, command, objectMapper, null, transactions, payOnlineTransactions);
+    /**
+     * Constructs a SpendingsReport command with the provided parameters.
+     *
+     * @param users                     The list of users.
+     * @param commandNode               The command node with the JSON structure for the command.
+     * @param output                    The output node where the response will be written.
+     * @param command                   The command input containing the parameters for the command
+     * @param objectMapper              ObjectMapper for JSON operations
+     * @param transactions              The list of transactions associated with the users.
+     * @param payOnlineTransactions     The list of PayOnlineTransactions related to the report.
+     */
+    public SpendingsReport(final ArrayList<User> users, final ObjectNode commandNode,
+                           final ArrayNode output, final CommandInput command,
+                           final ObjectMapper objectMapper,
+                           final ArrayList<Transaction> transactions,
+                           final ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+        super(users, commandNode, output, command, objectMapper, null, transactions,
+                payOnlineTransactions);
     }
 
-
+    /**
+     * Executes the SpendingsReport command. It retrieves the account by IBAN, checks if it's
+     * a savings account, and generates the spending report based on the provided start and end
+     * timestamps.
+     *
+     * @throws IllegalArgumentException if the account is not found.
+     */
     @Override
     public void execute() {
-        String targetIban = getCommand().getAccount();
-        int startTimestamp = getCommand().getStartTimestamp();
-        int endTimestamp = getCommand().getEndTimestamp();
+        final String targetIban = getCommand().getAccount();
+        final int startTimestamp = getCommand().getStartTimestamp();
+        final int endTimestamp = getCommand().getEndTimestamp();
 
-        for (User user : getUsers()) {
-            for (Account account : user.getAccounts()) {
-                if (account.getIban().equals(targetIban)) {
-
-                    if(account.getAccountType().equals("savings")) {
-                        ObjectNode errorNode = getObjectMapper().createObjectNode();
+        for (final User user : getUsers()) {
+            for (final Account account : user.getAccounts()) {
+                if (account.getAccountIban().equals(targetIban)) {
+                    if (account.getAccountType().equals("savings")) {
+                        final ObjectNode errorNode = getObjectMapper().createObjectNode();
                         errorNode.put("command", getCommand().getCommand());
-                        ObjectNode outputNode = errorNode.putObject("output");
-                        outputNode.put("error", "This kind of report is not supported for a saving account");
+                        final ObjectNode outputNode = errorNode.putObject("output");
+                        outputNode.put("error", "This kind of report is not supported"
+                                + " for a saving account");
                         errorNode.put("timestamp", getCommand().getTimestamp());
                         getOutput().add(errorNode);
-                        return ;
+                        return;
                     }
 
-                    Map<String, Object> params = constructParams(
+                    final Map<String, Object> params = constructParams(
                             getCommand().getDescription(),
                             Map.of(
                                 "targetIban", targetIban,
@@ -49,22 +77,24 @@ public class SpendingsReport extends Command {
                                 "account", account,
                                 "transactions", getTransactions(),
                                 "user", user,
-                                "reportIban", account.getIban(),
+                                "reportIban", account.getAccountIban(),
                                 "payOnlineTransactions", getSpendingsReportTransactions()
                             )
                     );
 
-                    SpendingReportTransaction spendingTransaction = (SpendingReportTransaction)
-                            CreateTransaction.getInstance().createTransaction("SpendingsReport", params);
+                    final SpendingReportTransaction spendingTransaction =
+                            (SpendingReportTransaction) CreateTransaction.getInstance()
+                                    .createTransaction("SpendingsReport", params);
 
-                    ObjectNode transactionNode = getObjectMapper().createObjectNode();
+                    final ObjectNode transactionNode = getObjectMapper().createObjectNode();
                     spendingTransaction.addDetailsToNode(transactionNode);
                     getOutput().add(transactionNode);
                     return;
                 }
             }
         }
-        Account tempAccount = new Account();
+
+        final Account tempAccount = new Account();
         tempAccount.addResponseToOutput(
                 getObjectMapper(),
                 getCommandNode(),
@@ -74,8 +104,10 @@ public class SpendingsReport extends Command {
         );
     }
 
+    /**
+     * For future development
+     */
     @Override
     public void undo() {
-
     }
 }

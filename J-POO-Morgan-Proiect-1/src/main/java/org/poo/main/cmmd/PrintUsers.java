@@ -10,38 +10,57 @@ import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
 
+/**
+ * The PrintUsers class handles the execution of the "printUsers" command.
+ * It retrieves and prints user details, including their accounts and cards.
+ */
 public class PrintUsers extends Command {
 
-    public PrintUsers(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper) {
+    /**
+     * Constructs a PrintUsers command with the specified parameters.
+     *
+     * @param users           The list of users
+     * @param commandNode     The command node containing information about the command
+     * @param output          The array node to store the output
+     * @param command         The command input
+     * @param objectMapper    ObjectMapper for JSON operations
+     */
+    public PrintUsers(final ArrayList<User> users, final ObjectNode commandNode,
+                      final ArrayNode output, final CommandInput command,
+                      final ObjectMapper objectMapper) {
         super(users, commandNode, output, command, objectMapper, null, null, null);
     }
 
+    /**
+     * Executes the printUsers command by fetching and displaying information for each user.
+     * The user's name, email, accounts, and cards are included in the output.
+     */
     @Override
     public void execute() {
         getCommandNode().put("command", getCommand().getCommand());
 
-        ArrayNode usersOutput = getObjectMapper().createArrayNode();
+        final ArrayNode usersOutput = getObjectMapper().createArrayNode();
 
-        for (User user : getUsers()) {
-            ObjectNode userNode = getObjectMapper().createObjectNode();
+        for (final User user : getUsers()) {
+            final ObjectNode userNode = getObjectMapper().createObjectNode();
             userNode.put("firstName", user.getUser().getFirstName());
             userNode.put("lastName", user.getUser().getLastName());
             userNode.put("email", user.getUser().getEmail());
 
-            ArrayNode accountsNode = getObjectMapper().createArrayNode();
+            final ArrayNode accountsNode = getObjectMapper().createArrayNode();
 
-            for (Account account : user.getAccounts()) {
-                ObjectNode accountNode = getObjectMapper().createObjectNode();
-                accountNode.put("IBAN", account.getIban());
+            for (final Account account : user.getAccounts()) {
+                final ObjectNode accountNode = getObjectMapper().createObjectNode();
+                accountNode.put("IBAN", account.getAccountIban());
                 accountNode.put("balance", account.getBalance());
                 accountNode.put("currency", account.getCurrency());
                 accountNode.put("type", account.getAccountType());
 
-                ArrayNode cardsNode = getObjectMapper().createArrayNode();
+                final ArrayNode cardsNode = getObjectMapper().createArrayNode();
 
-                if (account.getCards() != null) {
-                    for (Card card : account.getCards()) {
-                        ObjectNode cardNode = getObjectMapper().createObjectNode();
+                if (account.getAccountCards() != null) {
+                    for (final Card card : account.getAccountCards()) {
+                        final ObjectNode cardNode = getObjectMapper().createObjectNode();
                         cardNode.put("cardNumber", card.getCardNumber());
                         cardNode.put("status", card.getStatus());
                         cardsNode.add(cardNode);
@@ -62,8 +81,10 @@ public class PrintUsers extends Command {
         getOutput().add(getCommandNode());
     }
 
+    /**
+     * For future development
+     */
     @Override
     public void undo() {
-
     }
 }

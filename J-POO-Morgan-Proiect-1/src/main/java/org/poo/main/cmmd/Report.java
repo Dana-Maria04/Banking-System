@@ -14,28 +14,51 @@ import org.poo.main.userinfo.transactions.CreateTransaction;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * The Report class handles the execution of the "report" command. It retrieves
+ * information about a specific account and generates a report based on the
+ * provided time range and associated transactions.
+ */
 public class Report extends Command {
 
-    public Report(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
-                  ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode,
-                  ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions, null);
+    /**
+     * Constructs a Report command with the specified parameters.
+     *
+     * @param users                The list of users
+     * @param command              The command input
+     * @param exchangeGraph        The exchange rate graph for currency conversions
+     * @param output               The array node to store the output
+     * @param objectMapper         ObjectMapper for JSON operations
+     * @param commandNode          The command node containing information about the command
+     * @param transactions         The list of transactions
+     */
+    public Report(final ArrayList<User> users, final CommandInput command,
+                  final ExchangeGraph exchangeGraph, final ArrayNode output,
+                  final ObjectMapper objectMapper, final ObjectNode commandNode,
+                  final ArrayList<Transaction> transactions) {
+        super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions,
+                null);
     }
 
+    /**
+     * Executes the "report" command. It retrieves the account based on the provided
+     * IBAN and generates a report including the account's details and associated transactions
+     * within the specified time range.
+     */
     @Override
     public void execute() {
-        String targetIban = getCommand().getAccount();
-        int startTimestamp = getCommand().getStartTimestamp();
-        int endTimestamp = getCommand().getEndTimestamp();
+        final String targetIban = getCommand().getAccount();
+        final int startTimestamp = getCommand().getStartTimestamp();
+        final int endTimestamp = getCommand().getEndTimestamp();
 
         Account foundAccount = new Account();
         User associatedUser = new User();
 
         boolean accountFound = false;
 
-        for (User user : getUsers()) {
-            for (Account account : user.getAccounts()) {
-                if (account.getIban().equals(targetIban)) {
+        for (final User user : getUsers()) {
+            for (final Account account : user.getAccounts()) {
+                if (account.getAccountIban().equals(targetIban)) {
                     foundAccount = account;
                     associatedUser = user;
                     accountFound = true;
@@ -48,29 +71,34 @@ public class Report extends Command {
         }
 
         if (!accountFound) {
-            foundAccount.addResponseToOutput(getObjectMapper(), getCommandNode(), getOutput(), getCommand(), "Account not found");
+            foundAccount.addResponseToOutput(getObjectMapper(), getCommandNode(), getOutput(),
+                    getCommand(), "Account not found");
             return;
         }
 
-        Map<String, Object> params = constructParams(getCommand().getDescription(), Map.of(
+        final Map<String, Object> params = constructParams(getCommand().getDescription(), Map.of(
                 "targetIban", targetIban,
                 "startTimestamp", startTimestamp,
                 "endTimestamp", endTimestamp,
                 "account", foundAccount,
                 "transactions", new ArrayList<>(getTransactions()),
                 "user", associatedUser,
-                "reportIban", foundAccount.getIban()
+                "reportIban", foundAccount.getAccountIban()
         ));
 
-        ReportTransaction reportTransaction = (ReportTransaction) CreateTransaction.getInstance()
+        final ReportTransaction reportTransaction = (ReportTransaction) CreateTransaction
+                .getInstance()
                 .createTransaction("ReportTransaction", params);
-        ObjectNode transactionNode = getObjectMapper().createObjectNode();
+
+        final ObjectNode transactionNode = getObjectMapper().createObjectNode();
         reportTransaction.addDetailsToNode(transactionNode);
         getOutput().add(transactionNode);
     }
 
+    /**
+     * For future development
+     */
     @Override
     public void undo() {
-        // Undo functionality not required
     }
 }

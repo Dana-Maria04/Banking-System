@@ -12,45 +12,73 @@ import org.poo.main.userinfo.transactions.CreateTransaction;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * The DeleteAccount class handles the deletion of an account for a specified user.
+ * It verifies if the account exists and whether the balance is zero before proceeding
+ * with the deletion.
+ * If the account has remaining funds, a transaction is logged for further processing.
+ */
 public class DeleteAccount extends Command {
 
-    public DeleteAccount(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command, ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
+    /**
+     * Constructs a new DeleteAccount command with the specified parameters.
+     *
+     * @param users          The list of users
+     * @param commandNode    The command node to store the output
+     * @param output         The output node for storing responses
+     * @param command        The command input
+     * @param objectMapper   ObjectMapper for JSON operations
+     * @param transactions   The list of transactions to log the action
+     */
+    public DeleteAccount(final ArrayList<User> users, final ObjectNode commandNode,
+                         final ArrayNode output, final CommandInput command,
+                         final ObjectMapper objectMapper,
+                         final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper, null, transactions, null);
     }
 
+    /**
+     * Executes the DeleteAccount command by verifying if the account exists and if
+     * the balance is zero. If the balance is zero, the account is removed from the user's
+     * accounts. If funds remain, a transaction is logged.
+     */
     @Override
     public void execute() {
-        for (User user : getUsers()) {
+        for (final User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
-                ArrayList<Account> accounts = user.getAccounts();
+                final ArrayList<Account> accounts = user.getAccounts();
 
+                boolean found = false;
                 Account targetAccount = null;
-                for (Account acc : accounts) {
-                    if (acc.getIban().equals(getCommand().getAccount())) {
+                for (final Account acc : accounts) {
+                    if (acc.getAccountIban().equals(getCommand().getAccount())) {
                         targetAccount = acc;
+                        found = true;
                         break;
                     }
                 }
 
-                if (targetAccount == null) {
-                    addResponseToOutput("error", "Account not found");
-                    return;
+                if (!found) {
+                    throw new IllegalArgumentException("Account not found");
                 }
 
                 if (targetAccount.getBalance() == 0) {
                     accounts.remove(targetAccount);
                     addResponseToOutput("success", "Account deleted");
                 } else {
-                    addResponseToOutput("error", "Account couldn't be deleted - see org.poo.transactions for details");
+                    addResponseToOutput("error",
+                            "Account couldn't be deleted - see org.poo.transactions for details");
 
-                    Map<String, Object> params = Map.of(
-                            "description", "Account couldn't be deleted - there are funds remaining",
+                    final Map<String, Object> params = Map.of(
+                            "description",
+                            "Account couldn't be deleted - there are funds remaining",
                             "timestamp", getCommand().getTimestamp(),
                             "email", user.getUser().getEmail(),
-                            "iban", targetAccount.getIban()
+                            "iban", targetAccount.getAccountIban()
                     );
 
-                    Transaction transaction = CreateTransaction.getInstance().createTransaction("DeleteAccount", params);
+                    final Transaction transaction = CreateTransaction.getInstance()
+                            .createTransaction("DeleteAccount", params);
 
                     getTransactions().add(transaction);
                 }
@@ -62,8 +90,10 @@ public class DeleteAccount extends Command {
         addResponseToOutput("error", "User not found");
     }
 
+    /**
+     * For future development
+     */
     @Override
     public void undo() {
-
     }
 }

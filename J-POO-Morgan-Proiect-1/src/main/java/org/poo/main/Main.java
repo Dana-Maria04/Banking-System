@@ -76,8 +76,8 @@ public final class Main {
         ArrayNode output = objectMapper.createArrayNode();
 
 
-        CommandHandler cmd = new CommandHandler();
-        output = cmd.handle(inputData, output);
+        CommandHandler cmmd = new CommandHandler();
+        output = cmmd.handle(inputData, output);
 
 
         /*

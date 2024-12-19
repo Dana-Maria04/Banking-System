@@ -7,46 +7,78 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.poo.fileio.CommandInput;
-import org.poo.main.userinfo.transactions.*;
+import org.poo.main.userinfo.transactions.CardDeletionTransaction;
+import org.poo.main.userinfo.transactions.PayOnlineTransaction;
+import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.utils.Utils;
+import org.poo.main.userinfo.transactions.CreateTransaction;
+import org.poo.main.userinfo.transactions.CreateCardTransaction;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Class representing an account of an user.
+ */
 @Setter
 @Getter
 @NoArgsConstructor
 public class Account {
-    private String iban;
+    private String accountIban;
     private double balance;
     private double minimumBalance;
     private String currency;
     private String accountType;
-    private ArrayList<Card> cards;
+    private ArrayList<Card> accountCards;
     private int foundCard;
     private int insufficientFunds;
     private double interestRate;
 
-    public Account(String iban, String accountType, String currency, double balance, ArrayList<Card> cards) {
-        this.iban = iban;
+    /**
+     * Constructs an Account with the specified details.
+     *
+     * @param iban        The IBAN of the account.
+     * @param accountType The type of the account.
+     * @param currency    The currency of the account.
+     * @param balance     The balance of the account.
+     * @param cards       The list of cards associated with the account.
+     */
+    public Account(final String iban, final String accountType, final String currency,
+                   final double balance, final ArrayList<Card> cards) {
+        this.accountIban = iban;
         this.accountType = accountType;
         this.currency = currency;
         this.balance = balance;
-        this.cards = cards;
+        this.accountCards = cards;
     }
 
-    public void pay(double amount, String cardNumber, ArrayList<Card> cards, User user,
-                    CommandInput command,
-                    ArrayList<Transaction> transactions, String iban,
-                    ArrayList<PayOnlineTransaction> payOnlineTransactions, Account account) {
+    /**
+     * Executes a payment from this account.
+     *
+     * @param amount               The amount to be paid.
+     * @param cardNumber           The card number to be used for the payment.
+     * @param cards                The list of cards associated with the account.
+     * @param user                 The user associated with the account.
+     * @param command              The command containing payment details.
+     * @param transactions         The list of transactions to which the transaction will be added.
+     * @param iban                 The IBAN associated with the account.
+     * @param payOnlineTransactions The list of pay online transactions.
+     * @param account              The account from which the payment will be made.
+     */
+    public void pay(final double amount, final String cardNumber, final ArrayList<Card> cards,
+                    final User user, final CommandInput command,
+                    final ArrayList<Transaction> transactions, final String iban,
+                    final ArrayList<PayOnlineTransaction> payOnlineTransactions,
+                    final Account account) {
         this.foundCard = 0;
         this.insufficientFunds = 0;
 
-        for (Card card : cards) {
+        for (final Card card : cards) {
             if (card.getCardNumber().equals(cardNumber)) {
 
                 if (card.getFrozen() == 1) {
-                    Transaction transaction = CreateTransaction.getInstance().createTransaction(
+                    final Transaction transaction = CreateTransaction.getInstance()
+                            .createTransaction(
                             "FrozePayOnline",
                             Map.of(
                                     "description", "The card is frozen",
@@ -59,9 +91,10 @@ public class Account {
                     this.foundCard = 1;
                     return;
                 }
-
+                // Check if the balance is insufficient to make the payment
                 if (minimumBalance > balance - amount) {
-                    Transaction transaction = CreateTransaction.getInstance().createTransaction(
+                    final Transaction transaction = CreateTransaction.getInstance()
+                            .createTransaction(
                             "PayOnline",
                             Map.of(
                                     "description", "Insufficient funds",
@@ -69,15 +102,16 @@ public class Account {
                                     "email", user.getUser().getEmail(),
                                     "amount", amount,
                                     "commerciant", command.getCommerciant(),
-                                    "iban", account.getIban()
+                                    "iban", account.getAccountIban()
                             )
                     );
                     transactions.add(transaction);
                     this.insufficientFunds = 1;
                     return;
                 }
-
-                PayOnlineTransaction transaction = (PayOnlineTransaction) CreateTransaction.getInstance().createTransaction(
+                // Proceed with payment as the card is valid and there are sufficient funds
+                final PayOnlineTransaction transaction = (PayOnlineTransaction)
+                        CreateTransaction.getInstance().createTransaction(
                         "PayOnline",
                         Map.of(
                                 "description", "Card payment",
@@ -94,30 +128,33 @@ public class Account {
                 this.setBalance(this.balance - amount);
 
                 if (card.getOneTime() == 1) {
-                    account.getCards().remove(card);
+                    account.getAccountCards().remove(card);
 
-                    CardDeletionTransaction deleteCardTransaction = new CardDeletionTransaction(
+                    final CardDeletionTransaction deleteCardTransaction =
+                            new CardDeletionTransaction(
                             "The card has been destroyed",
                             command.getTimestamp(),
                             user.getUser().getEmail(),
-                            account.getIban(),
+                            account.getAccountIban(),
                             card.getCardNumber()
                     );
                     transactions.add(deleteCardTransaction);
 
-                    Card newCard = new Card(Utils.generateCardNumber(), "active", 1);
+                    final Card newCard = new Card(Utils.generateCardNumber(),
+                            "active", 1);
                     newCard.setFrozen(0);
 
-                    CreateCardTransaction createCardTransaction = new CreateCardTransaction(
+                    final CreateCardTransaction createCardTransaction =
+                            new CreateCardTransaction(
                             "New card created",
                             command.getTimestamp(),
                             user.getUser().getEmail(),
-                            account.getIban(),
+                            account.getAccountIban(),
                             newCard.getCardNumber(),
                             user.getUser().getEmail(),
-                            account.getIban()
+                            account.getAccountIban()
                     );
-                    account.getCards().add(newCard);
+                    account.getAccountCards().add(newCard);
                     transactions.add(createCardTransaction);
                 }
                 return;
@@ -125,8 +162,19 @@ public class Account {
         }
     }
 
-    public void addResponseToOutput(ObjectMapper objectMapper, ObjectNode commandNode, ArrayNode output, CommandInput command, String description) {
-        ObjectNode outputNode = objectMapper.createObjectNode();
+    /**
+     * Adds a response to the output.
+     *
+     * @param objectMapper  The ObjectMapper used to create nodes.
+     * @param commandNode   The command node to which the output will be added.
+     * @param output        The output array node.
+     * @param command       The command containing the input parameters.
+     * @param description   The description to be added to the response.
+     */
+    public void addResponseToOutput(final ObjectMapper objectMapper, final ObjectNode commandNode,
+                                    final ArrayNode output,
+                                    final CommandInput command, final String description) {
+        final ObjectNode outputNode = objectMapper.createObjectNode();
         commandNode.put("command", command.getCommand());
         outputNode.put("description", description);
         outputNode.put("timestamp", command.getTimestamp());
@@ -135,23 +183,37 @@ public class Account {
         output.add(commandNode);
     }
 
-
-    public static Account searchAccount(String iban, ArrayList<Account> accounts) {
-        for(Account account : accounts) {
-            if(account.getIban().equals(iban)) {
+    /**
+     * Searches for an account by its IBAN.
+     *
+     * @param iban      The IBAN to search for.
+     * @param accounts  The list of accounts to search in.
+     * @return The account matching the IBAN, or null if not found.
+     */
+    public static Account searchAccount(final String iban, final ArrayList<Account> accounts) {
+        for (final Account account : accounts) {
+            if (account.getAccountIban().equals(iban)) {
                 return account;
             }
         }
         return null;
-
     }
 
-    public void incBalance (double amount) {
+    /**
+     * Increases the balance of the account by the given amount.
+     *
+     * @param amount The amount to increase the balance by.
+     */
+    public void incBalance(final double amount) {
         this.balance += amount;
     }
 
-    public void decBalance (double amount) {
+    /**
+     * Decreases the balance of the account by the given amount.
+     *
+     * @param amount The amount to decrease the balance by.
+     */
+    public void decBalance(final double amount) {
         this.balance -= amount;
     }
-
 }

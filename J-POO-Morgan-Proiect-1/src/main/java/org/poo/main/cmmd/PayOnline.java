@@ -12,40 +12,64 @@ import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 
+/**
+ * The PayOnline class handles the execution of the "payOnline" command.
+ * It converts the specified amount to the account's currency,
+ * performing the payment, and logging the transaction.
+ */
 public class PayOnline extends Command {
 
-    public PayOnline(ArrayList<User> users, CommandInput command, ExchangeGraph exchangeGraph,
-                     ArrayNode output, ObjectMapper objectMapper, ObjectNode commandNode,
-                     ArrayList<Transaction> transactions,
-                     ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+    /**
+     * Constructs a PayOnline command with the specified parameters.
+     *
+     * @param users                    The list of users
+     * @param command                  The command input
+     * @param exchangeGraph            The exchange graph used for currency conversion
+     * @param output                   The array node to store the output
+     * @param objectMapper             ObjectMapper for JSON operations
+     * @param commandNode              The command node containing information about the command
+     * @param transactions             The list of transactions to log the action
+     * @param payOnlineTransactions    The list of transactions related to pay online actions
+     */
+    public PayOnline(final ArrayList<User> users, final CommandInput command,
+                     final ExchangeGraph exchangeGraph, final ArrayNode output,
+                     final ObjectMapper objectMapper, final ObjectNode commandNode,
+                     final ArrayList<Transaction> transactions,
+                     final ArrayList<PayOnlineTransaction> payOnlineTransactions) {
         super(users, commandNode, output, command, objectMapper,
                 exchangeGraph, transactions, payOnlineTransactions);
     }
 
+    /**
+     * Executes the payOnline command by processing the payment for the specified user and account.
+     * The specified amount is converted to the account's currency and the payment is processed.
+     * If the card is found, the payment is completed, otherwise, an error message is returned.
+     */
     @Override
     public void execute() {
 
-        ExchangeGraph exchangeGraph = getGraph();
+        final ExchangeGraph exchangeGraph = getGraph();
 
-        for (User user : getUsers()) {
+        for (final User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
-                for (Account account : user.getAccounts()) {
+                for (final Account account : user.getAccounts()) {
 
-                    double convertedAmount = exchangeGraph.convertCurrency(
+                    final double convertedAmount = exchangeGraph.convertCurrency(
                             getCommand().getAmount(),
                             getCommand().getCurrency(),
                             account.getCurrency()
                     );
-                    account.pay(convertedAmount, getCommand().getCardNumber(), account.getCards(),
-                            user, getCommand(), getTransactions(), account.getIban(),
+                    account.pay(convertedAmount, getCommand().getCardNumber(),
+                            account.getAccountCards(), user, getCommand(), getTransactions(),
+                            account.getAccountIban(),
                             getSpendingsReportTransactions(), account);
-                    if(account.getFoundCard() == 1 || account.getInsufficientFunds() == 1) {
+                    if (account.getFoundCard() == 1 || account.getInsufficientFunds() == 1) {
                         return;
                     }
                 }
             }
         }
-        Account tempAccount = new Account();
+        final Account tempAccount = new Account();
         tempAccount.addResponseToOutput(
                 getObjectMapper(),
                 getCommandNode(),
@@ -55,8 +79,11 @@ public class PayOnline extends Command {
         );
     }
 
+
+    /**
+     * For future development
+     */
     @Override
     public void undo() {
-
     }
 }

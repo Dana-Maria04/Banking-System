@@ -13,36 +13,59 @@ import org.poo.utils.Utils;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Adds a new account for a user.
+ * This command processes the creation of a new account, adding it to the user
+ * and generating a transaction for the account creation.
+ */
 public class AddAccount extends Command {
 
-    public AddAccount(ArrayList<User> users, ObjectNode commandNode, ArrayNode output, CommandInput command,
-                      ObjectMapper objectMapper, ArrayList<Transaction> transactions) {
+    /**
+     * Constructor to initialize the AddAccount command with necessary parameters.
+     *
+     * @param users         List of users to be processed
+     * @param commandNode   JSON node representing the command input
+     * @param output        ArrayNode to store output results
+     * @param command       Command input data
+     * @param objectMapper  ObjectMapper for JSON operations
+     * @param transactions  List of transactions to be updated
+     */
+    public AddAccount(final ArrayList<User> users, final ObjectNode commandNode,
+                      final ArrayNode output, final CommandInput command,
+                      final ObjectMapper objectMapper, final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper, null, transactions, null);
     }
 
+    /**
+     * Executes the AddAccount command.
+     * This method creates a new account for the user identified by the email in the command input,
+     * initializes it with specified values, adds it to the user's list of accounts, and creates
+     * a transaction for the account creation.
+     */
     @Override
     public void execute() {
         for (User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
 
-
-                Account newAccount = new Account(Utils.generateIBAN(), getCommand().getAccountType(),
+                Account newAccount = new Account(Utils.generateIBAN(), getCommand()
+                        .getAccountType(),
                         getCommand().getCurrency(), 0, new ArrayList<>());
-                newAccount.setCards(new ArrayList<>());
+                newAccount.setAccountCards(new ArrayList<>());
                 newAccount.setInterestRate(getCommand().getInterestRate());
 
                 user.getAccounts().add(newAccount);
 
                 Map<String, Object> additionalParams = Map.of(
-                        "accountType", getCommand().getAccountType(),
-                        "currency", getCommand().getCurrency(),
-                        "iban", newAccount.getIban()
+                    "accountType", getCommand().getAccountType(),
+                    "currency", getCommand().getCurrency(),
+                    "iban", newAccount.getAccountIban()
                 );
 
-                Map<String, Object> params = constructParams("New account created", additionalParams);
+                Map<String, Object> params = constructParams("New account created",
+                        additionalParams);
 
-
-                Transaction transaction = CreateTransaction.getInstance().createTransaction("AddAccount", params);
+                Transaction transaction = CreateTransaction.getInstance()
+                                            .createTransaction("AddAccount", params);
                 getTransactions().add(transaction);
 
                 break;
@@ -50,8 +73,10 @@ public class AddAccount extends Command {
         }
     }
 
+    /**
+     * For future development
+     */
     @Override
     public void undo() {
-
     }
 }

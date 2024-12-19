@@ -3,53 +3,78 @@ package org.poo.main.userinfo.transactions;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Represents a transaction that generates a spending report based on a target account,
+ * date range, and transactions.
+ */
 public class SpendingReportTransaction extends Transaction {
-    private String targetIban;
-    private int startTimestamp;
-    private int endTimestamp;
-    private Account account;
-    private ArrayList<Transaction> transactions;
-    private ArrayList<PayOnlineTransaction> payOnlineTransactions;
-    private User user;
 
-    public SpendingReportTransaction(String description, int timestamp, String email, String targetIban,
-                                     int startTimestamp, int endTimestamp,
-                                     Account account, ArrayList<Transaction> transactions, User user,
-                                     String reportIban, ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+    private final String targetIban;
+    private final int startTimestamp;
+    private final int endTimestamp;
+    private final Account account;
+    private final ArrayList<PayOnlineTransaction> payOnlineTransactions;
+
+    /**
+     * Constructs a SpendingReportTransaction instance with the specified parameters.
+     *
+     * @param description          The description of the transaction.
+     * @param timestamp            The timestamp of the transaction.
+     * @param email                The email of the user associated with the transaction.
+     * @param targetIban           The target IBAN for the report.
+     * @param startTimestamp       The start timestamp of the report's time range.
+     * @param endTimestamp         The end timestamp of the report's time range.
+     * @param account              The account associated with the transaction.
+     * @param reportIban           The IBAN of the report's account.
+     * @param payOnlineTransactions The list of pay online transactions to include in the report.
+     */
+    public SpendingReportTransaction(final String description, final int timestamp,
+                                     final String email, final String targetIban,
+                                     final int startTimestamp, final int endTimestamp,
+                                     final Account account, final String reportIban,
+                                     final ArrayList<PayOnlineTransaction> payOnlineTransactions) {
         super(description, timestamp, email, reportIban);
         this.targetIban = targetIban;
         this.startTimestamp = startTimestamp;
         this.endTimestamp = endTimestamp;
         this.account = account;
-        this.transactions = transactions;
-        this.user = user;
         this.payOnlineTransactions = payOnlineTransactions;
     }
 
+    /**
+     * Calculates the total spending for each merchant within the given time range and target IBAN.
+     *
+     * @return A map containing the merchant names as keys and their total spending as values.
+     */
     private Map<String, Double> calculateCommerciantTotals() {
         Map<String, Double> commerciantTotals = new HashMap<>();
         for (PayOnlineTransaction transaction : payOnlineTransactions) {
-            if (transaction.getTimestamp() >= startTimestamp && transaction.getTimestamp() <= endTimestamp &&
-                    transaction.getReportIban().equals(targetIban)) {
-                commerciantTotals.merge(transaction.getCommerciant(), transaction.getAmountPayOnline(), Double::sum);
+            if (transaction.getTimestamp() >= startTimestamp && transaction.getTimestamp()
+                    <= endTimestamp && transaction.getReportIban().equals(targetIban)) {
+                commerciantTotals.merge(transaction.getCommerciant(), transaction
+                        .getAmountPayOnline(), Double::sum);
             }
         }
         return new TreeMap<>(commerciantTotals);
     }
 
+    /**
+     * Adds the details of this transaction to the provided ObjectNode for output formatting.
+     *
+     * @param transactionNode The ObjectNode to which transaction details will be added.
+     */
     @Override
-    public void addDetailsToNode(ObjectNode transactionNode) {
+    public void addDetailsToNode(final ObjectNode transactionNode) {
         ObjectNode outputNode = transactionNode.putObject("output");
         outputNode.put("balance", account.getBalance());
         outputNode.put("currency", account.getCurrency());
-        outputNode.put("IBAN", account.getIban());
+        outputNode.put("IBAN", account.getAccountIban());
 
         Map<String, Double> commerciantTotals = calculateCommerciantTotals();
         ArrayNode commerciantsArray = outputNode.putArray("commerciants");
@@ -62,8 +87,8 @@ public class SpendingReportTransaction extends Transaction {
 
         ArrayNode transactionsArray = outputNode.putArray("transactions");
         for (PayOnlineTransaction transaction : payOnlineTransactions) {
-            if (transaction.getTimestamp() >= startTimestamp && transaction.getTimestamp() <= endTimestamp &&
-                    transaction.getReportIban().equals(targetIban)) {
+            if (transaction.getTimestamp() >= startTimestamp && transaction.getTimestamp()
+                    <= endTimestamp && transaction.getReportIban().equals(targetIban)) {
 
                 ObjectNode txnNode = transactionNode.objectNode();
                 txnNode.put("amount", transaction.getAmountPayOnline());
