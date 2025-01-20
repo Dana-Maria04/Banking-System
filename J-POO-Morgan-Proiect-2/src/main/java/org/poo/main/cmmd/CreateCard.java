@@ -28,7 +28,9 @@ public class CreateCard extends Command {
      */
     public CreateCard(final ArrayList<User> users, final CommandInput command, final int oneTime,
                       final ArrayList<Transaction> transactions) {
-        super(users, null, null, command, null, null, transactions, null);
+        super(users, null, null,
+                command, null, null, transactions,
+                null, null);
         this.oneTime = oneTime;
     }
 

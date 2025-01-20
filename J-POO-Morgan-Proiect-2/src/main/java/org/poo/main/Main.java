@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
 import org.poo.fileio.ObjectInput;
+import org.poo.main.cmmd.CommandHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,6 +75,8 @@ public final class Main {
 
         ArrayNode output = objectMapper.createArrayNode();
 
+        CommandHandler cmmd = new CommandHandler();
+        output = cmmd.handle(inputData, output);
         /*
          * TODO Implement your function here
          *

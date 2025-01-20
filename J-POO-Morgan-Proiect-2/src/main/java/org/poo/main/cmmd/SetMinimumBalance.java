@@ -19,7 +19,9 @@ public class SetMinimumBalance extends Command {
      * @param command     The command input data.
      */
     public SetMinimumBalance(final ArrayList<User> users, final CommandInput command) {
-        super(users, null, null, command, null, null, null, null);
+        super(users, null, null, command,
+                null, null, null,
+                null, null);
     }
 
     /**

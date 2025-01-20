@@ -36,7 +36,8 @@ public class SplitPayment extends Command {
                         final ObjectNode commandNode, final ArrayNode output,
                         final CommandInput command, final ObjectMapper objectMapper,
                         final ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, graph, transactions, null);
+        super(users, commandNode, output, command, objectMapper, graph,
+                transactions, null, null);
     }
 
     /**

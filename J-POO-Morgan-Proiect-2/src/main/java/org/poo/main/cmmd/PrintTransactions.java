@@ -29,7 +29,8 @@ public class PrintTransactions extends Command {
                              final ArrayNode output, final CommandInput command,
                              final ObjectMapper objectMapper,
                              final ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, null, transactions, null);
+        super(users, commandNode, output, command, objectMapper, null,
+                transactions, null, null);
     }
 
     /**

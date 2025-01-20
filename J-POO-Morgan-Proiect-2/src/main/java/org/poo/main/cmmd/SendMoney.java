@@ -36,7 +36,7 @@ public class SendMoney extends Command {
                      final ObjectMapper objectMapper, final ObjectNode commandNode,
                      final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions,
-                null);
+                null, null);
     }
 
     /**

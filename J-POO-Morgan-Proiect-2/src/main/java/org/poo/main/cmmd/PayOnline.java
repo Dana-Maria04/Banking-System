@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
+import org.poo.main.userinfo.Commerciant;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
@@ -35,9 +36,10 @@ public class PayOnline extends Command {
                      final ExchangeGraph exchangeGraph, final ArrayNode output,
                      final ObjectMapper objectMapper, final ObjectNode commandNode,
                      final ArrayList<Transaction> transactions,
-                     final ArrayList<PayOnlineTransaction> payOnlineTransactions) {
+                     final ArrayList<PayOnlineTransaction> payOnlineTransactions,
+                     final ArrayList<Commerciant> commerciants) {
         super(users, commandNode, output, command, objectMapper,
-                exchangeGraph, transactions, payOnlineTransactions);
+                exchangeGraph, transactions, payOnlineTransactions, commerciants);
     }
 
     /**
@@ -49,6 +51,15 @@ public class PayOnline extends Command {
     public void execute() {
 
         final ExchangeGraph exchangeGraph = getGraph();
+
+        Commerciant commerciant = new Commerciant();
+        for(Commerciant commerciant1 : getCommerciants()) {
+            if(commerciant1.getCommerciant().getCommerciant().equals(getCommand().getCommerciant())) {
+                commerciant = commerciant1;
+                break;
+            }
+        }
+
 
         for (final User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
@@ -62,7 +73,8 @@ public class PayOnline extends Command {
                     account.pay(convertedAmount, getCommand().getCardNumber(),
                             account.getAccountCards(), user, getCommand(), getTransactions(),
                             account.getAccountIban(),
-                            getSpendingsReportTransactions(), account);
+                            getSpendingsReportTransactions(), account, commerciant,
+                            exchangeGraph);
                     if (account.getFoundCard() == 1 || account.getInsufficientFunds() == 1) {
                         return;
                     }

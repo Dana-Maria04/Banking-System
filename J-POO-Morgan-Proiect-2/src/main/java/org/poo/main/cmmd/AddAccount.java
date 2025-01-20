@@ -33,7 +33,8 @@ public class AddAccount extends Command {
     public AddAccount(final ArrayList<User> users, final ObjectNode commandNode,
                       final ArrayNode output, final CommandInput command,
                       final ObjectMapper objectMapper, final ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, null, transactions, null);
+        super(users, commandNode, output, command, objectMapper, null,
+                transactions, null, null);
     }
 
     /**

@@ -3,10 +3,8 @@ package org.poo.main.cmmd;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.poo.fileio.CommandInput;
-import org.poo.fileio.ExchangeInput;
-import org.poo.fileio.ObjectInput;
-import org.poo.fileio.UserInput;
+import org.poo.fileio.*;
+import org.poo.main.userinfo.Commerciant;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
@@ -38,6 +36,11 @@ public class CommandHandler {
             User user = new User(new ArrayList<>());
             user.setUser(userInput);
             user.setTransactions(new ArrayList<>());
+            if(userInput.getOccupation().equals("student"))
+                user.setUserPlan("student");
+            else
+                user.setUserPlan("standard");
+
             users.add(user);
         }
 
@@ -49,6 +52,18 @@ public class CommandHandler {
                                                                 .getCommands()));
 
         ObjectMapper objectMapper = new ObjectMapper();
+        ArrayList<Commerciant> commerciants = new ArrayList<>();
+        for(CommerciantInput commerciantInput : objectInput.getCommerciants()){
+            Commerciant commerciant = new Commerciant();
+            commerciant.getCommerciant().setCommerciant(commerciantInput.getCommerciant());
+            commerciant.getCommerciant().setId(commerciantInput.getId());
+            commerciant.getCommerciant().setType(commerciantInput.getType());
+            commerciant.getCommerciant().setCashbackStrategy(commerciantInput.getCashbackStrategy());
+            commerciant.getCommerciant().setAccount(commerciantInput.getAccount());
+            commerciants.add(commerciant);
+        }
+
+
         Utils.resetRandom();
 
         // Process each command based on its type
@@ -94,7 +109,8 @@ public class CommandHandler {
                     break;
                 case "payOnline":
                     PayOnline payOnline = new PayOnline(users, cmd, graph, output,
-                            objectMapper, commandNode, transactions, spendingsReportTransactions);
+                            objectMapper, commandNode, transactions,
+                            spendingsReportTransactions, commerciants);
                     payOnline.execute();
                     break;
                 case "sendMoney":
@@ -136,6 +152,11 @@ public class CommandHandler {
                     ChangeInterestRate changeInterestRate = new ChangeInterestRate(users,
                             commandNode, output, cmd, objectMapper, transactions);
                     changeInterestRate.execute();
+                    break;
+                case "withdrawSavings":
+                    WithdrawSavings withdrawSavings = new WithdrawSavings(graph, cmd, transactions,
+                            users);
+                    withdrawSavings.execute();
                     break;
                 default:
                     break;

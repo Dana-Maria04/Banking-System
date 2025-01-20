@@ -123,6 +123,11 @@ public final class CreateTransaction implements TransactionFactory {
                     (String) params.get("iban"),
                     (String) params.get("error")
             );
+            case "WithdrawSavings" -> new WithdrawSavingsTransaction(
+                    (String) params.get("description"),
+                    (int) params.get("timestamp"),
+                    (String) params.get("email")
+            );
             default -> throw new IllegalArgumentException("Unknown transaction type: " + type);
         };
     }

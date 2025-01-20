@@ -29,7 +29,8 @@ public class AddInterestRate extends Command {
     public AddInterestRate(final ArrayList<User> users, final ObjectNode commandNode,
                            final ArrayNode output, final CommandInput command,
                            final ObjectMapper objectMapper) {
-        super(users, commandNode, output, command, objectMapper, null, null, null);
+        super(users, commandNode, output, command, objectMapper,
+                null, null, null, null);
     }
 
     /**

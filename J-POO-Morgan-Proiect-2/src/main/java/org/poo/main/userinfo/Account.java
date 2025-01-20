@@ -69,9 +69,44 @@ public class Account {
                     final User user, final CommandInput command,
                     final ArrayList<Transaction> transactions, final String iban,
                     final ArrayList<PayOnlineTransaction> payOnlineTransactions,
-                    final Account account) {
+                    final Account account, final Commerciant commerciant,
+                    final ExchangeGraph graph) {
         this.foundCard = 0;
         this.insufficientFunds = 0;
+
+        //amount este amount ul in currency ul contului
+
+
+//        System.out.printf("comerciant cashbackstrategy: %s\n", commerciant.getCommerciant().getCashbackStrategy());
+
+        double cashback = 0;
+        double ronAmount = graph.convertCurrency(amount, account.getCurrency(), "RON");
+
+        if(commerciant.getCommerciant().getCashbackStrategy() == null) {
+            cashback = 0;
+            return;
+        }
+
+//        System.out.printf("user plan: %s\n", user.getUserPlan());
+//        System.out.printf("currency: %s\n", getCurrency());
+//        System.out.printf("currency ul contului %s\n", account.getCurrency());
+
+        if(commerciant.getCommerciant().getCashbackStrategy().equals("spendingThreshold")) {
+            if((user.getUserPlan().equals("standard") || user.getUserPlan().equals("student"))
+            ) {
+                // && getCurrency().equals("RON")
+                if(ronAmount >= 100 && ronAmount < 300) {
+                    cashback = amount * 0.001;
+                } else if(ronAmount >= 300 && ronAmount < 500) {
+                    cashback = amount * 0.002;
+                } else if(ronAmount >= 500) {
+                    cashback = amount * 0.0025;
+                }
+            }
+        }
+
+        System.out.printf("am cashbackul: %f\n", cashback);
+
 
         for (final Card card : cards) {
             if (card.getCardNumber().equals(cardNumber)) {
@@ -125,7 +160,7 @@ public class Account {
                 transactions.add(transaction);
                 payOnlineTransactions.add(transaction);
                 this.foundCard = 1;
-                this.setBalance(this.balance - amount);
+                this.setBalance(this.balance - amount + cashback);
 
                 if (card.getOneTime() == 1) {
                     account.getAccountCards().remove(card);
@@ -198,6 +233,16 @@ public class Account {
         }
         return null;
     }
+
+    public int verifyIfClassicAccount(final ArrayList<Account> accounts) {
+        for (Account account : accounts) {
+            if (account.getAccountType().equals("classic")) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 
     /**
      * Increases the balance of the account by the given amount.
