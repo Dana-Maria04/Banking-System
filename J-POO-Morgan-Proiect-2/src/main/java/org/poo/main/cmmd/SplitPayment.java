@@ -6,12 +6,15 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.ExchangeGraph;
+import org.poo.main.userinfo.QueueSplitPayment;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.SplitPaymentTransaction;
-import org.poo.main.userinfo.transactions.Transaction;
-import org.poo.main.userinfo.transactions.CreateTransaction;
+import org.poo.main.userinfo.transactions.*;
+import org.poo.main.userinfo.transactions.splitTransactions.InsufficientFundsSplitCustomTransaction;
+import org.poo.main.userinfo.transactions.splitTransactions.InsufficientFundsSplitEqualTransaction;
+import org.poo.main.userinfo.transactions.splitTransactions.SplitPaymentCustomGoodTransaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +38,10 @@ public class SplitPayment extends Command {
     public SplitPayment(final ExchangeGraph graph, final ArrayList<User> users,
                         final ObjectNode commandNode, final ArrayNode output,
                         final CommandInput command, final ObjectMapper objectMapper,
-                        final ArrayList<Transaction> transactions) {
+                        final ArrayList<Transaction> transactions,
+                        final ArrayList<QueueSplitPayment> queueSplitPayments) {
         super(users, commandNode, output, command, objectMapper, graph,
-                transactions, null, null);
+                transactions, null, null, queueSplitPayments);
     }
 
     /**
@@ -46,102 +50,280 @@ public class SplitPayment extends Command {
      */
     @Override
     public void execute() {
-        final List<String> accounts = getCommand().getAccounts();
-        final int rate = accounts.size();
-        final double amountForEach = getCommand().getAmount() / rate;
-        final String totalDescription = String.format("Split payment of %.2f %s",
-                getCommand().getAmount(), getCommand().getCurrency());
+        List<String> accounts = getCommand().getAccounts();
+        double amountPerAccount = 0;
+        if (accounts != null) {
+            int numberOfAccounts = accounts.size();
+            amountPerAccount = getCommand().getAmount() / numberOfAccounts;
+        }
 
-        Account errorAccount = new Account();
-        boolean insufficientFunds = false;
-        for (final String iban : accounts) {
-            for (final User user : getUsers()) {
-                for (final Account account : user.getAccounts()) {
-                    if (account.getAccountIban().equals(iban)) {
-                        final double convertedAmount = getGraph().convertCurrency(amountForEach,
-                                getCommand().getCurrency(), account.getCurrency());
-                        if (account.getMinimumBalance() > account.getBalance() - convertedAmount) {
-                            errorAccount = account;
-                            insufficientFunds = true;
+        if ("acceptSplitPayment".equals(getCommand().getCommand())) {
+            System.out.printf("intru in accept\n");
+            handleAcceptSplitPayment();
+            return;
+        }
+
+        if ("splitPayment".equals(getCommand().getCommand())) {
+            handleNewSplitPayment(accounts, amountPerAccount);
+        }
+    }
+
+    private void handleAcceptSplitPayment() {
+        String email = getCommand().getEmail();
+        String splitPaymentType = getCommand().getSplitPaymentType();
+
+        for (QueueSplitPayment pendingPayment : getQueueSplitPayments()) {
+            if (splitPaymentType.equals(pendingPayment.getSplitPaymentType()) && !pendingPayment.isCompleted()) {
+                for (String iban : pendingPayment.getAccounts()) {
+                    User user = findUserByIBAN(iban);
+
+                    if (user != null && user.getUser().getEmail().equals(email)) {
+                        pendingPayment.accept(iban);
+
+                        if (pendingPayment.isFullyAccepted()) {
+                            boolean allAccountsValid = true;
+                            String errorIban = null;
+
+                            for (int i = 0; i < pendingPayment.getAccounts().size(); i++) {
+                                String involvedIban = pendingPayment.getAccounts().get(i);
+                                Account account = findAccountByIBAN(involvedIban);
+
+                                if (account == null) {
+                                    allAccountsValid = false;
+                                    errorIban = involvedIban;
+                                    break;
+                                }
+
+                                double requiredAmount;
+                                if ("equal".equals(splitPaymentType)) {
+                                    requiredAmount = getGraph().convertCurrency(
+                                            pendingPayment.getTotalAmount() / pendingPayment.getAccounts().size(),
+                                            pendingPayment.getCurrency(),
+                                            account.getCurrency()
+                                    );
+                                } else { // "custom"
+
+                                    System.out.printf("calculez la custom\n");
+
+                                    requiredAmount = getGraph().convertCurrency(
+                                            pendingPayment.getAmounts().get(i),
+                                            pendingPayment.getCurrency(),
+                                            account.getCurrency()
+                                    );
+                                }
+
+                                if (account.getBalance() - account.getMinimumBalance() < requiredAmount) {
+                                    allAccountsValid = false;
+                                    errorIban = involvedIban;
+                                    break;
+                                }
+                            }
+
+                            if (!allAccountsValid) {
+
+                                System.out.printf("toate conturile sunt valide\n");
+
+                                for (int i = 0; i < pendingPayment.getAccounts().size(); i++) {
+                                    String involvedIban = pendingPayment.getAccounts().get(i);
+                                    User involvedUser = findUserByIBAN(involvedIban);
+
+                                    System.out.printf("sunt si in for dupa toateconturile sunt valide\n");
+
+
+                                    if (involvedUser != null) {
+                                        double amountPerUser = 0.0;
+                                        if(splitPaymentType.equals("equal")) {
+                                            amountPerUser = pendingPayment.getTotalAmount() / pendingPayment.getAccounts().size();
+                                        }
+
+                                        System.out.printf("ajung sa decid la tranzactii\n");
+
+//                                        Transaction transaction;
+                                        if (splitPaymentType.equals("custom")) {
+
+                                            System.out.printf("intru in primu if\n");
+
+                                            Map<String, Object> params = Map.of(
+                                                    "description", "Split payment of " + pendingPayment.getTotalAmount() + " " + pendingPayment.getCurrency(),
+                                                    "timestamp", pendingPayment.getTimestamp(),
+                                                    "email", involvedUser.getUser().getEmail(),
+                                                    "totalAmount", pendingPayment.getTotalAmount(),
+                                                    "currency", pendingPayment.getCurrency(),
+                                                    "amountForUsers", pendingPayment.getAmounts(),
+                                                    "involvedAccounts", pendingPayment.getAccounts(),
+                                                    "splitPaymentType", splitPaymentType,
+                                                    "error", "Account " + errorIban + " has insufficient funds for a split payment."
+                                            );
+
+                                            InsufficientFundsSplitCustomTransaction transaction = (InsufficientFundsSplitCustomTransaction)
+                                                    CreateTransaction.getInstance().createTransaction("InsufficientFundsSplit", params);
+
+                                            getTransactions().add(transaction);
+
+                                        } else {
+
+                                            System.out.printf("intru in al doilea if\n");
+
+                                            Map<String, Object> params = Map.of(
+                                                    "description", "Split payment of " + pendingPayment.getTotalAmount() + " " + pendingPayment.getCurrency(),
+                                                    "timestamp", pendingPayment.getTimestamp(),
+                                                    "email", involvedUser.getUser().getEmail(),
+                                                    "amountsForUsers", pendingPayment.getAmounts(), // Lista de sume pentru utilizatori
+                                                    "currency", pendingPayment.getCurrency(),
+                                                    "totalAmount", pendingPayment.getTotalAmount(),
+                                                    "involvedAccounts", pendingPayment.getAccounts(), // Lista conturilor implicate
+                                                    "splitPaymentType", splitPaymentType,
+                                                    "error", "Account " + errorIban + " has insufficient funds for a split payment."
+                                            );
+
+                                            InsufficientFundsSplitEqualTransaction transaction = (InsufficientFundsSplitEqualTransaction)
+                                                    CreateTransaction.getInstance().createTransaction("InsufficientFundsSplitEqualTransaction", params);
+
+                                            getTransactions().add(transaction);
+                                        }
+                                        getTransactions().sort((t1, t2) -> Integer.compare(t1.getTimestamp(), t2.getTimestamp()));
+                                    }
+                                }
+                                pendingPayment.markAsCompleted();
+                            } else {
+                                if ("custom".equals(splitPaymentType)) {
+                                    processSplitPaymentCustom(pendingPayment);
+                                } else if ("equal".equals(splitPaymentType)) {
+                                    double amountPerUser = pendingPayment.getTotalAmount() / pendingPayment.getAccounts().size();
+                                    processSplitPaymentEqual(pendingPayment, amountPerUser);
+                                }
+                            }
                         }
+                        return;
                     }
                 }
             }
         }
-
-        if (insufficientFunds) {
-            processTransactions(accounts, amountForEach, totalDescription, 1,
-                    errorAccount.getAccountIban());
-        } else {
-            processTransactions(accounts, amountForEach, totalDescription, 0,
-                    null);
-        }
     }
 
-    /**
-     * Processes transactions for the split payment. It handles both successful transactions
-     * and transactions with errors.
-     *
-     * @param accounts           The list of account IBANs to be processed.
-     * @param amountForEach      The amount each account will receive (or pay).
-     * @param description        The description of the transaction.
-     * @param errorFlag          A flag indicating whether the transaction failed (1) or was
-     *                           successful (0).
-     * @param errorAccountIban   The IBAN of the account that caused the error (if any).
-     */
-    private void processTransactions(final List<String> accounts, final double amountForEach,
-                                     final String description, final int errorFlag,
-                                     final String errorAccountIban) {
-        for (final String iban : accounts) {
-            for (final User user : getUsers()) {
-                for (final Account account : user.getAccounts()) {
-                    if (account.getAccountIban().equals(iban)) {
-                        final double convertedAmount = getGraph().convertCurrency(amountForEach,
-                                getCommand().getCurrency(), account.getCurrency());
-                        Map<String, Object> params;
-                        if (errorFlag == 1) {
-                            params = constructParams(
-                                    description,
-                                    Map.of(
-                                            "amount", amountForEach,
-                                            "currency", getCommand().getCurrency(),
-                                            "involvedAccounts", accounts,
-                                            "iban", account.getAccountIban(),
-                                            "error", "Account " + errorAccountIban
-                                                    + " has insufficient funds for"
-                                                    + " a split payment.",
-                                            "email", user.getUser().getEmail(),
-                                            "timestamp", getCommand().getTimestamp()
-                                    )
-                            );
-                        } else {
-                            params = constructParams(
-                                    description,
-                                    Map.of(
-                                            "amount", amountForEach,
-                                            "currency", getCommand().getCurrency(),
-                                            "involvedAccounts", accounts,
-                                            "iban", account.getAccountIban(),
-                                            "email", user.getUser().getEmail(),
-                                            "timestamp", getCommand().getTimestamp()
-                                    )
-                            );
-                            account.setBalance(account.getBalance() - convertedAmount);
-                        }
+    private void handleNewSplitPayment(List<String> accounts, double amountPerAccount) {
+        double totalAmount = getCommand().getAmount();
+        String currency = getCommand().getCurrency();
+        String splitPaymentType = getCommand().getSplitPaymentType();
+        int timestamp = getCommand().getTimestamp();
 
-                        SplitPaymentTransaction transaction = (SplitPaymentTransaction)
-                                CreateTransaction.getInstance()
-                                        .createTransaction("SplitPayment", params);
-                        getTransactions().add(transaction);
-                    }
+        HashMap<String, Boolean> approvalStatus = new HashMap<>();
+        for (String iban : accounts) {
+            approvalStatus.put(iban, false);
+        }
+
+        QueueSplitPayment pendingPayment;
+        if ("equal".equals(splitPaymentType)) {
+            double amountPerUser = totalAmount / accounts.size();
+            List<Double> amountsForUsers = new ArrayList<>();
+            for (int i = 0; i < accounts.size(); i++) {
+                amountsForUsers.add(amountPerUser);
+            }
+
+            pendingPayment = new QueueSplitPayment(
+                    accounts, amountsForUsers, totalAmount, currency, approvalStatus, timestamp, splitPaymentType
+            );
+        } else { // "custom"
+            List<Double> amountsForUsers = getCommand().getAmountForUsers();
+            if (amountsForUsers.size() != accounts.size()) {
+                System.out.println("Number of amounts does not match number of accounts. Aborting.");
+                return;
+            }
+
+            pendingPayment = new QueueSplitPayment(
+                    accounts, amountsForUsers, totalAmount, currency, approvalStatus, timestamp, splitPaymentType
+            );
+        }
+
+        getQueueSplitPayments().add(pendingPayment);
+    }
+
+    private void processSplitPaymentCustom(QueueSplitPayment pendingPayment) {
+        List<String> accounts = pendingPayment.getAccounts();
+        List<Double> amounts = pendingPayment.getAmounts();
+        String currency = pendingPayment.getCurrency();
+
+        for (int i = 0; i < accounts.size(); i++) {
+            String iban = accounts.get(i);
+            Account account = findAccountByIBAN(iban);
+            if (account != null) {
+                double requiredAmount = getGraph().convertCurrency(amounts.get(i), currency, account.getCurrency());
+                account.setBalance(account.getBalance() - requiredAmount);
+                User user = findUserByIBAN(iban);
+                if (user != null) {
+                    Map<String, Object> params = Map.of(
+                            "description", String.format("Split payment of %.2f %s", pendingPayment.getTotalAmount(), currency),
+                            "timestamp", pendingPayment.getTimestamp(),
+                            "email", user.getUser().getEmail(),
+                            "amountsForUsers", amounts, // Lista de sume pentru utilizatori
+                            "currency", currency,
+                            "involvedAccounts", accounts, // Lista conturilor implicate
+                            "splitPaymentType", "custom"
+                    );
+
+                    SplitPaymentCustomGoodTransaction transaction = (SplitPaymentCustomGoodTransaction)
+                            CreateTransaction.getInstance().createTransaction("SplitPaymentCustomGoodTransaction", params);
+
+                    getTransactions().add(transaction);
+
+
+                    getTransactions().sort((t1, t2) -> Integer.compare(t1.getTimestamp(), t2.getTimestamp()));
                 }
             }
         }
+        pendingPayment.markAsCompleted();
     }
 
-    /**
-     * For future development
-     */
+    private void processSplitPaymentEqual(QueueSplitPayment pendingPayment, double amountPerUser) {
+        List<String> accounts = pendingPayment.getAccounts();
+        String currency = pendingPayment.getCurrency();
+
+        for (String iban : accounts) {
+            Account account = findAccountByIBAN(iban);
+            if (account != null) {
+                double requiredAmount = getGraph().convertCurrency(amountPerUser, currency, account.getCurrency());
+                account.setBalance(account.getBalance() - requiredAmount);
+                User user = findUserByIBAN(iban);
+                if (user != null) {
+//                    Transaction transaction = new Transaction(
+//                            List.of(amountPerUser),
+//                            currency,
+//                            pendingPayment.getTotalAmount(),
+//                            accounts,
+//                            "equal",
+//                            pendingPayment.getTimestamp(),
+//                            user.getUser().getEmail()
+//                    );
+//                    getTransactions().add(transaction);
+                    getTransactions().sort((t1, t2) -> Integer.compare(t1.getTimestamp(), t2.getTimestamp()));
+                }
+            }
+        }
+        pendingPayment.markAsCompleted();
+    }
+
+    private User findUserByIBAN(String iban) {
+        for (User user : getUsers()) {
+            for (Account account : user.getAccounts()) {
+                if (account.getAccountIban().equals(iban)) {
+                    return user;
+                }
+            }
+        }
+        return null;
+    }
+
+    private Account findAccountByIBAN(String iban) {
+        for (User user : getUsers()) {
+            for (Account account : user.getAccounts()) {
+                if (account.getAccountIban().equals(iban)) {
+                    return account;
+                }
+            }
+        }
+        return null;
+    }
+
     @Override
     public void undo() {
     }

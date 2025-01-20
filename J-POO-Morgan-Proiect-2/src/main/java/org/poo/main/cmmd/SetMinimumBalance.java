@@ -21,7 +21,7 @@ public class SetMinimumBalance extends Command {
     public SetMinimumBalance(final ArrayList<User> users, final CommandInput command) {
         super(users, null, null, command,
                 null, null, null,
-                null, null);
+                null, null, null);
     }
 
     /**

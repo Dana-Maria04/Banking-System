@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Commerciant;
 import org.poo.main.userinfo.ExchangeGraph;
+import org.poo.main.userinfo.QueueSplitPayment;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
@@ -33,6 +34,7 @@ public abstract class Command {
     private final ArrayList<Transaction> transactions;
     private final ArrayList<PayOnlineTransaction> spendingsReportTransactions;
     private final ArrayList<Commerciant> commerciants;
+    private final ArrayList<QueueSplitPayment> queueSplitPayments;
 
     /**
      * Constructor for the Command class, initializing the parameters needed for
@@ -52,7 +54,8 @@ public abstract class Command {
                    final ObjectMapper objectMapper, final ExchangeGraph graph,
                    final ArrayList<Transaction> transactions,
                    final ArrayList<PayOnlineTransaction> spendingsReportTransactions,
-                   final ArrayList<Commerciant> commerciants) {
+                   final ArrayList<Commerciant> commerciants,
+                   final ArrayList<QueueSplitPayment> queueSplitPayments) {
         this.users = users;
         this.commandNode = commandNode;
         this.output = output;
@@ -62,6 +65,7 @@ public abstract class Command {
         this.transactions = transactions;
         this.spendingsReportTransactions = spendingsReportTransactions;
         this.commerciants = commerciants;
+        this.queueSplitPayments = queueSplitPayments;
     }
 
     /**

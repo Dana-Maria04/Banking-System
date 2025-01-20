@@ -16,7 +16,7 @@ public class UpgradePlan extends Command{
     public UpgradePlan(final ExchangeGraph graph, final CommandInput commandInput,
                            final ArrayList<Transaction> transactions, final ArrayList<User> users) {
         super(users, null, null, commandInput, null,
-                graph, transactions, null, null);
+                graph, transactions, null, null, null);
     }
 
     @Override

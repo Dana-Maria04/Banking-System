@@ -26,7 +26,7 @@ public class DeleteCard extends Command {
     public DeleteCard(final ArrayList<User> users, final CommandInput command,
                       final ArrayList<Transaction> transactions) {
         super(users, null, null, command,
-                null, null, transactions, null, null);
+                null, null, transactions, null, null, null);
     }
 
     /**

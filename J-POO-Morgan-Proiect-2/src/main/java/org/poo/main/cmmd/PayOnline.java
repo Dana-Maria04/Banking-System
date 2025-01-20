@@ -39,7 +39,7 @@ public class PayOnline extends Command {
                      final ArrayList<PayOnlineTransaction> payOnlineTransactions,
                      final ArrayList<Commerciant> commerciants) {
         super(users, commandNode, output, command, objectMapper,
-                exchangeGraph, transactions, payOnlineTransactions, commerciants);
+                exchangeGraph, transactions, payOnlineTransactions, commerciants, null);
     }
 
     /**

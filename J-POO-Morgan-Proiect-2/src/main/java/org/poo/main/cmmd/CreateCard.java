@@ -30,7 +30,7 @@ public class CreateCard extends Command {
                       final ArrayList<Transaction> transactions) {
         super(users, null, null,
                 command, null, null, transactions,
-                null, null);
+                null, null, null);
         this.oneTime = oneTime;
     }
 

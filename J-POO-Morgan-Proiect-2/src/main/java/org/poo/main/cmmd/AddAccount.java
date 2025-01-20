@@ -34,7 +34,7 @@ public class AddAccount extends Command {
                       final ArrayNode output, final CommandInput command,
                       final ObjectMapper objectMapper, final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper, null,
-                transactions, null, null);
+                transactions, null, null, null);
     }
 
     /**

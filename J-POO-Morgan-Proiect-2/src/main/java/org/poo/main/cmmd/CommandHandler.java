@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.*;
 import org.poo.main.userinfo.Commerciant;
 import org.poo.main.userinfo.ExchangeGraph;
+import org.poo.main.userinfo.QueueSplitPayment;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
@@ -62,6 +63,8 @@ public class CommandHandler {
             commerciant.getCommerciant().setAccount(commerciantInput.getAccount());
             commerciants.add(commerciant);
         }
+        ArrayList<QueueSplitPayment> queueSplitPayments = new ArrayList<>();
+
 
 
         Utils.resetRandom();
@@ -130,7 +133,7 @@ public class CommandHandler {
                     break;
                 case "splitPayment":
                     SplitPayment splitPayment = new SplitPayment(graph, users, commandNode, output,
-                            cmd, objectMapper, transactions);
+                            cmd, objectMapper, transactions, queueSplitPayments);
                     splitPayment.execute();
                     break;
                 case "report":
@@ -166,6 +169,11 @@ public class CommandHandler {
                     CashWithdrawal cashWithdrawal = new CashWithdrawal(users, commandNode, output,
                             cmd, objectMapper, transactions, graph);
                     cashWithdrawal.execute();
+                    break;
+                case "acceptSplitPayment":
+                    SplitPayment splitPayment1 = new SplitPayment(graph, users, commandNode, output,
+                            cmd, objectMapper, transactions, queueSplitPayments);
+                    splitPayment1.execute();
                     break;
                 default:
                     break;

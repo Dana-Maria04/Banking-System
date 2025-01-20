@@ -34,7 +34,7 @@ public class AddInterestRate extends Command {
                            final ObjectMapper objectMapper,
                            final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper,
-                null, transactions, null, null);
+                null, transactions, null, null, null);
     }
 
     /**

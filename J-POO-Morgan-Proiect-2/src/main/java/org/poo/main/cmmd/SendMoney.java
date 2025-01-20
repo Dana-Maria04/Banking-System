@@ -36,7 +36,7 @@ public class SendMoney extends Command {
                      final ObjectMapper objectMapper, final ObjectNode commandNode,
                      final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions,
-                null, null);
+                null, null, null);
     }
 
     /**
@@ -99,9 +99,9 @@ public class SendMoney extends Command {
             return;
         }
         // Check if the sender's balance is below the minimum required balance after the transfer
-        if (sender.getMinimumBalance() > sender.getBalance() - getCommand().getAmount()) {
+        if (sender.getMinimumBalance() >= sender.getBalance() - getCommand().getAmount()) {
             final Map<String, Object> belowMinimumBalanceParams = createTransactionParams(
-                    "Insufficient funds (below minimum balance)",
+                    "Insufficient funds",
                     0.0,
                     sender.getAccountIban(),
                     receiver.getAccountIban(),

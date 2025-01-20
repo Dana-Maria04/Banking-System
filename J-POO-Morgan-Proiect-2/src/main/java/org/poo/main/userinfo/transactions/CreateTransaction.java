@@ -1,8 +1,10 @@
 package org.poo.main.userinfo.transactions;
 
-import org.poo.main.cmmd.UpgradePlan;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.splitTransactions.InsufficientFundsSplitCustomTransaction;
+import org.poo.main.userinfo.transactions.splitTransactions.InsufficientFundsSplitEqualTransaction;
+import org.poo.main.userinfo.transactions.splitTransactions.SplitPaymentCustomGoodTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +126,41 @@ public final class CreateTransaction implements TransactionFactory {
                     (String) params.get("iban"),
                     (String) params.get("error")
             );
+            case "InsufficientFundsSplit" -> new InsufficientFundsSplitCustomTransaction.Builder()
+                    .setDescription((String) params.get("description"))
+                    .setTimestamp((int) params.get("timestamp"))
+                    .setEmail((String) params.get("email"))
+                    .setTotalAmount((double) params.get("totalAmount"))
+                    .setCurrency((String) params.get("currency"))
+                    .setAmountForUsers((List<Double>) params.get("amountForUsers"))
+                    .setInvolvedAccounts((List<String>) params.get("involvedAccounts"))
+                    .setSplitPaymentType((String) params.get("splitPaymentType"))
+                    .setError((String) params.get("error"))
+                    .build();
+
+            case "InsufficientFundsSplitEqualTransaction" -> new InsufficientFundsSplitEqualTransaction.Builder()
+                    .setDescription((String) params.get("description"))
+                    .setTimestamp((int) params.get("timestamp"))
+                    .setEmail((String) params.get("email"))
+                    .setAmountsForUsers((List<Double>) params.get("amountsForUsers"))
+                    .setCurrency((String) params.get("currency"))
+                    .setTotalAmount((double) params.get("totalAmount"))
+                    .setInvolvedAccounts((List<String>) params.get("involvedAccounts"))
+                    .setSplitPaymentType((String) params.get("splitPaymentType"))
+                    .setError((String) params.get("error"))
+                    .build();
+
+            case "SplitPaymentCustomGoodTransaction" -> new SplitPaymentCustomGoodTransaction.Builder()
+                    .setDescription((String) params.get("description"))
+                    .setTimestamp((int) params.get("timestamp"))
+                    .setEmail((String) params.get("email"))
+                    .setAmountsForUsers((List<Double>) params.get("amountsForUsers"))
+                    .setCurrency((String) params.get("currency"))
+                    .setInvolvedAccounts((List<String>) params.get("involvedAccounts"))
+                    .setSplitPaymentType((String) params.get("splitPaymentType"))
+                    .build();
+
+
             case "WithdrawSavings" -> new WithdrawSavingsTransaction(
                     (String) params.get("description"),
                     (int) params.get("timestamp"),
@@ -151,8 +188,6 @@ public final class CreateTransaction implements TransactionFactory {
                     timestamp,
                     email
             );
-
-
             default -> throw new IllegalArgumentException("Unknown transaction type: " + type);
         };
     }

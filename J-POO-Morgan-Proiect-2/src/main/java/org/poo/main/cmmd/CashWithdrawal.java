@@ -22,7 +22,7 @@ public class CashWithdrawal extends Command {
                           final ObjectMapper objectMapper, final ArrayList<Transaction> transactions,
                           final ExchangeGraph graph) {
         super(users, commandNode, output, command, objectMapper, graph,
-                transactions, null, null);
+                transactions, null, null, null);
     }
 
 

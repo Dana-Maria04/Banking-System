@@ -46,4 +46,11 @@ public abstract class Transaction {
             transactionNode.put("email", email);
         }
     }
+
+    /**
+     * Accepts a visitor for processing this transaction.
+     *
+     * @param visitor The visitor to process the transaction.
+     */
+//    public abstract void accept(TransactionVisitor visitor);
 }
