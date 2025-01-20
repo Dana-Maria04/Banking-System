@@ -69,6 +69,14 @@ public class SendMoney extends Command {
         }
 
         if (receiver == null || sender == null) {
+
+            ObjectNode errorNode = getObjectMapper().createObjectNode();
+            errorNode.put("timestamp", getCommand().getTimestamp());
+            errorNode.put("description", "User not found");
+            getCommandNode().set("output", errorNode);
+            getCommandNode().put("command", "sendMoney");
+            getCommandNode().put("timestamp", getCommand().getTimestamp());
+            getOutput().add(getCommandNode());
             return;
         }
 
@@ -149,6 +157,12 @@ public class SendMoney extends Command {
 
         getTransactions().add(senderTransaction);
         getTransactions().add(receiverTransaction);
+
+        if(senderUser.getUserPlan().equals("standard")){
+            double comision = 0.002 * amount;
+            double sum = exchangeGraph.convertCurrency(comision, "RON", sender.getCurrency());
+            sender.decBalance(sum);
+        }
 
 
         double amountInRON = exchangeGraph.convertCurrency(amount, sender.getCurrency(), "RON");

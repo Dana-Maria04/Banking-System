@@ -136,6 +136,22 @@ public final class CreateTransaction implements TransactionFactory {
                     (String) params.get("iban"),
                     (String) params.get("newPlanType")
             );
+            case "cashWithdrawal" -> new CashWithdrawalTransaction(
+                    description,
+                    timestamp,
+                    email,
+                    (String) params.get("iban"),
+                    (Double) params.get("amount"),
+                    (String) params.get("currency")
+            );
+            case "InterestTransaction" -> new InterestTransaction(
+                    (Double) params.get("income"),
+                    (String) params.get("currency"),
+                    description,
+                    timestamp,
+                    email
+            );
+
 
             default -> throw new IllegalArgumentException("Unknown transaction type: " + type);
         };

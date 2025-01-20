@@ -61,6 +61,8 @@ public class PayOnline extends Command {
         }
 
 
+
+
         for (final User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
                 for (final Account account : user.getAccounts()) {
@@ -70,6 +72,8 @@ public class PayOnline extends Command {
                             getCommand().getCurrency(),
                             account.getCurrency()
                     );
+
+
                     account.pay(convertedAmount, getCommand().getCardNumber(),
                             account.getAccountCards(), user, getCommand(), getTransactions(),
                             account.getAccountIban(),

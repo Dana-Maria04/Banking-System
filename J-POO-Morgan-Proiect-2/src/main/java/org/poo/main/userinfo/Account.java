@@ -74,10 +74,14 @@ public class Account {
         this.foundCard = 0;
         this.insufficientFunds = 0;
 
+        if(amount == 0) {
+            this.insufficientFunds = 1;
+            return;
+        }
+
         //amount este amount ul in currency ul contului
 
 
-//        System.out.printf("comerciant cashbackstrategy: %s\n", commerciant.getCommerciant().getCashbackStrategy());
 
         double cashback = 0;
         double ronAmount = graph.convertCurrency(amount, account.getCurrency(), "RON");
@@ -87,9 +91,6 @@ public class Account {
             return;
         }
 
-//        System.out.printf("user plan: %s\n", user.getUserPlan());
-//        System.out.printf("currency: %s\n", getCurrency());
-//        System.out.printf("currency ul contului %s\n", account.getCurrency());
 
         if(commerciant.getCommerciant().getCashbackStrategy().equals("spendingThreshold")) {
             if((user.getUserPlan().equals("standard") || user.getUserPlan().equals("student"))
@@ -105,10 +106,12 @@ public class Account {
             }
         }
 
-//        System.out.printf("am cashbackul: %f\n", cashback);
 
 
         for (final Card card : cards) {
+
+            System.out.printf("(tmstmp %d) card get number %s si card number %s\n", command.getTimestamp(),card.getCardNumber(), cardNumber);
+
             if (card.getCardNumber().equals(cardNumber)) {
 
                 if (card.getFrozen() == 1) {
@@ -159,6 +162,19 @@ public class Account {
                 );
                 transactions.add(transaction);
                 payOnlineTransactions.add(transaction);
+
+                if(user.getUserPlan().equals("standard")) {
+                    double comision = amount * 0.002;
+                    account.setBalance(account.getBalance() - comision);
+                }
+
+                if(user.getUserPlan().equals("silver") && ronAmount >= 500) {
+                    double comision = amount * 0.001;
+                    account.setBalance(account.getBalance() - comision);
+                }
+
+
+
                 this.foundCard = 1;
                 this.setBalance(this.balance - amount + cashback);
 

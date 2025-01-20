@@ -145,7 +145,7 @@ public class CommandHandler {
                     break;
                 case "addInterest":
                     AddInterestRate addInterest = new AddInterestRate(users, commandNode, output,
-                            cmd, objectMapper);
+                            cmd, objectMapper, transactions);
                     addInterest.execute();
                     break;
                 case "changeInterestRate":
@@ -161,6 +161,11 @@ public class CommandHandler {
                 case "upgradePlan":
                     UpgradePlan upgradePlan = new UpgradePlan(graph, cmd, transactions, users);
                     upgradePlan.execute();
+                    break;
+                case "cashWithdrawal":
+                    CashWithdrawal cashWithdrawal = new CashWithdrawal(users, commandNode, output,
+                            cmd, objectMapper, transactions, graph);
+                    cashWithdrawal.execute();
                     break;
                 default:
                     break;

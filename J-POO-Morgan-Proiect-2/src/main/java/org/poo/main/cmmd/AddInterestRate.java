@@ -6,8 +6,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.transactions.CreateTransaction;
+import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Represents a command to add interest to an account's balance.
@@ -28,9 +31,10 @@ public class AddInterestRate extends Command {
      */
     public AddInterestRate(final ArrayList<User> users, final ObjectNode commandNode,
                            final ArrayNode output, final CommandInput command,
-                           final ObjectMapper objectMapper) {
+                           final ObjectMapper objectMapper,
+                           final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper,
-                null, null, null, null);
+                null, transactions, null, null);
     }
 
     /**
@@ -52,6 +56,19 @@ public class AddInterestRate extends Command {
                                 getOutput(), getCommand(), "This is not a savings account");
                         return;
                     }
+
+                    // aici tranzactia
+
+                    Map<String, Object> params = Map.of(
+                            "income", account.getBalance() * account.getInterestRate(),
+                            "currency", account.getCurrency(),
+                            "description", "Interest rate income",
+                            "timestamp", getCommand().getTimestamp(),
+                            "email", user.getUser().getEmail()
+                    );
+
+                    Transaction transaction = CreateTransaction.getInstance().createTransaction("InterestTransaction", params);
+                    getTransactions().add(transaction);
 
                     account.setBalance(account.getBalance()
                             + account.getBalance() * account.getInterestRate());
