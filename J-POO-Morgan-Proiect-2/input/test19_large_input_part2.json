@@ -1,0 +1,4845 @@
+{
+    "users": [
+        {
+            "firstName": "Omar",
+            "lastName": "Elena Robles Diaz",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "birthDate": "1975-06-11",
+            "occupation": "programmer"
+        },
+        {
+            "firstName": "Dominic",
+            "lastName": "Nicholson",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "birthDate": "2004-02-09",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Marvin",
+            "lastName": "Peterson",
+            "email": "Marvin_Peterson@zoho.ch",
+            "birthDate": "2014-12-17",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Alwin",
+            "lastName": "Dowerg",
+            "email": "Alwin_Dowerg@yandex.de",
+            "birthDate": "1975-02-01",
+            "occupation": "racing driver"
+        },
+        {
+            "firstName": "Angel",
+            "lastName": "Ene",
+            "email": "Angel_Ene@hotmail.ro",
+            "birthDate": "1975-08-29",
+            "occupation": "economist"
+        },
+        {
+            "firstName": "Karen",
+            "lastName": "McIsaac",
+            "email": "Karen_McIsaac@zoho.nz",
+            "birthDate": "2001-07-13",
+            "occupation": "pharmacist"
+        },
+        {
+            "firstName": "Anni",
+            "lastName": "Dorr",
+            "email": "Anni_Dorr@icloud.de",
+            "birthDate": "1996-10-19",
+            "occupation": "doctor"
+        },
+        {
+            "firstName": "Angel",
+            "lastName": "Diaconescu",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "birthDate": "1977-11-07",
+            "occupation": "librarian"
+        },
+        {
+            "firstName": "Karina",
+            "lastName": "Salvador Ramirez Carranza",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "birthDate": "1996-07-26",
+            "occupation": "footballer"
+        },
+        {
+            "firstName": "Pascual",
+            "lastName": "Mesa",
+            "email": "Pascual_Mesa@zoho.mx",
+            "birthDate": "2004-10-17",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Dott.",
+            "lastName": "Arsenio Bellucc",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "birthDate": "1982-02-26",
+            "occupation": "pharmacist"
+        },
+        {
+            "firstName": "Owen",
+            "lastName": "Raju",
+            "email": "Owen_Raju@protonmail.in",
+            "birthDate": "2002-08-01",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Briana",
+            "lastName": "Galloway",
+            "email": "Briana_Galloway@outlook.au",
+            "birthDate": "2001-07-01",
+            "occupation": "designer"
+        },
+        {
+            "firstName": "Chanakya",
+            "lastName": "Dua",
+            "email": "Chanakya_Dua@hushmail.in",
+            "birthDate": "1986-01-20",
+            "occupation": "programmer"
+        },
+        {
+            "firstName": "Rene",
+            "lastName": "Plourde",
+            "email": "Rene_Plourde@protonmail.ca",
+            "birthDate": "1995-05-16",
+            "occupation": "economist"
+        },
+        {
+            "firstName": "Harrison",
+            "lastName": "Iyengar",
+            "email": "Harrison_Iyengar@outlook.in",
+            "birthDate": "1981-08-15",
+            "occupation": "cashier"
+        },
+        {
+            "firstName": "Isabel",
+            "lastName": "Grande Sales",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "birthDate": "2006-07-14",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Tony",
+            "lastName": "Wallace",
+            "email": "Tony_Wallace@mail.com.au",
+            "birthDate": "2012-08-16",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Iris",
+            "lastName": "Sanders-Kramer",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "birthDate": "1998-06-24",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Anna",
+            "lastName": "Robson",
+            "email": "Anna_Robson@hushmail.nz",
+            "birthDate": "1977-02-09",
+            "occupation": "programmer"
+        },
+        {
+            "firstName": "Lucy",
+            "lastName": "Baker-Clark",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "birthDate": "2002-11-05",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Nicole",
+            "lastName": "Herman",
+            "email": "Nicole_Herman@gmail.ch",
+            "birthDate": "1998-08-26",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Connie",
+            "lastName": "Hart",
+            "email": "Connie_Hart@hotmail.us",
+            "birthDate": "1973-10-06",
+            "occupation": "director"
+        },
+        {
+            "firstName": "Bruce",
+            "lastName": "Smith",
+            "email": "Bruce_Smith@hushmail.us",
+            "birthDate": "2009-05-14",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Roland",
+            "lastName": "Beuchat",
+            "email": "Roland_Beuchat@gmx.ch",
+            "birthDate": "2012-01-20",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Aurelio",
+            "lastName": "Calderon",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "birthDate": "1974-12-25",
+            "occupation": "construction worker"
+        },
+        {
+            "firstName": "Isabella",
+            "lastName": "Edwards",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "birthDate": "1998-05-23",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Jacqueline",
+            "lastName": "Lavigne",
+            "email": "Jacqueline_Lavigne@gmx.ca",
+            "birthDate": "2013-11-09",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Heracleea",
+            "lastName": "Ababe",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "birthDate": "1975-01-15",
+            "occupation": "influencer"
+        },
+        {
+            "firstName": "Juana",
+            "lastName": "Magana Zepeda",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "birthDate": "2004-09-05",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Yolanda",
+            "lastName": "Smith",
+            "email": "Yolanda_Smith@mail.com.us",
+            "birthDate": "2001-01-02",
+            "occupation": "footballer"
+        },
+        {
+            "firstName": "Marcelle",
+            "lastName": "Masson",
+            "email": "Marcelle_Masson@zoho.fr",
+            "birthDate": "1982-02-09",
+            "occupation": "actor"
+        },
+        {
+            "firstName": "Karine",
+            "lastName": "Ouellet",
+            "email": "Karine_Ouellet@icloud.ca",
+            "birthDate": "1998-11-29",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Erdogan",
+            "lastName": "Hovel",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "birthDate": "1995-02-10",
+            "occupation": "driver"
+        },
+        {
+            "firstName": "Natalia",
+            "lastName": "Zayas",
+            "email": "Natalia_Zayas@zoho.mx",
+            "birthDate": "1973-12-05",
+            "occupation": "pharmacist"
+        }
+    ],
+    "commerciants": [
+        {
+            "commerciant": "KFC",
+            "id": 100,
+            "account": "RO22POOB3875162728202296",
+            "type": "Food",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "Samsung",
+            "id": 113,
+            "account": "RO28POOB5923933391234057",
+            "type": "Tech",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Burger King",
+            "id": 108,
+            "account": "RO25POOB4386521661484930",
+            "type": "Food",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "Zara",
+            "id": 79,
+            "account": "RO32POOB8964686295716974",
+            "type": "Clothes",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "McDonalds",
+            "id": 99,
+            "account": "RO75POOB9251835314648427",
+            "type": "Food",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Amazon",
+            "id": 118,
+            "account": "RO15POOB4333403266660236",
+            "type": "Tech",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "H&M",
+            "id": 84,
+            "account": "RO95POOB9807857732666986",
+            "type": "Clothes",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "Microsoft",
+            "id": 116,
+            "account": "RO66POOB9463355196372136",
+            "type": "Tech",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Apple",
+            "id": 112,
+            "account": "RO01POOB5884922951883378",
+            "type": "Tech",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Nike",
+            "id": 90,
+            "account": "RO17POOB8495306331082091",
+            "type": "Clothes",
+            "cashbackStrategy": "nrOfTransactions"
+        }
+    ],
+    "exchangeRates": [
+        {
+            "from": "USD",
+            "to": "EUR",
+            "rate": 0.9
+        },
+        {
+            "from": "EUR",
+            "to": "RON",
+            "rate": 5.0
+        },
+        {
+            "from": "USD",
+            "to": "RON",
+            "rate": 4.5
+        },
+        {
+            "from": "USD",
+            "to": "GBP",
+            "rate": 0.8
+        },
+        {
+            "from": "USD",
+            "to": "AUD",
+            "rate": 1.5
+        },
+        {
+            "from": "USD",
+            "to": "CAD",
+            "rate": 1.3
+        },
+        {
+            "from": "USD",
+            "to": "CHF",
+            "rate": 1.1
+        },
+        {
+            "from": "USD",
+            "to": "CNY",
+            "rate": 7.0
+        },
+        {
+            "from": "USD",
+            "to": "INR",
+            "rate": 70.0
+        },
+        {
+            "from": "USD",
+            "to": "NZD",
+            "rate": 1.6
+        },
+        {
+            "from": "USD",
+            "to": "MXN",
+            "rate": 20.0
+        }
+    ],
+    "commands": [
+        {
+            "command": "addAccount",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "currency": "MXN",
+            "accountType": "classic",
+            "timestamp": 1
+        },
+        {
+            "command": "createCard",
+            "account": "RO58POOB7344468893732422",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "timestamp": 14
+        },
+        {
+            "command": "addFunds",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "account": "RO58POOB7344468893732422",
+            "amount": 255,
+            "timestamp": 15
+        },
+        {
+            "command": "addAccount",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "currency": "GBP",
+            "accountType": "classic",
+            "timestamp": 16
+        },
+        {
+            "command": "createCard",
+            "account": "RO69POOB6209498372540635",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "timestamp": 29
+        },
+        {
+            "command": "addFunds",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "account": "RO69POOB6209498372540635",
+            "amount": 589,
+            "timestamp": 30
+        },
+        {
+            "command": "addAccount",
+            "email": "Marvin_Peterson@zoho.ch",
+            "currency": "CHF",
+            "accountType": "classic",
+            "timestamp": 31
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO90POOB5450777208072365",
+            "email": "Marvin_Peterson@zoho.ch",
+            "timestamp": 44
+        },
+        {
+            "command": "addFunds",
+            "email": "Marvin_Peterson@zoho.ch",
+            "account": "RO90POOB5450777208072365",
+            "amount": 615,
+            "timestamp": 45
+        },
+        {
+            "command": "addAccount",
+            "email": "Alwin_Dowerg@yandex.de",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 46
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO65POOB8944016386845896",
+            "email": "Alwin_Dowerg@yandex.de",
+            "timestamp": 56
+        },
+        {
+            "command": "addFunds",
+            "email": "Alwin_Dowerg@yandex.de",
+            "account": "RO65POOB8944016386845896",
+            "amount": 77,
+            "timestamp": 57
+        },
+        {
+            "command": "addAccount",
+            "email": "Angel_Ene@hotmail.ro",
+            "currency": "RON",
+            "accountType": "classic",
+            "timestamp": 58
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO58POOB2721178218599590",
+            "email": "Angel_Ene@hotmail.ro",
+            "timestamp": 62
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Ene@hotmail.ro",
+            "account": "RO58POOB2721178218599590",
+            "amount": 652,
+            "timestamp": 63
+        },
+        {
+            "command": "addAccount",
+            "email": "Karen_McIsaac@zoho.nz",
+            "currency": "NZD",
+            "accountType": "classic",
+            "timestamp": 64
+        },
+        {
+            "command": "createCard",
+            "account": "RO76POOB4035116042454483",
+            "email": "Karen_McIsaac@zoho.nz",
+            "timestamp": 70
+        },
+        {
+            "command": "addFunds",
+            "email": "Karen_McIsaac@zoho.nz",
+            "account": "RO76POOB4035116042454483",
+            "amount": 503,
+            "timestamp": 71
+        },
+        {
+            "command": "addAccount",
+            "email": "Anni_Dorr@icloud.de",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 72
+        },
+        {
+            "command": "createCard",
+            "account": "RO37POOB7013767509830666",
+            "email": "Anni_Dorr@icloud.de",
+            "timestamp": 77
+        },
+        {
+            "command": "addFunds",
+            "email": "Anni_Dorr@icloud.de",
+            "account": "RO37POOB7013767509830666",
+            "amount": 88,
+            "timestamp": 78
+        },
+        {
+            "command": "addAccount",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "currency": "RON",
+            "accountType": "classic",
+            "timestamp": 79
+        },
+        {
+            "command": "createCard",
+            "account": "RO19POOB4981055641668812",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "timestamp": 97
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "account": "RO19POOB4981055641668812",
+            "amount": 460,
+            "timestamp": 98
+        },
+        {
+            "command": "addAccount",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "currency": "MXN",
+            "accountType": "classic",
+            "timestamp": 99
+        },
+        {
+            "command": "createCard",
+            "account": "RO30POOB9523423715747796",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "timestamp": 115
+        },
+        {
+            "command": "addFunds",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "account": "RO30POOB9523423715747796",
+            "amount": 85,
+            "timestamp": 116
+        },
+        {
+            "command": "addAccount",
+            "email": "Pascual_Mesa@zoho.mx",
+            "currency": "MXN",
+            "accountType": "classic",
+            "timestamp": 117
+        },
+        {
+            "command": "createCard",
+            "account": "RO79POOB3616857825600958",
+            "email": "Pascual_Mesa@zoho.mx",
+            "timestamp": 123
+        },
+        {
+            "command": "addFunds",
+            "email": "Pascual_Mesa@zoho.mx",
+            "account": "RO79POOB3616857825600958",
+            "amount": 331,
+            "timestamp": 124
+        },
+        {
+            "command": "addAccount",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 125
+        },
+        {
+            "command": "createCard",
+            "account": "RO00POOB5687892910835215",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "timestamp": 143
+        },
+        {
+            "command": "addFunds",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "account": "RO00POOB5687892910835215",
+            "amount": 962,
+            "timestamp": 144
+        },
+        {
+            "command": "addAccount",
+            "email": "Owen_Raju@protonmail.in",
+            "currency": "INR",
+            "accountType": "classic",
+            "timestamp": 145
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO96POOB6738272785416988",
+            "email": "Owen_Raju@protonmail.in",
+            "timestamp": 157
+        },
+        {
+            "command": "addFunds",
+            "email": "Owen_Raju@protonmail.in",
+            "account": "RO96POOB6738272785416988",
+            "amount": 720,
+            "timestamp": 158
+        },
+        {
+            "command": "addAccount",
+            "email": "Briana_Galloway@outlook.au",
+            "currency": "AUD",
+            "accountType": "classic",
+            "timestamp": 159
+        },
+        {
+            "command": "createCard",
+            "account": "RO33POOB4049920806186500",
+            "email": "Briana_Galloway@outlook.au",
+            "timestamp": 177
+        },
+        {
+            "command": "addFunds",
+            "email": "Briana_Galloway@outlook.au",
+            "account": "RO33POOB4049920806186500",
+            "amount": 317,
+            "timestamp": 178
+        },
+        {
+            "command": "addAccount",
+            "email": "Chanakya_Dua@hushmail.in",
+            "currency": "INR",
+            "accountType": "classic",
+            "timestamp": 179
+        },
+        {
+            "command": "createCard",
+            "account": "RO69POOB9846198978826791",
+            "email": "Chanakya_Dua@hushmail.in",
+            "timestamp": 198
+        },
+        {
+            "command": "addFunds",
+            "email": "Chanakya_Dua@hushmail.in",
+            "account": "RO69POOB9846198978826791",
+            "amount": 342,
+            "timestamp": 199
+        },
+        {
+            "command": "addAccount",
+            "email": "Rene_Plourde@protonmail.ca",
+            "currency": "CAD",
+            "accountType": "classic",
+            "timestamp": 200
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO98POOB8412955460158769",
+            "email": "Rene_Plourde@protonmail.ca",
+            "timestamp": 211
+        },
+        {
+            "command": "addFunds",
+            "email": "Rene_Plourde@protonmail.ca",
+            "account": "RO98POOB8412955460158769",
+            "amount": 206,
+            "timestamp": 212
+        },
+        {
+            "command": "addAccount",
+            "email": "Harrison_Iyengar@outlook.in",
+            "currency": "INR",
+            "accountType": "classic",
+            "timestamp": 213
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO32POOB0130532963818359",
+            "email": "Harrison_Iyengar@outlook.in",
+            "timestamp": 220
+        },
+        {
+            "command": "addFunds",
+            "email": "Harrison_Iyengar@outlook.in",
+            "account": "RO32POOB0130532963818359",
+            "amount": 461,
+            "timestamp": 221
+        },
+        {
+            "command": "addAccount",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 222
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO68POOB1848616931405475",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "timestamp": 238
+        },
+        {
+            "command": "addFunds",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "account": "RO68POOB1848616931405475",
+            "amount": 582,
+            "timestamp": 239
+        },
+        {
+            "command": "addAccount",
+            "email": "Tony_Wallace@mail.com.au",
+            "currency": "AUD",
+            "accountType": "classic",
+            "timestamp": 240
+        },
+        {
+            "command": "createCard",
+            "account": "RO10POOB4354933866366881",
+            "email": "Tony_Wallace@mail.com.au",
+            "timestamp": 245
+        },
+        {
+            "command": "addFunds",
+            "email": "Tony_Wallace@mail.com.au",
+            "account": "RO10POOB4354933866366881",
+            "amount": 793,
+            "timestamp": 246
+        },
+        {
+            "command": "addAccount",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 247
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO33POOB9999273999620457",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 259
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO33POOB9999273999620457",
+            "amount": 939,
+            "timestamp": 260
+        },
+        {
+            "command": "addAccount",
+            "email": "Anna_Robson@hushmail.nz",
+            "currency": "NZD",
+            "accountType": "classic",
+            "timestamp": 261
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO38POOB0964823730995794",
+            "email": "Anna_Robson@hushmail.nz",
+            "timestamp": 282
+        },
+        {
+            "command": "addFunds",
+            "email": "Anna_Robson@hushmail.nz",
+            "account": "RO38POOB0964823730995794",
+            "amount": 730,
+            "timestamp": 283
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "cardNumber": "8431794639822740",
+            "amount": 704.0,
+            "location": "Rachaelfort",
+            "timestamp": 284
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "6467982927008637",
+            "amount": 684.0,
+            "location": "Sandersberg",
+            "timestamp": 285
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Alwin_Dowerg@yandex.de",
+            "cardNumber": "6796819982034243",
+            "amount": 74.0,
+            "location": "Lake Thomas",
+            "timestamp": 286
+        },
+        {
+            "command": "payOnline",
+            "email": "Marvin_Peterson@zoho.ch",
+            "cardNumber": "7004757825892043",
+            "amount": 109,
+            "currency": "NZD",
+            "timestamp": 287,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "cardNumber": "4069340791718491",
+            "amount": 444,
+            "currency": "EUR",
+            "timestamp": 288,
+            "description": "Online payment",
+            "commerciant": "H&M"
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Harrison_Iyengar@outlook.in",
+            "cardNumber": "8509650399173661",
+            "amount": 82.0,
+            "location": "Rachaelfort",
+            "timestamp": 289
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Rene_Plourde@protonmail.ca",
+            "cardNumber": "0084627535411906",
+            "amount": 6.0,
+            "location": "Howardberg",
+            "timestamp": 290
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Marvin_Peterson@zoho.ch",
+            "cardNumber": "7004757825892043",
+            "amount": 231.0,
+            "location": "Lynnbury",
+            "timestamp": 291
+        },
+        {
+            "command": "payOnline",
+            "email": "Karen_McIsaac@zoho.nz",
+            "cardNumber": "1322658752653937",
+            "amount": 226,
+            "currency": "CAD",
+            "timestamp": 292,
+            "description": "Online payment",
+            "commerciant": "Burger King"
+        },
+        {
+            "command": "payOnline",
+            "email": "Tony_Wallace@mail.com.au",
+            "cardNumber": "6592968050400705",
+            "amount": 711,
+            "currency": "GBP",
+            "timestamp": 293,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "addFunds",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "account": "RO58POOB7344468893732422",
+            "amount": 536,
+            "timestamp": 294
+        },
+        {
+            "command": "addFunds",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "account": "RO69POOB6209498372540635",
+            "amount": 447,
+            "timestamp": 295
+        },
+        {
+            "command": "addFunds",
+            "email": "Marvin_Peterson@zoho.ch",
+            "account": "RO90POOB5450777208072365",
+            "amount": 536,
+            "timestamp": 296
+        },
+        {
+            "command": "addFunds",
+            "email": "Alwin_Dowerg@yandex.de",
+            "account": "RO65POOB8944016386845896",
+            "amount": 744,
+            "timestamp": 297
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Ene@hotmail.ro",
+            "account": "RO58POOB2721178218599590",
+            "amount": 306,
+            "timestamp": 298
+        },
+        {
+            "command": "addFunds",
+            "email": "Karen_McIsaac@zoho.nz",
+            "account": "RO76POOB4035116042454483",
+            "amount": 15,
+            "timestamp": 299
+        },
+        {
+            "command": "addFunds",
+            "email": "Anni_Dorr@icloud.de",
+            "account": "RO37POOB7013767509830666",
+            "amount": 752,
+            "timestamp": 300
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "account": "RO19POOB4981055641668812",
+            "amount": 836,
+            "timestamp": 301
+        },
+        {
+            "command": "addFunds",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "account": "RO30POOB9523423715747796",
+            "amount": 585,
+            "timestamp": 302
+        },
+        {
+            "command": "addFunds",
+            "email": "Pascual_Mesa@zoho.mx",
+            "account": "RO79POOB3616857825600958",
+            "amount": 941,
+            "timestamp": 303
+        },
+        {
+            "command": "addFunds",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "account": "RO00POOB5687892910835215",
+            "amount": 339,
+            "timestamp": 304
+        },
+        {
+            "command": "addFunds",
+            "email": "Owen_Raju@protonmail.in",
+            "account": "RO96POOB6738272785416988",
+            "amount": 721,
+            "timestamp": 305
+        },
+        {
+            "command": "addFunds",
+            "email": "Briana_Galloway@outlook.au",
+            "account": "RO33POOB4049920806186500",
+            "amount": 512,
+            "timestamp": 306
+        },
+        {
+            "command": "addFunds",
+            "email": "Chanakya_Dua@hushmail.in",
+            "account": "RO69POOB9846198978826791",
+            "amount": 370,
+            "timestamp": 307
+        },
+        {
+            "command": "addFunds",
+            "email": "Rene_Plourde@protonmail.ca",
+            "account": "RO98POOB8412955460158769",
+            "amount": 543,
+            "timestamp": 308
+        },
+        {
+            "command": "addFunds",
+            "email": "Harrison_Iyengar@outlook.in",
+            "account": "RO32POOB0130532963818359",
+            "amount": 719,
+            "timestamp": 309
+        },
+        {
+            "command": "addFunds",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "account": "RO68POOB1848616931405475",
+            "amount": 88,
+            "timestamp": 310
+        },
+        {
+            "command": "addFunds",
+            "email": "Tony_Wallace@mail.com.au",
+            "account": "RO10POOB4354933866366881",
+            "amount": 226,
+            "timestamp": 311
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO33POOB9999273999620457",
+            "amount": 469,
+            "timestamp": 312
+        },
+        {
+            "command": "addFunds",
+            "email": "Anna_Robson@hushmail.nz",
+            "account": "RO38POOB0964823730995794",
+            "amount": 798,
+            "timestamp": 313
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 314
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO68POOB1848616931405475",
+            "amount": 42.0,
+            "receiver": "RO33POOB9999273999620457",
+            "timestamp": 315,
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "description": "Monthly rent payment for a flat in Madrid"
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO96POOB6738272785416988",
+            "amount": 901.0,
+            "receiver": "RO37POOB7013767509830666",
+            "timestamp": 316,
+            "email": "Owen_Raju@protonmail.in",
+            "description": "Ola rides for commuting"
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO38POOB0964823730995794",
+            "amount": 410.0,
+            "receiver": "RO90POOB5450777208072365",
+            "timestamp": 317,
+            "email": "Anna_Robson@hushmail.nz",
+            "description": "Weekly groceries from Countdown"
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO90POOB5450777208072365",
+            "amount": 736.0,
+            "receiver": "RO68POOB1848616931405475",
+            "timestamp": 318,
+            "email": "Marvin_Peterson@zoho.ch",
+            "description": "Booking a holiday in the Swiss Alps"
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO58POOB2721178218599590",
+            "amount": 908.0,
+            "receiver": "RO33POOB9999273999620457",
+            "timestamp": 319,
+            "email": "Angel_Ene@hotmail.ro",
+            "description": "Monthly health insurance payment"
+        },
+        {
+            "command": "splitPayment",
+            "splitPaymentType": "custom",
+            "accounts": [
+                "RO58POOB7344468893732422",
+                "RO69POOB6209498372540635",
+                "RO90POOB5450777208072365",
+                "RO65POOB8944016386845896",
+                "RO58POOB2721178218599590",
+                "RO76POOB4035116042454483",
+                "RO37POOB7013767509830666",
+                "RO19POOB4981055641668812",
+                "RO30POOB9523423715747796",
+                "RO79POOB3616857825600958",
+                "RO00POOB5687892910835215",
+                "RO96POOB6738272785416988",
+                "RO33POOB4049920806186500",
+                "RO69POOB9846198978826791",
+                "RO98POOB8412955460158769",
+                "RO32POOB0130532963818359",
+                "RO68POOB1848616931405475",
+                "RO10POOB4354933866366881",
+                "RO33POOB9999273999620457",
+                "RO38POOB0964823730995794"
+            ],
+            "amount": 11252.1,
+            "amountForUsers": [
+                308.0,
+                783.9,
+                422.4,
+                154,
+                875.0,
+                79.2,
+                640,
+                220.0,
+                616.0,
+                1188.0,
+                326,
+                616.0,
+                316.8,
+                693.0,
+                627.2,
+                1078.0,
+                63,
+                251.2,
+                513,
+                1481.4
+            ],
+            "currency": "EUR",
+            "timestamp": 320
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 321
+        },
+        {
+            "command": "printTransactions",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "timestamp": 322
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "splitPaymentType": "custom",
+            "timestamp": 323
+        },
+        {
+            "command": "printTransactions",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "timestamp": 324
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Marvin_Peterson@zoho.ch",
+            "splitPaymentType": "custom",
+            "timestamp": 325
+        },
+        {
+            "command": "printTransactions",
+            "email": "Marvin_Peterson@zoho.ch",
+            "timestamp": 326
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Alwin_Dowerg@yandex.de",
+            "splitPaymentType": "custom",
+            "timestamp": 327
+        },
+        {
+            "command": "printTransactions",
+            "email": "Alwin_Dowerg@yandex.de",
+            "timestamp": 328
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Angel_Ene@hotmail.ro",
+            "splitPaymentType": "custom",
+            "timestamp": 329
+        },
+        {
+            "command": "printTransactions",
+            "email": "Angel_Ene@hotmail.ro",
+            "timestamp": 330
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Karen_McIsaac@zoho.nz",
+            "splitPaymentType": "custom",
+            "timestamp": 331
+        },
+        {
+            "command": "printTransactions",
+            "email": "Karen_McIsaac@zoho.nz",
+            "timestamp": 332
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Anni_Dorr@icloud.de",
+            "splitPaymentType": "custom",
+            "timestamp": 333
+        },
+        {
+            "command": "printTransactions",
+            "email": "Anni_Dorr@icloud.de",
+            "timestamp": 334
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "splitPaymentType": "custom",
+            "timestamp": 335
+        },
+        {
+            "command": "printTransactions",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "timestamp": 336
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 337
+        },
+        {
+            "command": "printTransactions",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "timestamp": 338
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Pascual_Mesa@zoho.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 339
+        },
+        {
+            "command": "printTransactions",
+            "email": "Pascual_Mesa@zoho.mx",
+            "timestamp": 340
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "splitPaymentType": "custom",
+            "timestamp": 341
+        },
+        {
+            "command": "printTransactions",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "timestamp": 342
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Owen_Raju@protonmail.in",
+            "splitPaymentType": "custom",
+            "timestamp": 343
+        },
+        {
+            "command": "printTransactions",
+            "email": "Owen_Raju@protonmail.in",
+            "timestamp": 344
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Briana_Galloway@outlook.au",
+            "splitPaymentType": "custom",
+            "timestamp": 345
+        },
+        {
+            "command": "printTransactions",
+            "email": "Briana_Galloway@outlook.au",
+            "timestamp": 346
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Chanakya_Dua@hushmail.in",
+            "splitPaymentType": "custom",
+            "timestamp": 347
+        },
+        {
+            "command": "printTransactions",
+            "email": "Chanakya_Dua@hushmail.in",
+            "timestamp": 348
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Rene_Plourde@protonmail.ca",
+            "splitPaymentType": "custom",
+            "timestamp": 349
+        },
+        {
+            "command": "printTransactions",
+            "email": "Rene_Plourde@protonmail.ca",
+            "timestamp": 350
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Harrison_Iyengar@outlook.in",
+            "splitPaymentType": "custom",
+            "timestamp": 351
+        },
+        {
+            "command": "printTransactions",
+            "email": "Harrison_Iyengar@outlook.in",
+            "timestamp": 352
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "splitPaymentType": "custom",
+            "timestamp": 353
+        },
+        {
+            "command": "printTransactions",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "timestamp": 354
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Tony_Wallace@mail.com.au",
+            "splitPaymentType": "custom",
+            "timestamp": 355
+        },
+        {
+            "command": "printTransactions",
+            "email": "Tony_Wallace@mail.com.au",
+            "timestamp": 356
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "splitPaymentType": "custom",
+            "timestamp": 357
+        },
+        {
+            "command": "printTransactions",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 358
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Anna_Robson@hushmail.nz",
+            "splitPaymentType": "custom",
+            "timestamp": 359
+        },
+        {
+            "command": "printTransactions",
+            "email": "Anna_Robson@hushmail.nz",
+            "timestamp": 360
+        },
+        {
+            "command": "addAccount",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "currency": "GBP",
+            "accountType": "classic",
+            "timestamp": 361
+        },
+        {
+            "command": "createCard",
+            "account": "RO53POOB7122855990652257",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "timestamp": 375
+        },
+        {
+            "command": "addFunds",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "account": "RO53POOB7122855990652257",
+            "amount": 63.0,
+            "timestamp": 376
+        },
+        {
+            "command": "addAccount",
+            "email": "Nicole_Herman@gmail.ch",
+            "currency": "CHF",
+            "accountType": "classic",
+            "timestamp": 377
+        },
+        {
+            "command": "createCard",
+            "account": "RO71POOB1634969878734749",
+            "email": "Nicole_Herman@gmail.ch",
+            "timestamp": 388
+        },
+        {
+            "command": "addFunds",
+            "email": "Nicole_Herman@gmail.ch",
+            "account": "RO71POOB1634969878734749",
+            "amount": 84.0,
+            "timestamp": 389
+        },
+        {
+            "command": "addAccount",
+            "email": "Connie_Hart@hotmail.us",
+            "currency": "USD",
+            "accountType": "classic",
+            "timestamp": 390
+        },
+        {
+            "command": "createCard",
+            "account": "RO09POOB4346339013848470",
+            "email": "Connie_Hart@hotmail.us",
+            "timestamp": 392
+        },
+        {
+            "command": "addFunds",
+            "email": "Connie_Hart@hotmail.us",
+            "account": "RO09POOB4346339013848470",
+            "amount": 77.78,
+            "timestamp": 393
+        },
+        {
+            "command": "addAccount",
+            "email": "Bruce_Smith@hushmail.us",
+            "currency": "USD",
+            "accountType": "classic",
+            "timestamp": 394
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO50POOB3913194831046423",
+            "email": "Bruce_Smith@hushmail.us",
+            "timestamp": 410
+        },
+        {
+            "command": "addFunds",
+            "email": "Bruce_Smith@hushmail.us",
+            "account": "RO50POOB3913194831046423",
+            "amount": 77.78,
+            "timestamp": 411
+        },
+        {
+            "command": "addAccount",
+            "email": "Roland_Beuchat@gmx.ch",
+            "currency": "CHF",
+            "accountType": "classic",
+            "timestamp": 412
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO89POOB4455583483378897",
+            "email": "Roland_Beuchat@gmx.ch",
+            "timestamp": 421
+        },
+        {
+            "command": "addFunds",
+            "email": "Roland_Beuchat@gmx.ch",
+            "account": "RO89POOB4455583483378897",
+            "amount": 84.0,
+            "timestamp": 422
+        },
+        {
+            "command": "addAccount",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "currency": "MXN",
+            "accountType": "classic",
+            "timestamp": 423
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO36POOB6500477412147025",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "timestamp": 436
+        },
+        {
+            "command": "addFunds",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "account": "RO36POOB6500477412147025",
+            "amount": 1540.0,
+            "timestamp": 437
+        },
+        {
+            "command": "addAccount",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "currency": "NZD",
+            "accountType": "classic",
+            "timestamp": 438
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO46POOB9051076190383154",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "timestamp": 447
+        },
+        {
+            "command": "addFunds",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "account": "RO46POOB9051076190383154",
+            "amount": 126.0,
+            "timestamp": 448
+        },
+        {
+            "command": "addAccount",
+            "email": "Jacqueline_Lavigne@gmx.ca",
+            "currency": "CAD",
+            "accountType": "classic",
+            "timestamp": 449
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO45POOB0388148432759748",
+            "email": "Jacqueline_Lavigne@gmx.ca",
+            "timestamp": 461
+        },
+        {
+            "command": "addFunds",
+            "email": "Jacqueline_Lavigne@gmx.ca",
+            "account": "RO45POOB0388148432759748",
+            "amount": 98.0,
+            "timestamp": 462
+        },
+        {
+            "command": "addAccount",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "currency": "RON",
+            "accountType": "classic",
+            "timestamp": 463
+        },
+        {
+            "command": "createCard",
+            "account": "RO52POOB6271107854467609",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "timestamp": 466
+        },
+        {
+            "command": "addFunds",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "account": "RO52POOB6271107854467609",
+            "amount": 350.0,
+            "timestamp": 467
+        },
+        {
+            "command": "addAccount",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "currency": "MXN",
+            "accountType": "classic",
+            "timestamp": 468
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO98POOB7190609943699593",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "timestamp": 488
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO98POOB7190609943699593",
+            "amount": 1540.0,
+            "timestamp": 489
+        },
+        {
+            "command": "addAccount",
+            "email": "Yolanda_Smith@mail.com.us",
+            "currency": "USD",
+            "accountType": "classic",
+            "timestamp": 490
+        },
+        {
+            "command": "createCard",
+            "account": "RO50POOB3359236199018963",
+            "email": "Yolanda_Smith@mail.com.us",
+            "timestamp": 504
+        },
+        {
+            "command": "addFunds",
+            "email": "Yolanda_Smith@mail.com.us",
+            "account": "RO50POOB3359236199018963",
+            "amount": 77.78,
+            "timestamp": 505
+        },
+        {
+            "command": "addAccount",
+            "email": "Marcelle_Masson@zoho.fr",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 506
+        },
+        {
+            "command": "createCard",
+            "account": "RO75POOB8279679254660818",
+            "email": "Marcelle_Masson@zoho.fr",
+            "timestamp": 521
+        },
+        {
+            "command": "addFunds",
+            "email": "Marcelle_Masson@zoho.fr",
+            "account": "RO75POOB8279679254660818",
+            "amount": 70.0,
+            "timestamp": 522
+        },
+        {
+            "command": "addAccount",
+            "email": "Karine_Ouellet@icloud.ca",
+            "currency": "CAD",
+            "accountType": "classic",
+            "timestamp": 523
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO37POOB8653914479106806",
+            "email": "Karine_Ouellet@icloud.ca",
+            "timestamp": 531
+        },
+        {
+            "command": "addFunds",
+            "email": "Karine_Ouellet@icloud.ca",
+            "account": "RO37POOB8653914479106806",
+            "amount": 98.0,
+            "timestamp": 532
+        },
+        {
+            "command": "addAccount",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 533
+        },
+        {
+            "command": "createCard",
+            "account": "RO73POOB0363118755441573",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "timestamp": 538
+        },
+        {
+            "command": "addFunds",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "account": "RO73POOB0363118755441573",
+            "amount": 70.0,
+            "timestamp": 539
+        },
+        {
+            "command": "addAccount",
+            "email": "Natalia_Zayas@zoho.mx",
+            "currency": "MXN",
+            "accountType": "classic",
+            "timestamp": 540
+        },
+        {
+            "command": "createCard",
+            "account": "RO40POOB2135483650246268",
+            "email": "Natalia_Zayas@zoho.mx",
+            "timestamp": 550
+        },
+        {
+            "command": "addFunds",
+            "email": "Natalia_Zayas@zoho.mx",
+            "account": "RO40POOB2135483650246268",
+            "amount": 1540.0,
+            "timestamp": 551
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO58POOB7344468893732422",
+            "newPlanType": "gold",
+            "timestamp": 552
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO69POOB6209498372540635",
+            "newPlanType": "gold",
+            "timestamp": 553
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO90POOB5450777208072365",
+            "newPlanType": "gold",
+            "timestamp": 554
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO65POOB8944016386845896",
+            "newPlanType": "gold",
+            "timestamp": 555
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO58POOB2721178218599590",
+            "newPlanType": "gold",
+            "timestamp": 556
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO76POOB4035116042454483",
+            "newPlanType": "gold",
+            "timestamp": 557
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO37POOB7013767509830666",
+            "newPlanType": "gold",
+            "timestamp": 558
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO19POOB4981055641668812",
+            "newPlanType": "gold",
+            "timestamp": 559
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO30POOB9523423715747796",
+            "newPlanType": "gold",
+            "timestamp": 560
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO79POOB3616857825600958",
+            "newPlanType": "gold",
+            "timestamp": 561
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO00POOB5687892910835215",
+            "newPlanType": "gold",
+            "timestamp": 562
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO96POOB6738272785416988",
+            "newPlanType": "gold",
+            "timestamp": 563
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO33POOB4049920806186500",
+            "newPlanType": "gold",
+            "timestamp": 564
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO69POOB9846198978826791",
+            "newPlanType": "gold",
+            "timestamp": 565
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO98POOB8412955460158769",
+            "newPlanType": "gold",
+            "timestamp": 566
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO32POOB0130532963818359",
+            "newPlanType": "gold",
+            "timestamp": 567
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO68POOB1848616931405475",
+            "newPlanType": "gold",
+            "timestamp": 568
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO10POOB4354933866366881",
+            "newPlanType": "gold",
+            "timestamp": 569
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO33POOB9999273999620457",
+            "newPlanType": "gold",
+            "timestamp": 570
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO38POOB0964823730995794",
+            "newPlanType": "gold",
+            "timestamp": 571
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO53POOB7122855990652257",
+            "newPlanType": "gold",
+            "timestamp": 572
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO71POOB1634969878734749",
+            "newPlanType": "gold",
+            "timestamp": 573
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO09POOB4346339013848470",
+            "newPlanType": "gold",
+            "timestamp": 574
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO50POOB3913194831046423",
+            "newPlanType": "gold",
+            "timestamp": 575
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO89POOB4455583483378897",
+            "newPlanType": "gold",
+            "timestamp": 576
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO36POOB6500477412147025",
+            "newPlanType": "gold",
+            "timestamp": 577
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO46POOB9051076190383154",
+            "newPlanType": "gold",
+            "timestamp": 578
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB0388148432759748",
+            "newPlanType": "gold",
+            "timestamp": 579
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO52POOB6271107854467609",
+            "newPlanType": "gold",
+            "timestamp": 580
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO98POOB7190609943699593",
+            "newPlanType": "gold",
+            "timestamp": 581
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO50POOB3359236199018963",
+            "newPlanType": "gold",
+            "timestamp": 582
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO75POOB8279679254660818",
+            "newPlanType": "gold",
+            "timestamp": 583
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO37POOB8653914479106806",
+            "newPlanType": "gold",
+            "timestamp": 584
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO73POOB0363118755441573",
+            "newPlanType": "gold",
+            "timestamp": 585
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO40POOB2135483650246268",
+            "newPlanType": "gold",
+            "timestamp": 586
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO58POOB2721178218599590",
+            "newPlanType": "standard",
+            "timestamp": 587
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO46POOB9051076190383154",
+            "newPlanType": "standard",
+            "timestamp": 588
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO75POOB8279679254660818",
+            "newPlanType": "standard",
+            "timestamp": 589
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO89POOB4455583483378897",
+            "newPlanType": "standard",
+            "timestamp": 590
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO98POOB7190609943699593",
+            "newPlanType": "standard",
+            "timestamp": 591
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO73POOB0363118755441573",
+            "newPlanType": "standard",
+            "timestamp": 592
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO69POOB9846198978826791",
+            "newPlanType": "standard",
+            "timestamp": 593
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO32POOB0130532963818359",
+            "newPlanType": "standard",
+            "timestamp": 594
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO50POOB3913194831046423",
+            "newPlanType": "standard",
+            "timestamp": 595
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO37POOB7013767509830666",
+            "newPlanType": "standard",
+            "timestamp": 596
+        },
+        {
+            "command": "addAccount",
+            "email": "Angel_Ene@hotmail.ro",
+            "currency": "RON",
+            "accountType": "savings",
+            "interestRate": 0.04,
+            "timestamp": 597
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO75POOB1098983729823992",
+            "email": "Angel_Ene@hotmail.ro",
+            "timestamp": 598
+        },
+        {
+            "command": "addAccount",
+            "email": "Briana_Galloway@outlook.au",
+            "currency": "AUD",
+            "accountType": "savings",
+            "interestRate": 0.34,
+            "timestamp": 599
+        },
+        {
+            "command": "createCard",
+            "account": "RO15POOB0048706387164463",
+            "email": "Briana_Galloway@outlook.au",
+            "timestamp": 600
+        },
+        {
+            "command": "addAccount",
+            "email": "Chanakya_Dua@hushmail.in",
+            "currency": "INR",
+            "accountType": "savings",
+            "interestRate": 0.95,
+            "timestamp": 601
+        },
+        {
+            "command": "createCard",
+            "account": "RO97POOB5006417983475785",
+            "email": "Chanakya_Dua@hushmail.in",
+            "timestamp": 602
+        },
+        {
+            "command": "addAccount",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "currency": "EUR",
+            "accountType": "savings",
+            "interestRate": 0.54,
+            "timestamp": 603
+        },
+        {
+            "command": "createOneTimeCard",
+            "account": "RO93POOB6760303931698665",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 604
+        },
+        {
+            "command": "addAccount",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "currency": "GBP",
+            "accountType": "savings",
+            "interestRate": 0.8,
+            "timestamp": 605
+        },
+        {
+            "command": "createCard",
+            "account": "RO47POOB5866490978033060",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "timestamp": 606
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 607
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "7644059707106503",
+            "amount": 322,
+            "currency": "RON",
+            "timestamp": 608,
+            "description": "Online payment",
+            "commerciant": "Microsoft"
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Ene@hotmail.ro",
+            "account": "RO75POOB1098983729823992",
+            "amount": 829,
+            "timestamp": 609
+        },
+        {
+            "command": "addFunds",
+            "email": "Briana_Galloway@outlook.au",
+            "account": "RO15POOB0048706387164463",
+            "amount": 23,
+            "timestamp": 610
+        },
+        {
+            "command": "addInterest",
+            "account": "RO15POOB0048706387164463",
+            "timestamp": 611
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO15POOB0048706387164463",
+            "amount": 215.82,
+            "currency": "AUD",
+            "timestamp": 612
+        },
+        {
+            "command": "addFunds",
+            "email": "Chanakya_Dua@hushmail.in",
+            "account": "RO97POOB5006417983475785",
+            "amount": 730,
+            "timestamp": 613
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO93POOB6760303931698665",
+            "amount": 152,
+            "timestamp": 614
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO93POOB6760303931698665",
+            "amount": 925.0,
+            "currency": "EUR",
+            "timestamp": 615
+        },
+        {
+            "command": "addFunds",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "account": "RO47POOB5866490978033060",
+            "amount": 361,
+            "timestamp": 616
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO47POOB5866490978033060",
+            "amount": 908.0,
+            "currency": "GBP",
+            "timestamp": 617
+        },
+        {
+            "command": "splitPayment",
+            "splitPaymentType": "equal",
+            "accounts": [
+                "RO97POOB5006417983475785",
+                "RO33POOB9999273999620457",
+                "RO98POOB7190609943699593",
+                "RO69POOB6209498372540635",
+                "RO33POOB4049920806186500"
+            ],
+            "amount": 2140,
+            "currency": "INR",
+            "timestamp": 618
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 619
+        },
+        {
+            "command": "addAccount",
+            "email": "Connie_Hart@hotmail.us",
+            "currency": "USD",
+            "accountType": "business",
+            "timestamp": 620
+        },
+        {
+            "command": "addAccount",
+            "email": "Connie_Hart@hotmail.us",
+            "currency": "USD",
+            "accountType": "business",
+            "timestamp": 621
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Angel_Ene@hotmail.ro",
+            "timestamp": 622
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Angel_Ene@hotmail.ro",
+            "timestamp": 623
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Alwin_Dowerg@yandex.de",
+            "timestamp": 624
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Alwin_Dowerg@yandex.de",
+            "timestamp": 625
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "timestamp": 626
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "manager",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "timestamp": 627
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Tony_Wallace@mail.com.au",
+            "timestamp": 628
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Tony_Wallace@mail.com.au",
+            "timestamp": 629
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Karine_Ouellet@icloud.ca",
+            "timestamp": 630
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "manager",
+            "email": "Karine_Ouellet@icloud.ca",
+            "timestamp": 631
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Anna_Robson@hushmail.nz",
+            "timestamp": 632
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Anna_Robson@hushmail.nz",
+            "timestamp": 633
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Harrison_Iyengar@outlook.in",
+            "timestamp": 634
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "manager",
+            "email": "Harrison_Iyengar@outlook.in",
+            "timestamp": 635
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "timestamp": 636
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "manager",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "timestamp": 637
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "timestamp": 638
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "timestamp": 639
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Roland_Beuchat@gmx.ch",
+            "timestamp": 640
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Roland_Beuchat@gmx.ch",
+            "timestamp": 641
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "timestamp": 642
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "manager",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "timestamp": 643
+        },
+        {
+            "command": "changeDepositLimit",
+            "email": "Connie_Hart@hotmail.us",
+            "account": "RO45POOB6505529013808948",
+            "amount": 306,
+            "timestamp": 644
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 930,
+            "timestamp": 645
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 796,
+            "timestamp": 646
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 949,
+            "timestamp": 647
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 953,
+            "timestamp": 648
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 642,
+            "timestamp": 649
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 957,
+            "timestamp": 650
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 825,
+            "timestamp": 651
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 632,
+            "timestamp": 652
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 201,
+            "timestamp": 653
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 209,
+            "timestamp": 654
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 766,
+            "timestamp": 655
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 119,
+            "timestamp": 656
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 726,
+            "timestamp": 657
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 439,
+            "timestamp": 658
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 776,
+            "timestamp": 659
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 762,
+            "timestamp": 660
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 472,
+            "timestamp": 661
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 473,
+            "timestamp": 662
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 250,
+            "timestamp": 663
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 630,
+            "timestamp": 664
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB6505529013808948",
+            "newPlanType": "silver",
+            "timestamp": 665
+        },
+        {
+            "command": "splitPayment",
+            "splitPaymentType": "equal",
+            "accounts": [
+                "RO89POOB4455583483378897",
+                "RO00POOB5687892910835215",
+                "RO97POOB5006417983475785",
+                "RO30POOB9523423715747796",
+                "RO47POOB5866490978033060"
+            ],
+            "amount": 1793,
+            "currency": "CHF",
+            "timestamp": 666
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Chanakya_Dua@hushmail.in",
+            "splitPaymentType": "custom",
+            "timestamp": 667
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "splitPaymentType": "custom",
+            "timestamp": 668
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 669
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "splitPaymentType": "custom",
+            "timestamp": 670
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Briana_Galloway@outlook.au",
+            "splitPaymentType": "custom",
+            "timestamp": 671
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Roland_Beuchat@gmx.ch",
+            "splitPaymentType": "custom",
+            "timestamp": 672
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "splitPaymentType": "custom",
+            "timestamp": 673
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Chanakya_Dua@hushmail.in",
+            "splitPaymentType": "custom",
+            "timestamp": 674
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 675
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "splitPaymentType": "custom",
+            "timestamp": 676
+        },
+        {
+            "command": "changeSpendingLimit",
+            "email": "Connie_Hart@hotmail.us",
+            "account": "RO45POOB6505529013808948",
+            "amount": 771,
+            "timestamp": 677
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "4001829491527416",
+            "amount": 156.0,
+            "currency": "USD",
+            "timestamp": 678,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Alwin_Dowerg@yandex.de",
+            "cardNumber": "6769125583796385",
+            "amount": 183.85,
+            "currency": "CAD",
+            "timestamp": 679,
+            "description": "Online payment",
+            "commerciant": "Microsoft"
+        },
+        {
+            "command": "payOnline",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "cardNumber": "2827143779240285",
+            "amount": 25.78,
+            "currency": "RON",
+            "timestamp": 680,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Karine_Ouellet@icloud.ca",
+            "cardNumber": "4491799876006556",
+            "amount": 15.35,
+            "currency": "MXN",
+            "timestamp": 681,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 1,
+            "endTimestamp": 681,
+            "account": "RO45POOB6505529013808948",
+            "type": "transaction",
+            "timestamp": 682
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO75POOB1098983729823992",
+            "amount": 86,
+            "timestamp": 683
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Ene@hotmail.ro",
+            "account": "RO75POOB1098983729823992",
+            "amount": 82,
+            "timestamp": 684
+        },
+        {
+            "command": "addInterest",
+            "account": "RO75POOB1098983729823992",
+            "timestamp": 701
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO75POOB1098983729823992",
+            "interestRate": 0.01,
+            "timestamp": 702
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO15POOB0048706387164463",
+            "amount": 13,
+            "timestamp": 703
+        },
+        {
+            "command": "addFunds",
+            "email": "Briana_Galloway@outlook.au",
+            "account": "RO15POOB0048706387164463",
+            "amount": 97,
+            "timestamp": 704
+        },
+        {
+            "command": "addInterest",
+            "account": "RO15POOB0048706387164463",
+            "timestamp": 708
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO15POOB0048706387164463",
+            "interestRate": 0.77,
+            "timestamp": 709
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO97POOB5006417983475785",
+            "amount": 62,
+            "timestamp": 710
+        },
+        {
+            "command": "addFunds",
+            "email": "Chanakya_Dua@hushmail.in",
+            "account": "RO97POOB5006417983475785",
+            "amount": 774,
+            "timestamp": 711
+        },
+        {
+            "command": "addInterest",
+            "account": "RO97POOB5006417983475785",
+            "timestamp": 714
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO97POOB5006417983475785",
+            "interestRate": 0.77,
+            "timestamp": 715
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO93POOB6760303931698665",
+            "amount": 53,
+            "timestamp": 716
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO93POOB6760303931698665",
+            "amount": 267,
+            "timestamp": 717
+        },
+        {
+            "command": "addInterest",
+            "account": "RO93POOB6760303931698665",
+            "timestamp": 737
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO93POOB6760303931698665",
+            "interestRate": 0.79,
+            "timestamp": 738
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO47POOB5866490978033060",
+            "amount": 31,
+            "timestamp": 739
+        },
+        {
+            "command": "addFunds",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "account": "RO47POOB5866490978033060",
+            "amount": 174,
+            "timestamp": 740
+        },
+        {
+            "command": "addInterest",
+            "account": "RO47POOB5866490978033060",
+            "timestamp": 753
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO47POOB5866490978033060",
+            "interestRate": 0.18,
+            "timestamp": 754
+        },
+        {
+            "command": "payOnline",
+            "email": "Briana_Galloway@outlook.au",
+            "cardNumber": "4766425843993312",
+            "amount": 134,
+            "currency": "RON",
+            "timestamp": 755,
+            "description": "Online payment",
+            "commerciant": "Burger King"
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "6988686155235949",
+            "amount": 442,
+            "currency": "EUR",
+            "timestamp": 756,
+            "description": "Online payment",
+            "commerciant": "Samsung"
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "7644059707106503",
+            "amount": 577,
+            "currency": "GBP",
+            "timestamp": 757,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Chanakya_Dua@hushmail.in",
+            "cardNumber": "1733018068262537",
+            "amount": 1695,
+            "currency": "NZD",
+            "timestamp": 758,
+            "description": "Online payment",
+            "commerciant": "H&M"
+        },
+        {
+            "command": "payOnline",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "cardNumber": "5254952026068544",
+            "amount": 198,
+            "currency": "AUD",
+            "timestamp": 759,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO75POOB1098983729823992",
+            "amount": 999.44,
+            "currency": "RON",
+            "timestamp": 760
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO15POOB0048706387164463",
+            "amount": 425.28,
+            "currency": "AUD",
+            "timestamp": 761
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO97POOB5006417983475785",
+            "amount": 1241.8,
+            "currency": "INR",
+            "timestamp": 762
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO93POOB6760303931698665",
+            "amount": 954.26,
+            "currency": "EUR",
+            "timestamp": 763
+        },
+        {
+            "command": "withdrawSavings",
+            "account": "RO47POOB5866490978033060",
+            "amount": 1581.0,
+            "currency": "GBP",
+            "timestamp": 764
+        },
+        {
+            "command": "deleteCard",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "cardNumber": "8207906978464446",
+            "timestamp": 765
+        },
+        {
+            "command": "deleteCard",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "cardNumber": "7901879264253296",
+            "timestamp": 766
+        },
+        {
+            "command": "deleteCard",
+            "email": "Marvin_Peterson@zoho.ch",
+            "cardNumber": "7004757825892043",
+            "timestamp": 767
+        },
+        {
+            "command": "deleteCard",
+            "email": "Alwin_Dowerg@yandex.de",
+            "cardNumber": "6796819982034243",
+            "timestamp": 768
+        },
+        {
+            "command": "deleteCard",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "4686471658318359",
+            "timestamp": 769
+        },
+        {
+            "command": "deleteCard",
+            "email": "Karen_McIsaac@zoho.nz",
+            "cardNumber": "1322658752653937",
+            "timestamp": 770
+        },
+        {
+            "command": "deleteCard",
+            "email": "Anni_Dorr@icloud.de",
+            "cardNumber": "0466992784477761",
+            "timestamp": 771
+        },
+        {
+            "command": "deleteCard",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "cardNumber": "5088727507344799",
+            "timestamp": 772
+        },
+        {
+            "command": "deleteCard",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "cardNumber": "7317745095154687",
+            "timestamp": 773
+        },
+        {
+            "command": "deleteCard",
+            "email": "Pascual_Mesa@zoho.mx",
+            "cardNumber": "3951521356076921",
+            "timestamp": 774
+        },
+        {
+            "command": "deleteCard",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "cardNumber": "8431794639822740",
+            "timestamp": 775
+        },
+        {
+            "command": "deleteCard",
+            "email": "Owen_Raju@protonmail.in",
+            "cardNumber": "7746115164990298",
+            "timestamp": 776
+        },
+        {
+            "command": "deleteCard",
+            "email": "Briana_Galloway@outlook.au",
+            "cardNumber": "5779026319169555",
+            "timestamp": 777
+        },
+        {
+            "command": "deleteCard",
+            "email": "Chanakya_Dua@hushmail.in",
+            "cardNumber": "1952612794872207",
+            "timestamp": 778
+        },
+        {
+            "command": "deleteCard",
+            "email": "Rene_Plourde@protonmail.ca",
+            "cardNumber": "0084627535411906",
+            "timestamp": 779
+        },
+        {
+            "command": "deleteCard",
+            "email": "Harrison_Iyengar@outlook.in",
+            "cardNumber": "8509650399173661",
+            "timestamp": 780
+        },
+        {
+            "command": "deleteCard",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "cardNumber": "4069340791718491",
+            "timestamp": 781
+        },
+        {
+            "command": "deleteCard",
+            "email": "Tony_Wallace@mail.com.au",
+            "cardNumber": "6592968050400705",
+            "timestamp": 782
+        },
+        {
+            "command": "deleteCard",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "6467982927008637",
+            "timestamp": 783
+        },
+        {
+            "command": "deleteCard",
+            "email": "Anna_Robson@hushmail.nz",
+            "cardNumber": "8686098479595515",
+            "timestamp": 784
+        },
+        {
+            "command": "deleteCard",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "cardNumber": "8916302128573242",
+            "timestamp": 785
+        },
+        {
+            "command": "deleteCard",
+            "email": "Nicole_Herman@gmail.ch",
+            "cardNumber": "8696843716078966",
+            "timestamp": 786
+        },
+        {
+            "command": "deleteCard",
+            "email": "Connie_Hart@hotmail.us",
+            "cardNumber": "4097439592846732",
+            "timestamp": 787
+        },
+        {
+            "command": "deleteCard",
+            "email": "Bruce_Smith@hushmail.us",
+            "cardNumber": "2289183361654620",
+            "timestamp": 788
+        },
+        {
+            "command": "deleteCard",
+            "email": "Roland_Beuchat@gmx.ch",
+            "cardNumber": "5069598921863529",
+            "timestamp": 789
+        },
+        {
+            "command": "deleteCard",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "cardNumber": "1851641428290185",
+            "timestamp": 790
+        },
+        {
+            "command": "deleteCard",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "cardNumber": "9281102140265301",
+            "timestamp": 791
+        },
+        {
+            "command": "deleteCard",
+            "email": "Jacqueline_Lavigne@gmx.ca",
+            "cardNumber": "8221841196640096",
+            "timestamp": 792
+        },
+        {
+            "command": "deleteCard",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "cardNumber": "6052309891235892",
+            "timestamp": 793
+        },
+        {
+            "command": "deleteCard",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "cardNumber": "3892114815135845",
+            "timestamp": 794
+        },
+        {
+            "command": "deleteCard",
+            "email": "Yolanda_Smith@mail.com.us",
+            "cardNumber": "9224211293357459",
+            "timestamp": 795
+        },
+        {
+            "command": "deleteCard",
+            "email": "Marcelle_Masson@zoho.fr",
+            "cardNumber": "6825942525318055",
+            "timestamp": 796
+        },
+        {
+            "command": "deleteCard",
+            "email": "Karine_Ouellet@icloud.ca",
+            "cardNumber": "1388131156990910",
+            "timestamp": 797
+        },
+        {
+            "command": "deleteCard",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "cardNumber": "0755790623339451",
+            "timestamp": 798
+        },
+        {
+            "command": "deleteCard",
+            "email": "Natalia_Zayas@zoho.mx",
+            "cardNumber": "2394479558596255",
+            "timestamp": 799
+        },
+        {
+            "command": "deleteCard",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "7644059707106503",
+            "timestamp": 800
+        },
+        {
+            "command": "deleteCard",
+            "email": "Briana_Galloway@outlook.au",
+            "cardNumber": "4766425843993312",
+            "timestamp": 801
+        },
+        {
+            "command": "deleteCard",
+            "email": "Chanakya_Dua@hushmail.in",
+            "cardNumber": "1733018068262537",
+            "timestamp": 802
+        },
+        {
+            "command": "deleteCard",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "6988686155235949",
+            "timestamp": 803
+        },
+        {
+            "command": "deleteCard",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "cardNumber": "5254952026068544",
+            "timestamp": 804
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "cardNumber": "1752095065063305",
+            "amount": 41.0,
+            "location": "West Miranda",
+            "timestamp": 805
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "cardNumber": "9341628021029699",
+            "amount": 767.0,
+            "location": "Lynnbury",
+            "timestamp": 806
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "cardNumber": "4374966931133138",
+            "amount": 39.0,
+            "location": "Lake Thomas",
+            "timestamp": 807
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Isabella_Edwards@hotmail.nz",
+            "cardNumber": "6097867366365266",
+            "amount": 114.0,
+            "location": "Richard-sur-Lelièvre",
+            "timestamp": 808
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "cardNumber": "9284968684427386",
+            "amount": 159.0,
+            "location": "Wieringerwerf",
+            "timestamp": 809
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "cardNumber": "9317979456445303",
+            "amount": 1492.0,
+            "location": "Howardberg",
+            "timestamp": 810
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO75POOB1098983729823992",
+            "interestRate": 0.13,
+            "timestamp": 811
+        },
+        {
+            "command": "addFunds",
+            "email": "Angel_Ene@hotmail.ro",
+            "account": "RO75POOB1098983729823992",
+            "amount": 750,
+            "timestamp": 812
+        },
+        {
+            "command": "addInterest",
+            "account": "RO75POOB1098983729823992",
+            "timestamp": 813
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO15POOB0048706387164463",
+            "interestRate": 0.98,
+            "timestamp": 814
+        },
+        {
+            "command": "addFunds",
+            "email": "Briana_Galloway@outlook.au",
+            "account": "RO15POOB0048706387164463",
+            "amount": 799,
+            "timestamp": 815
+        },
+        {
+            "command": "addInterest",
+            "account": "RO15POOB0048706387164463",
+            "timestamp": 816
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO97POOB5006417983475785",
+            "interestRate": 0.47,
+            "timestamp": 817
+        },
+        {
+            "command": "addFunds",
+            "email": "Chanakya_Dua@hushmail.in",
+            "account": "RO97POOB5006417983475785",
+            "amount": 815,
+            "timestamp": 818
+        },
+        {
+            "command": "addInterest",
+            "account": "RO97POOB5006417983475785",
+            "timestamp": 819
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO93POOB6760303931698665",
+            "interestRate": 0.42,
+            "timestamp": 820
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO93POOB6760303931698665",
+            "amount": 511,
+            "timestamp": 821
+        },
+        {
+            "command": "addInterest",
+            "account": "RO93POOB6760303931698665",
+            "timestamp": 822
+        },
+        {
+            "command": "changeInterestRate",
+            "account": "RO47POOB5866490978033060",
+            "interestRate": 0.3,
+            "timestamp": 823
+        },
+        {
+            "command": "addFunds",
+            "email": "Lucy_Baker-Clark@mail.com.gb",
+            "account": "RO47POOB5866490978033060",
+            "amount": 218,
+            "timestamp": 824
+        },
+        {
+            "command": "addInterest",
+            "account": "RO47POOB5866490978033060",
+            "timestamp": 825
+        },
+        {
+            "command": "addAccount",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "currency": "EUR",
+            "accountType": "business",
+            "timestamp": 826
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO04POOB3492426980939341",
+            "amount": 870,
+            "timestamp": 827
+        },
+        {
+            "command": "createCard",
+            "account": "RO04POOB3492426980939341",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 828
+        },
+        {
+            "command": "addAccount",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "currency": "EUR",
+            "accountType": "business",
+            "timestamp": 829
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO66POOB1088683052483887",
+            "amount": 549,
+            "timestamp": 830
+        },
+        {
+            "command": "createCard",
+            "account": "RO66POOB1088683052483887",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 831
+        },
+        {
+            "command": "addAccount",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "currency": "EUR",
+            "accountType": "business",
+            "timestamp": 832
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 205,
+            "timestamp": 833
+        },
+        {
+            "command": "createCard",
+            "account": "RO19POOB5993192794373940",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 834
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "manager",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 835
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 836
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "manager",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 837
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO01POOB3925326637526572",
+            "role": "employee",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 838
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO04POOB3492426980939341",
+            "role": "manager",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 839
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO04POOB3492426980939341",
+            "role": "employee",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 840
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO66POOB1088683052483887",
+            "role": "manager",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 841
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO66POOB1088683052483887",
+            "role": "employee",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 842
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO19POOB5993192794373940",
+            "role": "manager",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 843
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO19POOB5993192794373940",
+            "role": "employee",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "timestamp": 844
+        },
+        {
+            "command": "addFunds",
+            "email": "Tony_Wallace@mail.com.au",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 845
+        },
+        {
+            "command": "addFunds",
+            "email": "Anna_Robson@hushmail.nz",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 846
+        },
+        {
+            "command": "addFunds",
+            "email": "Harrison_Iyengar@outlook.in",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 847
+        },
+        {
+            "command": "addFunds",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 848
+        },
+        {
+            "command": "addFunds",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 849
+        },
+        {
+            "command": "addFunds",
+            "email": "Roland_Beuchat@gmx.ch",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 850
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 851
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO45POOB6505529013808948",
+            "amount": 77.78,
+            "timestamp": 852
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB6505529013808948",
+            "newPlanType": "gold",
+            "timestamp": 853
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB6505529013808948",
+            "newPlanType": "gold",
+            "timestamp": 854
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB6505529013808948",
+            "newPlanType": "gold",
+            "timestamp": 855
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB6505529013808948",
+            "newPlanType": "gold",
+            "timestamp": 856
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO45POOB6505529013808948",
+            "newPlanType": "gold",
+            "timestamp": 857
+        },
+        {
+            "command": "addFunds",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "account": "RO01POOB3925326637526572",
+            "amount": 77.78,
+            "timestamp": 858
+        },
+        {
+            "command": "addFunds",
+            "email": "Karine_Ouellet@icloud.ca",
+            "account": "RO01POOB3925326637526572",
+            "amount": 77.78,
+            "timestamp": 859
+        },
+        {
+            "command": "addFunds",
+            "email": "Harrison_Iyengar@outlook.in",
+            "account": "RO01POOB3925326637526572",
+            "amount": 77.78,
+            "timestamp": 860
+        },
+        {
+            "command": "addFunds",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "account": "RO01POOB3925326637526572",
+            "amount": 77.78,
+            "timestamp": 861
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 77.78,
+            "timestamp": 862
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO01POOB3925326637526572",
+            "amount": 77.78,
+            "timestamp": 863
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 864
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 865
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 866
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 867
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 868
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 869
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO01POOB3925326637526572",
+            "newPlanType": "gold",
+            "timestamp": 870
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO04POOB3492426980939341",
+            "amount": 70.0,
+            "timestamp": 871
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO04POOB3492426980939341",
+            "newPlanType": "gold",
+            "timestamp": 872
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO66POOB1088683052483887",
+            "amount": 70.0,
+            "timestamp": 873
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO66POOB1088683052483887",
+            "newPlanType": "gold",
+            "timestamp": 874
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 70.0,
+            "timestamp": 875
+        },
+        {
+            "command": "upgradePlan",
+            "account": "RO19POOB5993192794373940",
+            "newPlanType": "gold",
+            "timestamp": 876
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 877
+        },
+        {
+            "command": "changeSpendingLimit",
+            "email": "Connie_Hart@hotmail.us",
+            "account": "RO45POOB6505529013808948",
+            "amount": 840,
+            "timestamp": 878
+        },
+        {
+            "command": "changeSpendingLimit",
+            "email": "Connie_Hart@hotmail.us",
+            "account": "RO01POOB3925326637526572",
+            "amount": 16,
+            "timestamp": 879
+        },
+        {
+            "command": "changeSpendingLimit",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO04POOB3492426980939341",
+            "amount": 958,
+            "timestamp": 880
+        },
+        {
+            "command": "changeSpendingLimit",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO66POOB1088683052483887",
+            "amount": 500,
+            "timestamp": 881
+        },
+        {
+            "command": "changeSpendingLimit",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 838,
+            "timestamp": 882
+        },
+        {
+            "command": "addFunds",
+            "email": "Tony_Wallace@mail.com.au",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1132.0,
+            "timestamp": 883
+        },
+        {
+            "command": "addFunds",
+            "email": "Anna_Robson@hushmail.nz",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1104.0,
+            "timestamp": 884
+        },
+        {
+            "command": "addFunds",
+            "email": "Harrison_Iyengar@outlook.in",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1131.0,
+            "timestamp": 885
+        },
+        {
+            "command": "addFunds",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1010.0,
+            "timestamp": 886
+        },
+        {
+            "command": "addFunds",
+            "email": "Aurelio_Calderon@zoho.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1010.0,
+            "timestamp": 887
+        },
+        {
+            "command": "addFunds",
+            "email": "Roland_Beuchat@gmx.ch",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1090.0,
+            "timestamp": 888
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1119.0,
+            "timestamp": 889
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1026.0,
+            "timestamp": 890
+        },
+        {
+            "command": "addFunds",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "account": "RO01POOB3925326637526572",
+            "amount": 1112.0,
+            "timestamp": 891
+        },
+        {
+            "command": "addFunds",
+            "email": "Karine_Ouellet@icloud.ca",
+            "account": "RO01POOB3925326637526572",
+            "amount": 1149.0,
+            "timestamp": 892
+        },
+        {
+            "command": "addFunds",
+            "email": "Harrison_Iyengar@outlook.in",
+            "account": "RO01POOB3925326637526572",
+            "amount": 1167.0,
+            "timestamp": 893
+        },
+        {
+            "command": "addFunds",
+            "email": "Heracleea_Ababe@yahoo.ro",
+            "account": "RO01POOB3925326637526572",
+            "amount": 1118.0,
+            "timestamp": 894
+        },
+        {
+            "command": "addFunds",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "account": "RO01POOB3925326637526572",
+            "amount": 1096.0,
+            "timestamp": 895
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO01POOB3925326637526572",
+            "amount": 1116.0,
+            "timestamp": 896
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO04POOB3492426980939341",
+            "amount": 1104.0,
+            "timestamp": 897
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO66POOB1088683052483887",
+            "amount": 1039.0,
+            "timestamp": 898
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 1138.0,
+            "timestamp": 899
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 9.62,
+            "currency": "CNY",
+            "timestamp": 900,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 109.0,
+            "timestamp": 901
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 41.2,
+            "currency": "RON",
+            "timestamp": 902,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 52.0,
+            "timestamp": 903
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 276.0,
+            "currency": "EUR",
+            "timestamp": 904,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 150.0,
+            "timestamp": 905
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 238.75,
+            "currency": "AUD",
+            "timestamp": 906,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 104.0,
+            "timestamp": 907
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 21.88,
+            "currency": "AUD",
+            "timestamp": 908,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 38.0,
+            "timestamp": 909
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 52.8,
+            "currency": "RON",
+            "timestamp": 910,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 93.0,
+            "timestamp": 911
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 194.0,
+            "currency": "EUR",
+            "timestamp": 912,
+            "description": "Online payment",
+            "commerciant": "Samsung"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 35.0,
+            "timestamp": 913
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 20.64,
+            "currency": "MXN",
+            "timestamp": 914,
+            "description": "Online payment",
+            "commerciant": "Samsung"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 126.0,
+            "timestamp": 915
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 184.44,
+            "currency": "GBP",
+            "timestamp": 916,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 47.0,
+            "timestamp": 917
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "2803408755782048",
+            "amount": 5.38,
+            "currency": "INR",
+            "timestamp": 918,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO19POOB5993192794373940",
+            "amount": 125.0,
+            "timestamp": 919
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 0,
+            "endTimestamp": 918,
+            "account": "RO45POOB6505529013808948",
+            "type": "transaction",
+            "timestamp": 920
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 0,
+            "endTimestamp": 919,
+            "account": "RO01POOB3925326637526572",
+            "type": "transaction",
+            "timestamp": 921
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 0,
+            "endTimestamp": 920,
+            "account": "RO04POOB3492426980939341",
+            "type": "transaction",
+            "timestamp": 922
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 0,
+            "endTimestamp": 921,
+            "account": "RO66POOB1088683052483887",
+            "type": "transaction",
+            "timestamp": 923
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 0,
+            "endTimestamp": 922,
+            "account": "RO19POOB5993192794373940",
+            "type": "transaction",
+            "timestamp": 924
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 0,
+            "endTimestamp": 923,
+            "account": "RO19POOB5993192794373940",
+            "type": "commerciant",
+            "timestamp": 925
+        },
+        {
+            "command": "splitPayment",
+            "splitPaymentType": "custom",
+            "accounts": [
+                "RO19POOB4981055641668812",
+                "RO58POOB7344468893732422",
+                "RO76POOB4035116042454483",
+                "RO65POOB8944016386845896",
+                "RO90POOB5450777208072365",
+                "RO69POOB6209498372540635",
+                "RO37POOB7013767509830666",
+                "RO30POOB9523423715747796",
+                "RO79POOB3616857825600958",
+                "RO58POOB2721178218599590"
+            ],
+            "amount": 4916.5,
+            "amountForUsers": [
+                359,
+                57.2,
+                155.88,
+                417.0,
+                712.8,
+                118.62,
+                673.8,
+                290.4,
+                1218.8,
+                913
+            ],
+            "currency": "RON",
+            "timestamp": 926
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "timestamp": 927
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "timestamp": 928
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Owen_Raju@protonmail.in",
+            "timestamp": 929
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "timestamp": 930
+        },
+        {
+            "command": "addNewBusinessAssociate",
+            "account": "RO45POOB6505529013808948",
+            "role": "employee",
+            "email": "Marvin_Peterson@zoho.ch",
+            "timestamp": 931
+        },
+        {
+            "command": "addFunds",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "account": "RO45POOB6505529013808948",
+            "amount": 1506.0,
+            "timestamp": 932
+        },
+        {
+            "command": "addFunds",
+            "email": "Tony_Wallace@mail.com.au",
+            "account": "RO45POOB6505529013808948",
+            "amount": 2019.0,
+            "timestamp": 933
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "2411524438886950",
+            "amount": 337.5,
+            "currency": "GBP",
+            "timestamp": 934,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "8482522718940812",
+            "amount": 41.33,
+            "currency": "RON",
+            "timestamp": 935,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Ene@hotmail.ro",
+            "cardNumber": "0909939046574276",
+            "amount": 278.75,
+            "currency": "NZD",
+            "timestamp": 936,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "payOnline",
+            "email": "Alwin_Dowerg@yandex.de",
+            "cardNumber": "6149001534774049",
+            "amount": 433.0,
+            "currency": "USD",
+            "timestamp": 937,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Alwin_Dowerg@yandex.de",
+            "cardNumber": "1689085620476974",
+            "amount": 51.33,
+            "currency": "RON",
+            "timestamp": 938,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Alwin_Dowerg@yandex.de",
+            "cardNumber": "1532206051720830",
+            "amount": 316.92,
+            "currency": "CAD",
+            "timestamp": 939,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "cardNumber": "5618142873067979",
+            "amount": 282.0,
+            "currency": "USD",
+            "timestamp": 940,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "cardNumber": "1003132631143043",
+            "amount": 156.92,
+            "currency": "CAD",
+            "timestamp": 941,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "cardNumber": "6784853611217398",
+            "amount": 18.0,
+            "currency": "USD",
+            "timestamp": 942,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Karine_Ouellet@icloud.ca",
+            "cardNumber": "5555143074802594",
+            "amount": 475.0,
+            "currency": "USD",
+            "timestamp": 943,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Karine_Ouellet@icloud.ca",
+            "cardNumber": "7241081314709295",
+            "amount": 375.38,
+            "currency": "CAD",
+            "timestamp": 944,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Karine_Ouellet@icloud.ca",
+            "cardNumber": "7255424823552585",
+            "amount": 435.0,
+            "currency": "USD",
+            "timestamp": 945,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "6330276215468334",
+            "amount": 130.0,
+            "currency": "GBP",
+            "timestamp": 946,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "3274766564127905",
+            "amount": 34.0,
+            "currency": "USD",
+            "timestamp": 947,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "cardNumber": "3146505796386360",
+            "amount": 20.0,
+            "currency": "RON",
+            "timestamp": 948,
+            "description": "Online payment",
+            "commerciant": "Samsung"
+        },
+        {
+            "command": "payOnline",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "cardNumber": "2524615092540192",
+            "amount": 57.0,
+            "currency": "USD",
+            "timestamp": 949,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "payOnline",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "cardNumber": "3091165430920148",
+            "amount": 152.73,
+            "currency": "CHF",
+            "timestamp": 950,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Erdogan_Hovel@protonmail.de",
+            "cardNumber": "8829901909775810",
+            "amount": 61.54,
+            "currency": "CAD",
+            "timestamp": 951,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "cardNumber": "6369814641701052",
+            "amount": 141.0,
+            "currency": "USD",
+            "timestamp": 952,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "cardNumber": "3000569291689360",
+            "amount": 343.0,
+            "currency": "USD",
+            "timestamp": 953,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "payOnline",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "cardNumber": "2417279835438504",
+            "amount": 158.75,
+            "currency": "GBP",
+            "timestamp": 954,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Owen_Raju@protonmail.in",
+            "cardNumber": "5966934360051751",
+            "amount": 31.0,
+            "currency": "USD",
+            "timestamp": 955,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Owen_Raju@protonmail.in",
+            "cardNumber": "6508416890789031",
+            "amount": 41.88,
+            "currency": "NZD",
+            "timestamp": 956,
+            "description": "Online payment",
+            "commerciant": "Samsung"
+        },
+        {
+            "command": "payOnline",
+            "email": "Owen_Raju@protonmail.in",
+            "cardNumber": "3809732164195341",
+            "amount": 318.0,
+            "currency": "AUD",
+            "timestamp": 957,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "cardNumber": "0267422869650815",
+            "amount": 51.11,
+            "currency": "RON",
+            "timestamp": 958,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "cardNumber": "1457852519992246",
+            "amount": 18.55,
+            "currency": "MXN",
+            "timestamp": 959,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Juana_Magana_Zepeda@hotmail.mx",
+            "cardNumber": "6792490678859930",
+            "amount": 431.11,
+            "currency": "EUR",
+            "timestamp": 960,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Marvin_Peterson@zoho.ch",
+            "cardNumber": "1343753776079745",
+            "amount": 3.97,
+            "currency": "INR",
+            "timestamp": 961,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Marvin_Peterson@zoho.ch",
+            "cardNumber": "7827735796451635",
+            "amount": 189.33,
+            "currency": "AUD",
+            "timestamp": 962,
+            "description": "Online payment",
+            "commerciant": "McDonalds"
+        },
+        {
+            "command": "payOnline",
+            "email": "Marvin_Peterson@zoho.ch",
+            "cardNumber": "4556563957367902",
+            "amount": 3.7,
+            "currency": "MXN",
+            "timestamp": 963,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "businessReport",
+            "startTimestamp": 1,
+            "endTimestamp": 963,
+            "account": "RO45POOB6505529013808948",
+            "type": "transaction",
+            "timestamp": 964
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Marvin_Peterson@zoho.ch",
+            "splitPaymentType": "custom",
+            "timestamp": 965
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Omar_Elena_Robles_Diaz@yandex.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 966
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Dominic_Nicholson@gmail.gb",
+            "splitPaymentType": "custom",
+            "timestamp": 967
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Angel_Ene@hotmail.ro",
+            "splitPaymentType": "custom",
+            "timestamp": 968
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Angel_Diaconescu@hushmail.ro",
+            "splitPaymentType": "custom",
+            "timestamp": 969
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 970
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO58POOB7344468893732422",
+            "amount": 85,
+            "timestamp": 971
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO69POOB6209498372540635",
+            "amount": 11,
+            "timestamp": 972
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO90POOB5450777208072365",
+            "amount": 62,
+            "timestamp": 973
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO65POOB8944016386845896",
+            "amount": 27,
+            "timestamp": 974
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO58POOB2721178218599590",
+            "amount": 84,
+            "timestamp": 975
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO76POOB4035116042454483",
+            "amount": 51,
+            "timestamp": 976
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO37POOB7013767509830666",
+            "amount": 43,
+            "timestamp": 977
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO19POOB4981055641668812",
+            "amount": 37,
+            "timestamp": 978
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO30POOB9523423715747796",
+            "amount": 36,
+            "timestamp": 979
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO79POOB3616857825600958",
+            "amount": 68,
+            "timestamp": 980
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO00POOB5687892910835215",
+            "amount": 76,
+            "timestamp": 981
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO96POOB6738272785416988",
+            "amount": 22,
+            "timestamp": 982
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO33POOB4049920806186500",
+            "amount": 17,
+            "timestamp": 983
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO69POOB9846198978826791",
+            "amount": 40,
+            "timestamp": 984
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO98POOB8412955460158769",
+            "amount": 27,
+            "timestamp": 985
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO32POOB0130532963818359",
+            "amount": 66,
+            "timestamp": 986
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO68POOB1848616931405475",
+            "amount": 95,
+            "timestamp": 987
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO10POOB4354933866366881",
+            "amount": 80,
+            "timestamp": 988
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO33POOB9999273999620457",
+            "amount": 96,
+            "timestamp": 989
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO38POOB0964823730995794",
+            "amount": 57,
+            "timestamp": 990
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO53POOB7122855990652257",
+            "amount": 64,
+            "timestamp": 991
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO71POOB1634969878734749",
+            "amount": 29,
+            "timestamp": 992
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO09POOB4346339013848470",
+            "amount": 29,
+            "timestamp": 993
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO50POOB3913194831046423",
+            "amount": 12,
+            "timestamp": 994
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO89POOB4455583483378897",
+            "amount": 59,
+            "timestamp": 995
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO36POOB6500477412147025",
+            "amount": 87,
+            "timestamp": 996
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO46POOB9051076190383154",
+            "amount": 87,
+            "timestamp": 997
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO45POOB0388148432759748",
+            "amount": 17,
+            "timestamp": 998
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO52POOB6271107854467609",
+            "amount": 66,
+            "timestamp": 999
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO98POOB7190609943699593",
+            "amount": 91,
+            "timestamp": 1000
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO50POOB3359236199018963",
+            "amount": 32,
+            "timestamp": 1001
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO75POOB8279679254660818",
+            "amount": 53,
+            "timestamp": 1002
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO37POOB8653914479106806",
+            "amount": 36,
+            "timestamp": 1003
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO73POOB0363118755441573",
+            "amount": 29,
+            "timestamp": 1004
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO40POOB2135483650246268",
+            "amount": 15,
+            "timestamp": 1005
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO75POOB1098983729823992",
+            "amount": 31,
+            "timestamp": 1006
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO15POOB0048706387164463",
+            "amount": 77,
+            "timestamp": 1007
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO97POOB5006417983475785",
+            "amount": 66,
+            "timestamp": 1008
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO93POOB6760303931698665",
+            "amount": 61,
+            "timestamp": 1009
+        },
+        {
+            "command": "setMinimumBalance",
+            "account": "RO47POOB5866490978033060",
+            "amount": 65,
+            "timestamp": 1010
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Alwin_Dowerg@yandex.de",
+            "splitPaymentType": "custom",
+            "timestamp": 1011
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Karen_McIsaac@zoho.nz",
+            "splitPaymentType": "custom",
+            "timestamp": 1012
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Anni_Dorr@icloud.de",
+            "splitPaymentType": "custom",
+            "timestamp": 1013
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Karina_Salvador_Ramirez_Carranza@mail.com.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 1014
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Pascual_Mesa@zoho.mx",
+            "splitPaymentType": "custom",
+            "timestamp": 1015
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Dott._Arsenio_Bellucc@mail.com.it",
+            "splitPaymentType": "custom",
+            "timestamp": 1016
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Owen_Raju@protonmail.in",
+            "splitPaymentType": "custom",
+            "timestamp": 1017
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Briana_Galloway@outlook.au",
+            "splitPaymentType": "custom",
+            "timestamp": 1018
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Chanakya_Dua@hushmail.in",
+            "splitPaymentType": "custom",
+            "timestamp": 1019
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Rene_Plourde@protonmail.ca",
+            "splitPaymentType": "custom",
+            "timestamp": 1020
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Harrison_Iyengar@outlook.in",
+            "splitPaymentType": "custom",
+            "timestamp": 1021
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Isabel_Grande_Sales@hotmail.es",
+            "splitPaymentType": "custom",
+            "timestamp": 1022
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Tony_Wallace@mail.com.au",
+            "splitPaymentType": "custom",
+            "timestamp": 1023
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Iris_Sanders-Kramer@outlook.nl",
+            "splitPaymentType": "custom",
+            "timestamp": 1024
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Anna_Robson@hushmail.nz",
+            "splitPaymentType": "custom",
+            "timestamp": 1025
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 1026
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1026,
+            "account": "RO58POOB7344468893732422",
+            "timestamp": 1027
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1027,
+            "account": "RO69POOB6209498372540635",
+            "timestamp": 1028
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1028,
+            "account": "RO90POOB5450777208072365",
+            "timestamp": 1029
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1029,
+            "account": "RO65POOB8944016386845896",
+            "timestamp": 1030
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1029,
+            "account": "RO58POOB2721178218599590",
+            "timestamp": 1031
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1031,
+            "account": "RO76POOB4035116042454483",
+            "timestamp": 1032
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1032,
+            "account": "RO37POOB7013767509830666",
+            "timestamp": 1033
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1033,
+            "account": "RO19POOB4981055641668812",
+            "timestamp": 1034
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1034,
+            "account": "RO30POOB9523423715747796",
+            "timestamp": 1035
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1035,
+            "account": "RO79POOB3616857825600958",
+            "timestamp": 1036
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1036,
+            "account": "RO00POOB5687892910835215",
+            "timestamp": 1037
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1037,
+            "account": "RO96POOB6738272785416988",
+            "timestamp": 1038
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1038,
+            "account": "RO33POOB4049920806186500",
+            "timestamp": 1039
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1039,
+            "account": "RO69POOB9846198978826791",
+            "timestamp": 1040
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1040,
+            "account": "RO98POOB8412955460158769",
+            "timestamp": 1041
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1040,
+            "account": "RO32POOB0130532963818359",
+            "timestamp": 1042
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1041,
+            "account": "RO68POOB1848616931405475",
+            "timestamp": 1043
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1043,
+            "account": "RO10POOB4354933866366881",
+            "timestamp": 1044
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1044,
+            "account": "RO33POOB9999273999620457",
+            "timestamp": 1045
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1045,
+            "account": "RO38POOB0964823730995794",
+            "timestamp": 1046
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1046,
+            "account": "RO53POOB7122855990652257",
+            "timestamp": 1047
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1046,
+            "account": "RO71POOB1634969878734749",
+            "timestamp": 1048
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1047,
+            "account": "RO09POOB4346339013848470",
+            "timestamp": 1049
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1049,
+            "account": "RO50POOB3913194831046423",
+            "timestamp": 1050
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1050,
+            "account": "RO89POOB4455583483378897",
+            "timestamp": 1051
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1050,
+            "account": "RO36POOB6500477412147025",
+            "timestamp": 1052
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1052,
+            "account": "RO46POOB9051076190383154",
+            "timestamp": 1053
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1053,
+            "account": "RO45POOB0388148432759748",
+            "timestamp": 1054
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1054,
+            "account": "RO52POOB6271107854467609",
+            "timestamp": 1055
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1054,
+            "account": "RO98POOB7190609943699593",
+            "timestamp": 1056
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1056,
+            "account": "RO50POOB3359236199018963",
+            "timestamp": 1057
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1057,
+            "account": "RO75POOB8279679254660818",
+            "timestamp": 1058
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1058,
+            "account": "RO37POOB8653914479106806",
+            "timestamp": 1059
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1059,
+            "account": "RO73POOB0363118755441573",
+            "timestamp": 1060
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1060,
+            "account": "RO40POOB2135483650246268",
+            "timestamp": 1061
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1061,
+            "account": "RO75POOB1098983729823992",
+            "timestamp": 1062
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1062,
+            "account": "RO15POOB0048706387164463",
+            "timestamp": 1063
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1063,
+            "account": "RO97POOB5006417983475785",
+            "timestamp": 1064
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 0,
+            "endTimestamp": 1063,
+            "account": "RO93POOB6760303931698665",
+            "timestamp": 1065
+        },
+        {
+            "command": "spendingsReport",
+            "startTimestamp": 1,
+            "endTimestamp": 1065,
+            "account": "RO47POOB5866490978033060",
+            "timestamp": 1066
+        }
+    ]
+}

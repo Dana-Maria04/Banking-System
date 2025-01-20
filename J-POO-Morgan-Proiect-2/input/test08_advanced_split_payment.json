@@ -1,0 +1,656 @@
+{
+    "users": [
+        {
+            "firstName": "Anastasie",
+            "lastName": "Raymond",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "birthDate": "1998-04-26",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Elodie",
+            "lastName": "du Verdier",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "birthDate": "1978-12-19",
+            "occupation": "firefighter"
+        },
+        {
+            "firstName": "Mariana",
+            "lastName": "Tudor",
+            "email": "Mariana_Tudor@gmail.ro",
+            "birthDate": "2006-06-09",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Leonard",
+            "lastName": "Marin",
+            "email": "Leonard_Marin@outlook.ro",
+            "birthDate": "1980-12-25",
+            "occupation": "programmer"
+        },
+        {
+            "firstName": "David",
+            "lastName": "Johnson",
+            "email": "David_Johnson@gmail.us",
+            "birthDate": "1992-02-06",
+            "occupation": "designer"
+        },
+        {
+            "firstName": "Calvin",
+            "lastName": "Stanton",
+            "email": "Calvin_Stanton@gmail.us",
+            "birthDate": "2005-09-17",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Valentine",
+            "lastName": "Bonnet-Benard",
+            "email": "Valentine_Bonnet-Benard@outlook.fr",
+            "birthDate": "1998-07-13",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Ionel",
+            "lastName": "Stan",
+            "email": "Ionel_Stan@yahoo.ro",
+            "birthDate": "2005-05-03",
+            "occupation": "student"
+        },
+        {
+            "firstName": "Arthur",
+            "lastName": "Pruvost-Renault",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "birthDate": "1999-11-21",
+            "occupation": "designer"
+        },
+        {
+            "firstName": "John",
+            "lastName": "Martinez",
+            "email": "John_Martinez@hotmail.us",
+            "birthDate": "1973-03-23",
+            "occupation": "pharmacist"
+        }
+    ],
+    "commerciants": [
+        {
+            "commerciant": "Amazon",
+            "id": 118,
+            "account": "RO22POOB3875162728202296",
+            "type": "Tech",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "H&M",
+            "id": 84,
+            "account": "RO28POOB5923933391234057",
+            "type": "Clothes",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "McDonalds",
+            "id": 99,
+            "account": "RO25POOB4386521661484930",
+            "type": "Food",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "KFC",
+            "id": 100,
+            "account": "RO32POOB8964686295716974",
+            "type": "Food",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Zara",
+            "id": 79,
+            "account": "RO75POOB9251835314648427",
+            "type": "Clothes",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Samsung",
+            "id": 113,
+            "account": "RO15POOB4333403266660236",
+            "type": "Tech",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Nike",
+            "id": 90,
+            "account": "RO95POOB9807857732666986",
+            "type": "Clothes",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "Microsoft",
+            "id": 116,
+            "account": "RO66POOB9463355196372136",
+            "type": "Tech",
+            "cashbackStrategy": "nrOfTransactions"
+        },
+        {
+            "commerciant": "Apple",
+            "id": 112,
+            "account": "RO01POOB5884922951883378",
+            "type": "Tech",
+            "cashbackStrategy": "spendingThreshold"
+        },
+        {
+            "commerciant": "Burger King",
+            "id": 108,
+            "account": "RO17POOB8495306331082091",
+            "type": "Food",
+            "cashbackStrategy": "spendingThreshold"
+        }
+    ],
+    "exchangeRates": [
+        {
+            "from": "USD",
+            "to": "EUR",
+            "rate": 0.9
+        },
+        {
+            "from": "EUR",
+            "to": "RON",
+            "rate": 5.0
+        }
+    ],
+    "commands": [
+        {
+            "command": "addAccount",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 1
+        },
+        {
+            "command": "addAccount",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 2
+        },
+        {
+            "command": "addAccount",
+            "email": "Mariana_Tudor@gmail.ro",
+            "currency": "RON",
+            "accountType": "classic",
+            "timestamp": 3
+        },
+        {
+            "command": "addAccount",
+            "email": "Leonard_Marin@outlook.ro",
+            "currency": "RON",
+            "accountType": "classic",
+            "timestamp": 4
+        },
+        {
+            "command": "addAccount",
+            "email": "David_Johnson@gmail.us",
+            "currency": "USD",
+            "accountType": "classic",
+            "timestamp": 5
+        },
+        {
+            "command": "addAccount",
+            "email": "Calvin_Stanton@gmail.us",
+            "currency": "USD",
+            "accountType": "classic",
+            "timestamp": 6
+        },
+        {
+            "command": "addAccount",
+            "email": "Valentine_Bonnet-Benard@outlook.fr",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 7
+        },
+        {
+            "command": "addAccount",
+            "email": "Ionel_Stan@yahoo.ro",
+            "currency": "RON",
+            "accountType": "classic",
+            "timestamp": 8
+        },
+        {
+            "command": "addAccount",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "currency": "EUR",
+            "accountType": "classic",
+            "timestamp": 9
+        },
+        {
+            "command": "addAccount",
+            "email": "John_Martinez@hotmail.us",
+            "currency": "USD",
+            "accountType": "classic",
+            "timestamp": 10
+        },
+        {
+            "command": "addFunds",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "account": "RO58POOB7344468893732422",
+            "amount": 1570.0,
+            "timestamp": 11
+        },
+        {
+            "command": "addFunds",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "account": "RO69POOB6209498372540635",
+            "amount": 1634.0,
+            "timestamp": 12
+        },
+        {
+            "command": "addFunds",
+            "email": "Mariana_Tudor@gmail.ro",
+            "account": "RO90POOB5450777208072365",
+            "amount": 1754.0,
+            "timestamp": 13
+        },
+        {
+            "command": "addFunds",
+            "email": "Leonard_Marin@outlook.ro",
+            "account": "RO65POOB8944016386845896",
+            "amount": 1846.0,
+            "timestamp": 14
+        },
+        {
+            "command": "addFunds",
+            "email": "David_Johnson@gmail.us",
+            "account": "RO58POOB2721178218599590",
+            "amount": 1665.0,
+            "timestamp": 15
+        },
+        {
+            "command": "addFunds",
+            "email": "Calvin_Stanton@gmail.us",
+            "account": "RO76POOB4035116042454483",
+            "amount": 1646.0,
+            "timestamp": 16
+        },
+        {
+            "command": "addFunds",
+            "email": "Valentine_Bonnet-Benard@outlook.fr",
+            "account": "RO37POOB7013767509830666",
+            "amount": 1517.0,
+            "timestamp": 17
+        },
+        {
+            "command": "addFunds",
+            "email": "Ionel_Stan@yahoo.ro",
+            "account": "RO19POOB4981055641668812",
+            "amount": 1532.0,
+            "timestamp": 18
+        },
+        {
+            "command": "addFunds",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "account": "RO30POOB9523423715747796",
+            "amount": 1777.0,
+            "timestamp": 19
+        },
+        {
+            "command": "addFunds",
+            "email": "John_Martinez@hotmail.us",
+            "account": "RO79POOB3616857825600958",
+            "amount": 1891.0,
+            "timestamp": 20
+        },
+        {
+            "command": "splitPayment",
+            "splitPaymentType": "custom",
+            "accounts": [
+                "RO58POOB2721178218599590",
+                "RO58POOB7344468893732422",
+                "RO65POOB8944016386845896",
+                "RO90POOB5450777208072365",
+                "RO69POOB6209498372540635"
+            ],
+            "amount": 3976.33,
+            "amountForUsers": [
+                813.33,
+                893,
+                665.0,
+                1570.0,
+                35
+            ],
+            "currency": "EUR",
+            "timestamp": 21
+        },
+        {
+            "command": "addFunds",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "account": "RO58POOB7344468893732422",
+            "amount": 246,
+            "timestamp": 22
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO58POOB7344468893732422",
+            "amount": 1081.0,
+            "receiver": "RO69POOB6209498372540635",
+            "timestamp": 23,
+            "email": "Anastasie_Raymond@outlook.fr",
+            "description": "Shopping at Galeries Lafayette"
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "splitPaymentType": "custom",
+            "timestamp": 24
+        },
+        {
+            "command": "printTransactions",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "timestamp": 25
+        },
+        {
+            "command": "payOnline",
+            "email": "Mariana_Tudor@gmail.ro",
+            "cardNumber": "4001829491527416",
+            "amount": 170,
+            "currency": "RON",
+            "timestamp": 26,
+            "description": "Online payment",
+            "commerciant": "Samsung"
+        },
+        {
+            "command": "printTransactions",
+            "email": "Mariana_Tudor@gmail.ro",
+            "timestamp": 27
+        },
+        {
+            "command": "splitPayment",
+            "splitPaymentType": "equal",
+            "accounts": [
+                "RO58POOB7344468893732422",
+                "RO90POOB5450777208072365",
+                "RO30POOB9523423715747796"
+            ],
+            "amount": 2235,
+            "currency": "EUR",
+            "timestamp": 28
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Leonard_Marin@outlook.ro",
+            "splitPaymentType": "custom",
+            "timestamp": 29
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Mariana_Tudor@gmail.ro",
+            "splitPaymentType": "custom",
+            "timestamp": 33
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 41
+        },
+        {
+            "command": "cashWithdrawal",
+            "email": "Leonard_Marin@outlook.ro",
+            "cardNumber": "6769125583796385",
+            "amount": 1628.0,
+            "location": "Wieringerwerf",
+            "timestamp": 42
+        },
+        {
+            "command": "addFunds",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "account": "RO58POOB7344468893732422",
+            "amount": 1121.0,
+            "timestamp": 43
+        },
+        {
+            "command": "addFunds",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "account": "RO69POOB6209498372540635",
+            "amount": 1341.0,
+            "timestamp": 44
+        },
+        {
+            "command": "addFunds",
+            "email": "Mariana_Tudor@gmail.ro",
+            "account": "RO90POOB5450777208072365",
+            "amount": 1324.0,
+            "timestamp": 45
+        },
+        {
+            "command": "addFunds",
+            "email": "Leonard_Marin@outlook.ro",
+            "account": "RO65POOB8944016386845896",
+            "amount": 1456.0,
+            "timestamp": 46
+        },
+        {
+            "command": "addFunds",
+            "email": "David_Johnson@gmail.us",
+            "account": "RO58POOB2721178218599590",
+            "amount": 1936.0,
+            "timestamp": 47
+        },
+        {
+            "command": "addFunds",
+            "email": "Calvin_Stanton@gmail.us",
+            "account": "RO76POOB4035116042454483",
+            "amount": 1233.0,
+            "timestamp": 48
+        },
+        {
+            "command": "addFunds",
+            "email": "Valentine_Bonnet-Benard@outlook.fr",
+            "account": "RO37POOB7013767509830666",
+            "amount": 1472.0,
+            "timestamp": 49
+        },
+        {
+            "command": "addFunds",
+            "email": "Ionel_Stan@yahoo.ro",
+            "account": "RO19POOB4981055641668812",
+            "amount": 1610.0,
+            "timestamp": 50
+        },
+        {
+            "command": "addFunds",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "account": "RO30POOB9523423715747796",
+            "amount": 1444.0,
+            "timestamp": 51
+        },
+        {
+            "command": "addFunds",
+            "email": "John_Martinez@hotmail.us",
+            "account": "RO79POOB3616857825600958",
+            "amount": 1175.0,
+            "timestamp": 52
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Mariana_Tudor@gmail.ro",
+            "splitPaymentType": "equal",
+            "timestamp": 53
+        },
+        {
+            "command": "sendMoney",
+            "account": "RO90POOB5450777208072365",
+            "amount": 2737.0,
+            "receiver": "RO58POOB7344468893732422",
+            "timestamp": 54,
+            "email": "Mariana_Tudor@gmail.ro",
+            "description": "Weekly groceries from Carrefour"
+        },
+        {
+            "command": "printTransactions",
+            "email": "Mariana_Tudor@gmail.ro",
+            "timestamp": 55
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "splitPaymentType": "custom",
+            "timestamp": 56
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "David_Johnson@gmail.us",
+            "splitPaymentType": "custom",
+            "timestamp": 74
+        },
+        {
+            "command": "printTransactions",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "timestamp": 80
+        },
+        {
+            "command": "printTransactions",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "timestamp": 81
+        },
+        {
+            "command": "printTransactions",
+            "email": "Mariana_Tudor@gmail.ro",
+            "timestamp": 82
+        },
+        {
+            "command": "printTransactions",
+            "email": "Leonard_Marin@outlook.ro",
+            "timestamp": 83
+        },
+        {
+            "command": "printTransactions",
+            "email": "David_Johnson@gmail.us",
+            "timestamp": 84
+        },
+        {
+            "command": "payOnline",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "cardNumber": "2827143779240285",
+            "amount": 392,
+            "currency": "USD",
+            "timestamp": 85,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "cardNumber": "4491799876006556",
+            "amount": 107,
+            "currency": "EUR",
+            "timestamp": 86,
+            "description": "Online payment",
+            "commerciant": "Amazon"
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 87
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "splitPaymentType": "equal",
+            "timestamp": 88
+        },
+        {
+            "command": "acceptSplitPayment",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "splitPaymentType": "equal",
+            "timestamp": 163
+        },
+        {
+            "command": "payOnline",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "cardNumber": "1752095065063305",
+            "amount": 182,
+            "currency": "EUR",
+            "timestamp": 226,
+            "description": "Online payment",
+            "commerciant": "Nike"
+        },
+        {
+            "command": "payOnline",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "cardNumber": "9341628021029699",
+            "amount": 104,
+            "currency": "EUR",
+            "timestamp": 227,
+            "description": "Online payment",
+            "commerciant": "Zara"
+        },
+        {
+            "command": "payOnline",
+            "email": "Mariana_Tudor@gmail.ro",
+            "cardNumber": "4374966931133138",
+            "amount": 156,
+            "currency": "RON",
+            "timestamp": 228,
+            "description": "Online payment",
+            "commerciant": "Apple"
+        },
+        {
+            "command": "payOnline",
+            "email": "Leonard_Marin@outlook.ro",
+            "cardNumber": "6097867366365266",
+            "amount": 392,
+            "currency": "RON",
+            "timestamp": 229,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "David_Johnson@gmail.us",
+            "cardNumber": "9284968684427386",
+            "amount": 415,
+            "currency": "USD",
+            "timestamp": 230,
+            "description": "Online payment",
+            "commerciant": "KFC"
+        },
+        {
+            "command": "payOnline",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "cardNumber": "9317979456445303",
+            "amount": 340,
+            "currency": "EUR",
+            "timestamp": 231,
+            "description": "Online payment",
+            "commerciant": "Amazon"
+        },
+        {
+            "command": "printTransactions",
+            "email": "Anastasie_Raymond@outlook.fr",
+            "timestamp": 232
+        },
+        {
+            "command": "printTransactions",
+            "email": "Elodie_du_Verdier@hotmail.fr",
+            "timestamp": 233
+        },
+        {
+            "command": "printTransactions",
+            "email": "Mariana_Tudor@gmail.ro",
+            "timestamp": 234
+        },
+        {
+            "command": "printTransactions",
+            "email": "Leonard_Marin@outlook.ro",
+            "timestamp": 235
+        },
+        {
+            "command": "printTransactions",
+            "email": "David_Johnson@gmail.us",
+            "timestamp": 236
+        },
+        {
+            "command": "printTransactions",
+            "email": "Arthur_Pruvost-Renault@hotmail.fr",
+            "timestamp": 237
+        },
+        {
+            "command": "printUsers",
+            "timestamp": 238
+        }
+    ]
+}
