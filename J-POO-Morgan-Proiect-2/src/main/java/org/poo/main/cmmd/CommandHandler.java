@@ -158,6 +158,10 @@ public class CommandHandler {
                             users);
                     withdrawSavings.execute();
                     break;
+                case "upgradePlan":
+                    UpgradePlan upgradePlan = new UpgradePlan(graph, cmd, transactions, users);
+                    upgradePlan.execute();
+                    break;
                 default:
                     break;
             }

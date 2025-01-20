@@ -93,7 +93,7 @@ public class Account {
 
         if(commerciant.getCommerciant().getCashbackStrategy().equals("spendingThreshold")) {
             if((user.getUserPlan().equals("standard") || user.getUserPlan().equals("student"))
-            ) {
+                    && command.getCurrency().equals("RON")) {
                 // && getCurrency().equals("RON")
                 if(ronAmount >= 100 && ronAmount < 300) {
                     cashback = amount * 0.001;
@@ -105,7 +105,7 @@ public class Account {
             }
         }
 
-        System.out.printf("am cashbackul: %f\n", cashback);
+//        System.out.printf("am cashbackul: %f\n", cashback);
 
 
         for (final Card card : cards) {

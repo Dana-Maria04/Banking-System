@@ -151,6 +151,14 @@ public class SendMoney extends Command {
         getTransactions().add(receiverTransaction);
 
 
+        double amountInRON = exchangeGraph.convertCurrency(amount, sender.getCurrency(), "RON");
+        if(amountInRON >= 500 && senderUser.getUserPlan().equals("silver")) {
+            double comision = 0.001 * amountInRON;
+            double sum = exchangeGraph.convertCurrency(comision, "RON", sender.getCurrency());
+            sender.decBalance(sum);
+        }
+
+
         receiver.incBalance(amount);
         sender.decBalance(getCommand().getAmount());
     }

@@ -1,5 +1,6 @@
 package org.poo.main.userinfo.transactions;
 
+import org.poo.main.cmmd.UpgradePlan;
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
 
@@ -128,6 +129,14 @@ public final class CreateTransaction implements TransactionFactory {
                     (int) params.get("timestamp"),
                     (String) params.get("email")
             );
+            case "UpgradePlan" -> new UpgradePlanTransaction(
+                    description,
+                    timestamp,
+                    email,
+                    (String) params.get("iban"),
+                    (String) params.get("newPlanType")
+            );
+
             default -> throw new IllegalArgumentException("Unknown transaction type: " + type);
         };
     }
