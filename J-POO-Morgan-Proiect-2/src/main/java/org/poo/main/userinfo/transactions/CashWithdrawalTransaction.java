@@ -21,8 +21,9 @@ public class CashWithdrawalTransaction extends Transaction {
      * @param amount      The amount involved in the transaction.
      * @param currency    The currency of the transaction.
      */
-    public CashWithdrawalTransaction(String description, int timestamp, String email,
-                                     String iban, Double amount, String currency) {
+    public CashWithdrawalTransaction(final String description, final int timestamp,
+                                     final String email, final String iban,
+                                     final Double amount, final String currency) {
         super(description, timestamp, email, null);
         this.iban = iban;
         this.amount = amount;
@@ -35,7 +36,8 @@ public class CashWithdrawalTransaction extends Transaction {
      * @param description The description of the error.
      * @param timestamp   The timestamp of the transaction.
      */
-    public CashWithdrawalTransaction(String description, int timestamp, String email) {
+    public CashWithdrawalTransaction(final String description,
+                                     final int timestamp, final String email) {
         super(description, timestamp, email, null);
         this.iban = null;
         this.amount = null;

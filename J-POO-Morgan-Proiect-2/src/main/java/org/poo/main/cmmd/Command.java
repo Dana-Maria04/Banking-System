@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 import org.poo.fileio.CommandInput;
-import org.poo.main.userinfo.Commerciant;
-import org.poo.main.userinfo.ExchangeGraph;
-import org.poo.main.userinfo.QueueSplitPayment;
-import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.*;
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
@@ -35,6 +32,7 @@ public abstract class Command {
     private final ArrayList<PayOnlineTransaction> spendingsReportTransactions;
     private final ArrayList<Commerciant> commerciants;
     private final ArrayList<QueueSplitPayment> queueSplitPayments;
+    private final ArrayList<BusinessAccount> businessAccounts;
 
     /**
      * Constructor for the Command class, initializing the parameters needed for
@@ -55,7 +53,8 @@ public abstract class Command {
                    final ArrayList<Transaction> transactions,
                    final ArrayList<PayOnlineTransaction> spendingsReportTransactions,
                    final ArrayList<Commerciant> commerciants,
-                   final ArrayList<QueueSplitPayment> queueSplitPayments) {
+                   final ArrayList<QueueSplitPayment> queueSplitPayments,
+                   final ArrayList<BusinessAccount> businessAccounts) {
         this.users = users;
         this.commandNode = commandNode;
         this.output = output;
@@ -66,6 +65,8 @@ public abstract class Command {
         this.spendingsReportTransactions = spendingsReportTransactions;
         this.commerciants = commerciants;
         this.queueSplitPayments = queueSplitPayments;
+        this.businessAccounts = businessAccounts;
+
     }
 
     /**

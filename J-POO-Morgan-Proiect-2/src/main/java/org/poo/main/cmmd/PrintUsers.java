@@ -29,7 +29,8 @@ public class PrintUsers extends Command {
                       final ArrayNode output, final CommandInput command,
                       final ObjectMapper objectMapper) {
         super(users, commandNode, output, command, objectMapper,
-                null, null, null, null, null);
+                null, null, null,
+                null, null, null);
     }
 
     /**

@@ -34,6 +34,7 @@ public class Account {
     private int insufficientFunds;
     private double interestRate;
 
+
     /**
      * Constructs an Account with the specified details.
      *
@@ -74,43 +75,28 @@ public class Account {
         this.foundCard = 0;
         this.insufficientFunds = 0;
 
-        if(amount == 0) {
+        if (amount == 0) {
             this.insufficientFunds = 1;
             return;
         }
 
-        //amount este amount ul in currency ul contului
-
-
-
         double cashback = 0;
         double ronAmount = graph.convertCurrency(amount, account.getCurrency(), "RON");
 
-        if(commerciant.getCommerciant().getCashbackStrategy() == null) {
-            cashback = 0;
+        if (commerciant.getCommerciant().getCashbackStrategy() == null) {
             return;
         }
 
 
-        if(commerciant.getCommerciant().getCashbackStrategy().equals("spendingThreshold")) {
-            if((user.getUserPlan().equals("standard") || user.getUserPlan().equals("student"))
-                    && command.getCurrency().equals("RON")) {
-                // && getCurrency().equals("RON")
-                if(ronAmount >= 100 && ronAmount < 300) {
-                    cashback = amount * 0.001;
-                } else if(ronAmount >= 300 && ronAmount < 500) {
-                    cashback = amount * 0.002;
-                } else if(ronAmount >= 500) {
-                    cashback = amount * 0.0025;
-                }
+        if (commerciant.getCommerciant().getCashbackStrategy().equals("spendingThreshold")) {
+            if (command.getCurrency().equals("RON")) {
+                cashback = calculateCashback(user.getUserPlan(), ronAmount, amount);
             }
         }
 
 
 
         for (final Card card : cards) {
-
-            System.out.printf("(tmstmp %d) card get number %s si card number %s\n", command.getTimestamp(),card.getCardNumber(), cardNumber);
 
             if (card.getCardNumber().equals(cardNumber)) {
 
@@ -163,13 +149,13 @@ public class Account {
                 transactions.add(transaction);
                 payOnlineTransactions.add(transaction);
 
-                if(user.getUserPlan().equals("standard")) {
-                    double comision = amount * 0.002;
+                if (user.getUserPlan().equals("standard")) {
+                    double comision = amount * Constants.STANDARD_CASHBACK_2;
                     account.setBalance(account.getBalance() - comision);
                 }
 
-                if(user.getUserPlan().equals("silver") && ronAmount >= 500) {
-                    double comision = amount * 0.001;
+                if (user.getUserPlan().equals("silver") && ronAmount >= Constants.THRESHOLD_3) {
+                    double comision = amount * Constants.STANDARD_CASHBACK_1;
                     account.setBalance(account.getBalance() - comision);
                 }
 
@@ -276,5 +262,48 @@ public class Account {
      */
     public void decBalance(final double amount) {
         this.balance -= amount;
+    }
+
+    private double calculateCashback(final String userPlan,
+                                     final double ronAmount,
+                                     final double amount) {
+        if (ronAmount >= Constants.THRESHOLD_1 && ronAmount < Constants.THRESHOLD_2) {
+            switch (userPlan) {
+                case "standard":
+                case "student":
+                    return amount * Constants.STANDARD_CASHBACK_1;
+                case "silver":
+                    return amount * Constants.SILVER_CASHBACK_1;
+                case "gold":
+                    return amount * Constants.GOLD_CASHBACK_1;
+                default:
+                    return 0.0;
+            }
+        } else if (ronAmount >= Constants.THRESHOLD_2 && ronAmount < Constants.THRESHOLD_3) {
+            switch (userPlan) {
+                case "standard":
+                case "student":
+                    return amount * Constants.STANDARD_CASHBACK_2;
+                case "silver":
+                    return amount * Constants.SILVER_CASHBACK_2;
+                case "gold":
+                    return amount * Constants.GOLD_CASHBACK_2;
+                default:
+                    return 0.0;
+            }
+        } else if (ronAmount >= Constants.THRESHOLD_3) {
+            switch (userPlan) {
+                case "standard":
+                case "student":
+                    return amount * Constants.STANDARD_CASHBACK_3;
+                case "silver":
+                    return amount * Constants.SILVER_CASHBACK_3;
+                case "gold":
+                    return amount * Constants.GOLD_CASHBACK_3;
+                default:
+                    return 0.0;
+            }
+        }
+        return 0.0;
     }
 }

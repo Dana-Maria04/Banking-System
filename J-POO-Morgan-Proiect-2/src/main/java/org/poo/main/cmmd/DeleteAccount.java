@@ -35,7 +35,7 @@ public class DeleteAccount extends Command {
                          final ObjectMapper objectMapper,
                          final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper,
-                null, transactions, null, null, null);
+                null, transactions, null, null, null, null);
     }
 
     /**
@@ -48,19 +48,16 @@ public class DeleteAccount extends Command {
         for (final User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
                 final ArrayList<Account> accounts = user.getAccounts();
-
-                boolean found = false;
                 Account targetAccount = null;
                 for (final Account acc : accounts) {
                     if (acc.getAccountIban().equals(getCommand().getAccount())) {
                         targetAccount = acc;
-                        found = true;
                         break;
                     }
                 }
 
-                if (!found) {
-                    throw new IllegalArgumentException("Account not found");
+                if (targetAccount == null) {
+                    return;
                 }
 
                 if (targetAccount.getBalance() == 0) {

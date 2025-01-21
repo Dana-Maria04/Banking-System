@@ -2,6 +2,7 @@ package org.poo.main.cmmd;
 
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
+import org.poo.main.userinfo.BusinessAccount;
 import org.poo.main.userinfo.Card;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
@@ -27,10 +28,11 @@ public class CreateCard extends Command {
      * @param transactions The list of transactions to which the new transaction will be added
      */
     public CreateCard(final ArrayList<User> users, final CommandInput command, final int oneTime,
-                      final ArrayList<Transaction> transactions) {
+                      final ArrayList<Transaction> transactions,
+                      final ArrayList<BusinessAccount> businessAccounts) {
         super(users, null, null,
                 command, null, null, transactions,
-                null, null, null);
+                null, null, null, businessAccounts);
         this.oneTime = oneTime;
     }
 
@@ -40,9 +42,10 @@ public class CreateCard extends Command {
      */
     @Override
     public void execute() {
-        for (final User user : getUsers()) {
+        for (User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
-                for (final Account account : user.getAccounts()) {
+
+                for (Account account : user.getAccounts()) {
                     if (account.getAccountIban().equals(getCommand().getAccount())) {
 
                         final Card newCard = new Card(Utils.generateCardNumber(),
@@ -57,19 +60,47 @@ public class CreateCard extends Command {
                                 "cardNumber", newCard.getCardNumber(),
                                 "userEmail", user.getUser().getEmail()
                         );
-
                         final Transaction transaction = CreateTransaction.getInstance()
                                 .createTransaction("CreateCard", params);
                         getTransactions().add(transaction);
 
                         account.getAccountCards().add(newCard);
-                        return;
+                        break;
                     }
                 }
+                break;
+            }
+        }
+
+
+        if (getBusinessAccounts() == null) {
+            return;
+        }
+
+        for (BusinessAccount account : getBusinessAccounts()) {
+            if (account.getAccountIban().equals(getCommand().getAccount())) {
+
+                final Card newCard = new Card(Utils.generateCardNumber(),
+                        "active", oneTime);
+                newCard.setFrozen(0);
+
+                final Map<String, Object> params = Map.of(
+                        "description", "New card created",
+                        "timestamp", getCommand().getTimestamp(),
+                        "email", getCommand().getEmail(),
+                        "iban", account.getAccountIban(),
+                        "cardNumber", newCard.getCardNumber(),
+                        "userEmail", getCommand().getEmail()
+                );
+
+                final Transaction transaction = CreateTransaction.getInstance()
+                        .createTransaction("CreateCard", params);
+                getTransactions().add(transaction);
+                account.getCards().add(account.getCards().size(), newCard);
+                break;
             }
         }
     }
-
 
     /**
      * For future development

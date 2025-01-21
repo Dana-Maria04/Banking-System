@@ -26,7 +26,8 @@ public class DeleteCard extends Command {
     public DeleteCard(final ArrayList<User> users, final CommandInput command,
                       final ArrayList<Transaction> transactions) {
         super(users, null, null, command,
-                null, null, transactions, null, null, null);
+                null, null, transactions, null,
+                null, null, null);
     }
 
     /**
@@ -46,9 +47,7 @@ public class DeleteCard extends Command {
                             break;
                         }
                     }
-
                     account.getAccountCards().remove(cardToDelete);
-
                     final CardDeletionTransaction transaction = new CardDeletionTransaction(
                             "The card has been destroyed",
                             getCommand().getTimestamp(),

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
+import org.poo.main.userinfo.BusinessAccount;
+import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.main.userinfo.transactions.CreateTransaction;
@@ -32,9 +34,12 @@ public class AddAccount extends Command {
      */
     public AddAccount(final ArrayList<User> users, final ObjectNode commandNode,
                       final ArrayNode output, final CommandInput command,
-                      final ObjectMapper objectMapper, final ArrayList<Transaction> transactions) {
-        super(users, commandNode, output, command, objectMapper, null,
-                transactions, null, null, null);
+                      final ObjectMapper objectMapper, final ArrayList<Transaction> transactions,
+                      final ArrayList<BusinessAccount> businessAccounts,
+                      final ExchangeGraph graph) {
+        super(users, commandNode, output, command, objectMapper, graph,
+                transactions, null, null,
+                null, businessAccounts);
     }
 
     /**
@@ -48,11 +53,31 @@ public class AddAccount extends Command {
         for (User user : getUsers()) {
             if (user.getUser().getEmail().equals(getCommand().getEmail())) {
 
-                Account newAccount = new Account(Utils.generateIBAN(), getCommand()
+                String generatedIBAN = Utils.generateIBAN();
+                Account newAccount = new Account(generatedIBAN, getCommand()
                         .getAccountType(),
                         getCommand().getCurrency(), 0, new ArrayList<>());
                 newAccount.setAccountCards(new ArrayList<>());
                 newAccount.setInterestRate(getCommand().getInterestRate());
+
+
+                if (getCommand().getAccountType().equals("business")) {
+
+
+                    BusinessAccount businessAccount = new BusinessAccount(generatedIBAN,
+                            getCommand().getAccountType(), getCommand().getCurrency(),
+                             0, 0, getCommand().getInterestRate(), user.getUser().getEmail());
+                    double amount = 500;
+                    double rightAmount = getGraph().convertCurrency(amount,
+                            "RON", getCommand().getCurrency());
+                    businessAccount.setDepositLimit(rightAmount);
+                    businessAccount.setSpendingLimit(rightAmount);
+
+
+                    getBusinessAccounts().add(businessAccount);
+                    return;
+                }
+
 
                 user.getAccounts().add(newAccount);
 

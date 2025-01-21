@@ -8,9 +8,9 @@ import org.poo.main.userinfo.transactions.Transaction;
 import java.util.List;
 
 /**
- * Represents a transaction for insufficient funds in a split payment.
+ * Represents a transaction for insufficient funds in a custom split payment.
  */
-public class InsufficientFundsSplitCustomTransaction extends Transaction {
+public final class InsufficientFundsSplitCustomTransaction extends Transaction {
 
     private final double totalAmount;
     private final String currency;
@@ -19,7 +19,12 @@ public class InsufficientFundsSplitCustomTransaction extends Transaction {
     private final String splitPaymentType;
     private final String error;
 
-    private InsufficientFundsSplitCustomTransaction(Builder builder) {
+    /**
+     * Constructs a transaction for insufficient funds in a custom split payment.
+     *
+     * @param builder The builder containing all necessary fields.
+     */
+    private InsufficientFundsSplitCustomTransaction(final Builder builder) {
         super(builder.description, builder.timestamp, builder.email, null);
         this.totalAmount = builder.totalAmount;
         this.currency = builder.currency;
@@ -29,7 +34,10 @@ public class InsufficientFundsSplitCustomTransaction extends Transaction {
         this.error = builder.error;
     }
 
-    public static class Builder {
+    /**
+     * Builder for creating an InsufficientFundsSplitCustomTransaction instance.
+     */
+    public static final class Builder {
         private String description;
         private int timestamp;
         private String email;
@@ -40,56 +48,120 @@ public class InsufficientFundsSplitCustomTransaction extends Transaction {
         private String splitPaymentType;
         private String error;
 
-        public Builder setDescription(String description) {
-            this.description = description;
+        /**
+         * Sets the description for the transaction.
+         *
+         * @param desc The description of the transaction.
+         * @return The current Builder instance.
+         */
+        public Builder setDescription(final String desc) {
+            this.description = desc;
             return this;
         }
 
-        public Builder setTimestamp(int timestamp) {
-            this.timestamp = timestamp;
+        /**
+         * Sets the timestamp for the transaction.
+         *
+         * @param ts The timestamp value.
+         * @return The current Builder instance.
+         */
+        public Builder setTimestamp(final int ts) {
+            this.timestamp = ts;
             return this;
         }
 
-        public Builder setEmail(String email) {
-            this.email = email;
+        /**
+         * Sets the email for the transaction.
+         *
+         * @param userEmail The email of the user involved in the transaction.
+         * @return The current Builder instance.
+         */
+        public Builder setEmail(final String userEmail) {
+            this.email = userEmail;
             return this;
         }
 
-        public Builder setTotalAmount(double totalAmount) {
-            this.totalAmount = totalAmount;
+        /**
+         * Sets the total amount for the transaction.
+         *
+         * @param totalAmt The total amount involved in the transaction.
+         * @return The current Builder instance.
+         */
+        public Builder setTotalAmount(final double totalAmt) {
+            this.totalAmount = totalAmt;
             return this;
         }
 
-        public Builder setCurrency(String currency) {
-            this.currency = currency;
+        /**
+         * Sets the currency for the transaction.
+         *
+         * @param curr The currency to be used.
+         * @return The current Builder instance.
+         */
+        public Builder setCurrency(final String curr) {
+            this.currency = curr;
             return this;
         }
 
-        public Builder setAmountForUsers(List<Double> amountForUsers) {
-            this.amountForUsers = amountForUsers;
+        /**
+         * Sets the amounts for users in the transaction.
+         *
+         * @param amounts The amounts to be set.
+         * @return The current Builder instance.
+         */
+        public Builder setAmountForUsers(final List<Double> amounts) {
+            this.amountForUsers = amounts;
             return this;
         }
 
-        public Builder setInvolvedAccounts(List<String> involvedAccounts) {
-            this.involvedAccounts = involvedAccounts;
+        /**
+         * Sets the involved accounts for the transaction.
+         *
+         * @param accounts The accounts involved in the transaction.
+         * @return The current Builder instance.
+         */
+        public Builder setInvolvedAccounts(final List<String> accounts) {
+            this.involvedAccounts = accounts;
             return this;
         }
 
-        public Builder setSplitPaymentType(String splitPaymentType) {
-            this.splitPaymentType = splitPaymentType;
+        /**
+         * Sets the split payment type.
+         *
+         * @param type The type of split payment.
+         * @return The current Builder instance.
+         */
+        public Builder setSplitPaymentType(final String type) {
+            this.splitPaymentType = type;
             return this;
         }
 
-        public Builder setError(String error) {
-            this.error = error;
+        /**
+         * Sets the error for the transaction.
+         *
+         * @param err The error message.
+         * @return The current Builder instance.
+         */
+        public Builder setError(final String err) {
+            this.error = err;
             return this;
         }
 
+        /**
+         * Builds the InsufficientFundsSplitCustomTransaction instance.
+         *
+         * @return A new InsufficientFundsSplitCustomTransaction instance.
+         */
         public InsufficientFundsSplitCustomTransaction build() {
             return new InsufficientFundsSplitCustomTransaction(this);
         }
     }
 
+    /**
+     * Adds transaction details to the provided ObjectNode.
+     *
+     * @param transactionNode The ObjectNode to populate with transaction details.
+     */
     @Override
     public void addDetailsToNode(final ObjectNode transactionNode) {
         // Set description

@@ -2,9 +2,11 @@ package org.poo.main.userinfo.transactions;
 
 import org.poo.main.userinfo.Account;
 import org.poo.main.userinfo.User;
-import org.poo.main.userinfo.transactions.splitTransactions.InsufficientFundsSplitCustomTransaction;
+import org.poo.main.userinfo.transactions.splitTransactions
+        .InsufficientFundsSplitCustomTransaction;
 import org.poo.main.userinfo.transactions.splitTransactions.InsufficientFundsSplitEqualTransaction;
 import org.poo.main.userinfo.transactions.splitTransactions.SplitPaymentCustomGoodTransaction;
+import org.poo.main.userinfo.transactions.splitTransactions.SplitPaymentEqualGoodTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +140,8 @@ public final class CreateTransaction implements TransactionFactory {
                     .setError((String) params.get("error"))
                     .build();
 
-            case "InsufficientFundsSplitEqualTransaction" -> new InsufficientFundsSplitEqualTransaction.Builder()
+            case "InsufficientFundsSplitEqualTransaction" ->
+                    new InsufficientFundsSplitEqualTransaction.Builder()
                     .setDescription((String) params.get("description"))
                     .setTimestamp((int) params.get("timestamp"))
                     .setEmail((String) params.get("email"))
@@ -150,7 +153,8 @@ public final class CreateTransaction implements TransactionFactory {
                     .setError((String) params.get("error"))
                     .build();
 
-            case "SplitPaymentCustomGoodTransaction" -> new SplitPaymentCustomGoodTransaction.Builder()
+            case "SplitPaymentCustomGoodTransaction" ->
+                    new SplitPaymentCustomGoodTransaction.Builder()
                     .setDescription((String) params.get("description"))
                     .setTimestamp((int) params.get("timestamp"))
                     .setEmail((String) params.get("email"))
@@ -188,6 +192,23 @@ public final class CreateTransaction implements TransactionFactory {
                     timestamp,
                     email
             );
+            case "InsufficientFundsTransaction" -> new InsufficientFundsTransaction(
+                    (String) params.get("description"),
+                    (int) params.get("timestamp"),
+                    (String) params.get("email")
+            );
+            case "SplitPaymentEqualGoodTransaction" ->
+                    new SplitPaymentEqualGoodTransaction.Builder()
+                    .setDescription((String) params.get("description"))
+                    .setTimestamp((int) params.get("timestamp"))
+                    .setEmail((String) params.get("email"))
+                    .setAmountsForUsers((List<Double>) params.get("amountsForUsers"))
+                    .setCurrency((String) params.get("currency"))
+                    .setTotalAmount((Double) params.get("totalAmount"))
+                    .setInvolvedAccounts((List<String>) params.get("involvedAccounts"))
+                    .setSplitPaymentType((String) params.get("splitPaymentType"))
+                    .build();
+
             default -> throw new IllegalArgumentException("Unknown transaction type: " + type);
         };
     }

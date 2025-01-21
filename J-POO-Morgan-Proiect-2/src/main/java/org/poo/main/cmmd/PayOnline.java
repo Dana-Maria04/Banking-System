@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
-import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.Commerciant;
-import org.poo.main.userinfo.ExchangeGraph;
-import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.*;
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
@@ -37,9 +34,11 @@ public class PayOnline extends Command {
                      final ObjectMapper objectMapper, final ObjectNode commandNode,
                      final ArrayList<Transaction> transactions,
                      final ArrayList<PayOnlineTransaction> payOnlineTransactions,
-                     final ArrayList<Commerciant> commerciants) {
+                     final ArrayList<Commerciant> commerciants,
+                     final ArrayList<BusinessAccount> businessAccounts) {
         super(users, commandNode, output, command, objectMapper,
-                exchangeGraph, transactions, payOnlineTransactions, commerciants, null);
+                exchangeGraph, transactions, payOnlineTransactions, commerciants,
+                null, businessAccounts);
     }
 
     /**
@@ -53,14 +52,89 @@ public class PayOnline extends Command {
         final ExchangeGraph exchangeGraph = getGraph();
 
         Commerciant commerciant = new Commerciant();
-        for(Commerciant commerciant1 : getCommerciants()) {
-            if(commerciant1.getCommerciant().getCommerciant().equals(getCommand().getCommerciant())) {
-                commerciant = commerciant1;
+        for (Commerciant c : getCommerciants()) {
+            if (c.getCommerciant().getCommerciant().equals(getCommand().getCommerciant())) {
+                commerciant = c;
                 break;
             }
         }
+        int payed = 0;
+        for (BusinessAccount businessAccount : getBusinessAccounts()) {
+            User user = new User();
+            for (User u : getUsers()) {
+                if (u.getUser().getEmail().equals(businessAccount.getOwnerEmail())) {
+                    user = u;
+                    break;
+                }
+            }
+            for (User usr : businessAccount.getEmployees()) {
+                if (usr.getUser().getEmail().equals(getCommand().getEmail())) {
+                    for (Card card : businessAccount.getCards()) {
+                        if (card.getCardNumber().equals(getCommand().getCardNumber())) {
+                            double ronAmount = getGraph().convertCurrency(getCommand().getAmount(),
+                                    getCommand().getCurrency(), "RON");
+                            if (ronAmount >= businessAccount.getSpendingLimit()) {
+                                payed = 1;
+                                return;
+                            }
+                            if (user.getUserPlan().equals("standard")) {
+                                double comision =
+                                        getCommand().getAmount() * Constants.SILVER_CASHBACK_1;
+                                businessAccount.setBalance(
+                                        businessAccount.getBalance() - comision);
+                            } else if (user.getUserPlan().equals("silver")) {
+                                double amountInRON = exchangeGraph.convertCurrency(
+                                        getCommand().getAmount(),
+                                        getCommand().getCurrency(), "RON");
+                                if (amountInRON >= Constants.THRESHOLD_3) {
+                                    double comision =
+                                            getCommand().getAmount()
+                                                    * Constants.STANDARD_CASHBACK_1 ;
+                                    businessAccount.setBalance(
+                                            businessAccount.getBalance() - comision);
+                                }
+                            }
+                            businessAccount.setBalance(
+                                    businessAccount.getBalance() - getCommand().getAmount());
+                            usr.setSpent(usr.getSpent() + getCommand().getAmount());
+                            payed = 1;
+                        }
+                    }
+                }
+            }
 
+            for (User usr : businessAccount.getManagers()) {
+                if (usr.getUser().getEmail().equals(getCommand().getEmail())) {
+                    for (Card card : businessAccount.getCards()) {
+                        if (card.getCardNumber().equals(getCommand().getCardNumber())) {
+                            businessAccount.setBalance(
+                                    businessAccount.getBalance() - getCommand().getAmount());
+                            usr.setSpent(usr.getSpent() + getCommand().getAmount());
+                            payed = 1;
+                        }
+                    }
+                }
+            }
 
+            if (businessAccount.getOwnerEmail().equals(getCommand().getEmail())) {
+                for (Card card : businessAccount.getCards()) {
+                    if (card.getCardNumber().equals(getCommand().getCardNumber())) {
+                        businessAccount.setBalance(
+                                businessAccount.getBalance() - getCommand().getAmount());
+                        for (User usr : getUsers()) {
+                            if (usr.getUser().getEmail().equals(getCommand().getEmail())) {
+                                usr.setSpent(usr.getSpent() + getCommand().getAmount());
+                            }
+                        }
+                        payed = 1;
+                    }
+                }
+            }
+        }
+
+        if (payed == 1) {
+            return;
+        }
 
 
         for (final User user : getUsers()) {
@@ -72,7 +146,6 @@ public class PayOnline extends Command {
                             getCommand().getCurrency(),
                             account.getCurrency()
                     );
-
 
                     account.pay(convertedAmount, getCommand().getCardNumber(),
                             account.getAccountCards(), user, getCommand(), getTransactions(),

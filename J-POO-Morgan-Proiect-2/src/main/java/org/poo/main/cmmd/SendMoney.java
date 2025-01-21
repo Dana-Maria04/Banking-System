@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
-import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.ExchangeGraph;
-import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.*;
 import org.poo.main.userinfo.transactions.MoneyTransferTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.main.userinfo.transactions.CreateTransaction;
@@ -34,9 +32,10 @@ public class SendMoney extends Command {
     public SendMoney(final ArrayList<User> users, final CommandInput command,
                      final ExchangeGraph exchangeGraph, final ArrayNode output,
                      final ObjectMapper objectMapper, final ObjectNode commandNode,
-                     final ArrayList<Transaction> transactions) {
+                     final ArrayList<Transaction> transactions,
+                     final ArrayList<BusinessAccount> businessAccounts) {
         super(users, commandNode, output, command, objectMapper, exchangeGraph, transactions,
-                null, null, null);
+                null, null, null, businessAccounts);
     }
 
     /**
@@ -45,6 +44,14 @@ public class SendMoney extends Command {
      */
     @Override
     public void execute() {
+
+        BusinessAccount senderBusinessAccount = null;
+        for (BusinessAccount businessAccount : getBusinessAccounts()) {
+            if (businessAccount.getAccountIban().equals(getCommand().getAccount())) {
+                senderBusinessAccount = businessAccount;
+                break;
+            }
+        }
 
         final ExchangeGraph exchangeGraph = getGraph();
 
@@ -65,6 +72,13 @@ public class SendMoney extends Command {
             if (sender != null) {
                 senderUser = user;
                 break;
+            }
+        }
+
+
+        if (senderBusinessAccount != null && receiver != null) {
+            if (handleBusinessAccountTransfer(senderBusinessAccount, receiver)) {
+                return;
             }
         }
 
@@ -158,21 +172,19 @@ public class SendMoney extends Command {
         getTransactions().add(senderTransaction);
         getTransactions().add(receiverTransaction);
 
-        if(senderUser.getUserPlan().equals("standard")){
-            double comision = 0.002 * amount;
+        if (senderUser.getUserPlan().equals("standard")) {
+            double comision = Constants.STANDARD_CASHBACK_2 * amount;
             double sum = exchangeGraph.convertCurrency(comision, "RON", sender.getCurrency());
             sender.decBalance(sum);
         }
 
 
         double amountInRON = exchangeGraph.convertCurrency(amount, sender.getCurrency(), "RON");
-        if(amountInRON >= 500 && senderUser.getUserPlan().equals("silver")) {
-            double comision = 0.001 * amountInRON;
+        if (amountInRON >= Constants.THRESHOLD_3  && senderUser.getUserPlan().equals("silver")) {
+            double comision = Constants.STANDARD_CASHBACK_1 * amountInRON;
             double sum = exchangeGraph.convertCurrency(comision, "RON", sender.getCurrency());
             sender.decBalance(sum);
         }
-
-
         receiver.incBalance(amount);
         sender.decBalance(getCommand().getAmount());
     }
@@ -208,6 +220,74 @@ public class SendMoney extends Command {
                 )
         );
     }
+
+    /**
+     * Handles the money transfer for business accounts.
+     *
+     * @param senderBusinessAccount The sender's business account.
+     * @param receiver              The receiver's account.
+     * @return true if the transfer was handled, false otherwise.
+     */
+    private boolean handleBusinessAccountTransfer(final BusinessAccount senderBusinessAccount,
+                                                  final Account receiver) {
+        boolean isEmployee = false;
+        boolean isManager = false;
+
+        for (User employee : senderBusinessAccount.getEmployees()) {
+            if (employee.getUser().getEmail().equals(getCommand().getEmail())) {
+                isEmployee = true;
+                break;
+            }
+        }
+
+        for (User manager : senderBusinessAccount.getManagers()) {
+            if (manager.getUser().getEmail().equals(getCommand().getEmail())) {
+                isManager = true;
+                break;
+            }
+        }
+
+        double amount = getCommand().getAmount();
+        double amountInRON = getGraph().convertCurrency(amount,
+                senderBusinessAccount.getCurrency(), "RON");
+
+        if (isEmployee && amountInRON > Constants.THRESHOLD_3) {
+            ObjectNode errorNode = getObjectMapper().createObjectNode();
+            errorNode.put("timestamp", getCommand().getTimestamp());
+            errorNode.put("description", "Employees cannot spend more than 500 RON.");
+            getCommandNode().set("output", errorNode);
+            getCommandNode().put("command", "sendMoney");
+            getCommandNode().put("timestamp", getCommand().getTimestamp());
+            getOutput().add(getCommandNode());
+            return true;
+        }
+
+        if (senderBusinessAccount.getBalance() < amount
+                || senderBusinessAccount.getBalance() - amount
+                        < senderBusinessAccount.getMinimumBalance()) {
+
+            ObjectNode errorNode = getObjectMapper().createObjectNode();
+            errorNode.put("timestamp", getCommand().getTimestamp());
+            errorNode.put("description", "Insufficient funds or below minimum balance.");
+            getCommandNode().set("output", errorNode);
+            getCommandNode().put("command", "sendMoney");
+            getCommandNode().put("timestamp", getCommand().getTimestamp());
+            getOutput().add(getCommandNode());
+            return true;
+        }
+
+        double convertedAmount = getGraph().convertCurrency(
+                amount,
+                senderBusinessAccount.getCurrency(),
+                receiver.getCurrency()
+        );
+
+        senderBusinessAccount.setBalance(senderBusinessAccount.getBalance() - amount);
+        receiver.setBalance(receiver.getBalance() + convertedAmount);
+
+        return true;
+    }
+
 
 
     /**

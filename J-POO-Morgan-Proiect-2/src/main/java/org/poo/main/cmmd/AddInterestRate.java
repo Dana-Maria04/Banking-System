@@ -34,7 +34,7 @@ public class AddInterestRate extends Command {
                            final ObjectMapper objectMapper,
                            final ArrayList<Transaction> transactions) {
         super(users, commandNode, output, command, objectMapper,
-                null, transactions, null, null, null);
+                null, transactions, null, null, null, null);
     }
 
     /**
@@ -57,8 +57,6 @@ public class AddInterestRate extends Command {
                         return;
                     }
 
-                    // aici tranzactia
-
                     Map<String, Object> params = Map.of(
                             "income", account.getBalance() * account.getInterestRate(),
                             "currency", account.getCurrency(),
@@ -67,7 +65,9 @@ public class AddInterestRate extends Command {
                             "email", user.getUser().getEmail()
                     );
 
-                    Transaction transaction = CreateTransaction.getInstance().createTransaction("InterestTransaction", params);
+                    Transaction transaction =
+                            CreateTransaction.getInstance().createTransaction(
+                                    "InterestTransaction", params);
                     getTransactions().add(transaction);
 
                     account.setBalance(account.getBalance()
@@ -77,7 +77,6 @@ public class AddInterestRate extends Command {
                 }
             }
         }
-        throw new IllegalArgumentException("Account not found");
     }
 
     /**

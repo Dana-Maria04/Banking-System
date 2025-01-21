@@ -38,7 +38,7 @@ public class SpendingsReport extends Command {
                            final ArrayList<Transaction> transactions,
                            final ArrayList<PayOnlineTransaction> payOnlineTransactions) {
         super(users, commandNode, output, command, objectMapper, null, transactions,
-                payOnlineTransactions, null, null);
+                payOnlineTransactions, null, null, null);
     }
 
     /**

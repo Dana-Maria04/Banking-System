@@ -3,11 +3,17 @@ package org.poo.main.cmmd;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.poo.fileio.*;
+import org.poo.fileio.CommandInput;
+import org.poo.fileio.CommerciantInput;
+import org.poo.fileio.ObjectInput;
+import org.poo.fileio.UserInput;
 import org.poo.main.userinfo.Commerciant;
 import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.QueueSplitPayment;
 import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.BusinessAccount;
+import org.poo.fileio.ExchangeInput;
+
 import org.poo.main.userinfo.transactions.PayOnlineTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 import org.poo.utils.Utils;
@@ -37,10 +43,12 @@ public class CommandHandler {
             User user = new User(new ArrayList<>());
             user.setUser(userInput);
             user.setTransactions(new ArrayList<>());
-            if(userInput.getOccupation().equals("student"))
+            if (userInput.getOccupation().equals("student")) {
                 user.setUserPlan("student");
-            else
+            } else {
                 user.setUserPlan("standard");
+            }
+
 
             users.add(user);
         }
@@ -54,130 +62,27 @@ public class CommandHandler {
 
         ObjectMapper objectMapper = new ObjectMapper();
         ArrayList<Commerciant> commerciants = new ArrayList<>();
-        for(CommerciantInput commerciantInput : objectInput.getCommerciants()){
+        for (CommerciantInput commerciantInput : objectInput.getCommerciants()) {
             Commerciant commerciant = new Commerciant();
             commerciant.getCommerciant().setCommerciant(commerciantInput.getCommerciant());
             commerciant.getCommerciant().setId(commerciantInput.getId());
             commerciant.getCommerciant().setType(commerciantInput.getType());
-            commerciant.getCommerciant().setCashbackStrategy(commerciantInput.getCashbackStrategy());
+            commerciant.getCommerciant().setCashbackStrategy(
+                    commerciantInput.getCashbackStrategy());
             commerciant.getCommerciant().setAccount(commerciantInput.getAccount());
             commerciants.add(commerciant);
         }
         ArrayList<QueueSplitPayment> queueSplitPayments = new ArrayList<>();
 
-
+        ArrayList<BusinessAccount> businessAccounts = new ArrayList<>();
 
         Utils.resetRandom();
 
         // Process each command based on its type
-        for (CommandInput cmd : commands) {
-            ObjectNode commandNode = objectMapper.createObjectNode();
 
-            switch (cmd.getCommand()) {
-                case "printUsers":
-                    PrintUsers printUsers = new PrintUsers(users, commandNode, output,
-                            cmd, objectMapper);
-                    printUsers.execute();
-                    break;
-                case "addFunds":
-                    AddFunds addFunds = new AddFunds(users, commandNode, output, cmd,
-                            objectMapper);
-                    addFunds.execute();
-                    break;
-                case "createCard":
-                    CreateCard createCard = new CreateCard(users, cmd, 0, transactions);
-                    createCard.execute();
-                    break;
-                case "addAccount":
-                    AddAccount addAccount = new AddAccount(users, commandNode, output, cmd,
-                            objectMapper, transactions);
-                    addAccount.execute();
-                    break;
-                case "deleteAccount":
-                    DeleteAccount deleteAccount = new DeleteAccount(users, commandNode, output,
-                            cmd, objectMapper, transactions);
-                    deleteAccount.execute();
-                    break;
-                case "createOneTimeCard":
-                    CreateCard createOneTimeCard = new CreateCard(users, cmd, 1, transactions);
-                    createOneTimeCard.execute();
-                    break;
-                case "deleteCard":
-                    DeleteCard deleteCard = new DeleteCard(users, cmd, transactions);
-                    deleteCard.execute();
-                    break;
-                case "setMinimumBalanmce":
-                    SetMinimumBalance setMinimumBalance = new SetMinimumBalance(users, cmd);
-                    setMinimumBalance.execute();
-                    break;
-                case "payOnline":
-                    PayOnline payOnline = new PayOnline(users, cmd, graph, output,
-                            objectMapper, commandNode, transactions,
-                            spendingsReportTransactions, commerciants);
-                    payOnline.execute();
-                    break;
-                case "sendMoney":
-                    SendMoney sendMoney = new SendMoney(users, cmd, graph, output, objectMapper,
-                            commandNode, transactions);
-                    sendMoney.execute();
-                    break;
-                case "printTransactions":
-                    PrintTransactions printTransactions = new PrintTransactions(users, commandNode,
-                            output, cmd, objectMapper, transactions);
-                    printTransactions.execute();
-                    break;
-                case "checkCardStatus":
-                    CheckCardStatus checkCardStatus = new CheckCardStatus(users, commandNode,
-                            output, cmd, objectMapper, transactions);
-                    checkCardStatus.execute();
-                    break;
-                case "splitPayment":
-                    SplitPayment splitPayment = new SplitPayment(graph, users, commandNode, output,
-                            cmd, objectMapper, transactions, queueSplitPayments);
-                    splitPayment.execute();
-                    break;
-                case "report":
-                    Report report = new Report(users, cmd, graph, output, objectMapper,
-                            commandNode, transactions);
-                    report.execute();
-                    break;
-                case "spendingsReport":
-                    SpendingsReport spendingReport = new SpendingsReport(users, commandNode,
-                            output, cmd, objectMapper, transactions, spendingsReportTransactions);
-                    spendingReport.execute();
-                    break;
-                case "addInterest":
-                    AddInterestRate addInterest = new AddInterestRate(users, commandNode, output,
-                            cmd, objectMapper, transactions);
-                    addInterest.execute();
-                    break;
-                case "changeInterestRate":
-                    ChangeInterestRate changeInterestRate = new ChangeInterestRate(users,
-                            commandNode, output, cmd, objectMapper, transactions);
-                    changeInterestRate.execute();
-                    break;
-                case "withdrawSavings":
-                    WithdrawSavings withdrawSavings = new WithdrawSavings(graph, cmd, transactions,
-                            users);
-                    withdrawSavings.execute();
-                    break;
-                case "upgradePlan":
-                    UpgradePlan upgradePlan = new UpgradePlan(graph, cmd, transactions, users);
-                    upgradePlan.execute();
-                    break;
-                case "cashWithdrawal":
-                    CashWithdrawal cashWithdrawal = new CashWithdrawal(users, commandNode, output,
-                            cmd, objectMapper, transactions, graph);
-                    cashWithdrawal.execute();
-                    break;
-                case "acceptSplitPayment":
-                    SplitPayment splitPayment1 = new SplitPayment(graph, users, commandNode, output,
-                            cmd, objectMapper, transactions, queueSplitPayments);
-                    splitPayment1.execute();
-                    break;
-                default:
-                    break;
-            }
+        for (CommandInput cmd : commands) {
+            processCommand(cmd, users, graph, transactions, businessAccounts, queueSplitPayments,
+                    commerciants, spendingsReportTransactions, output, objectMapper);
         }
 
         return output;
@@ -202,4 +107,134 @@ public class CommandHandler {
         }
         return new ExchangeGraph(exchangeRates);
     }
+
+    /**
+     * Processes a single command based on its type.
+     *
+     * @param cmd              The command input to be processed.
+     * @param users            The list of users.
+     * @param graph            The exchange graph for currency conversion.
+     * @param transactions     The list of transactions.
+     * @param businessAccounts The list of business accounts.
+     * @param queueSplitPayments The list of queued split payments.
+     * @param commerciants     The list of commerciants.
+     * @param spendingsReportTransactions The list of spendings report transactions.
+     * @param output           The output node where results will be written.
+     * @param objectMapper     ObjectMapper for JSON operations.
+     */
+    private void processCommand(final CommandInput cmd, final ArrayList<User> users,
+                                final ExchangeGraph graph,
+                                final ArrayList<Transaction> transactions,
+                                final ArrayList<BusinessAccount> businessAccounts,
+                                final ArrayList<QueueSplitPayment> queueSplitPayments,
+                                final ArrayList<Commerciant> commerciants,
+                                final ArrayList<PayOnlineTransaction> spendingsReportTransactions,
+                                final ArrayNode output, final ObjectMapper objectMapper) {
+
+        ObjectNode commandNode = objectMapper.createObjectNode();
+
+        switch (cmd.getCommand()) {
+            case "printUsers":
+                new PrintUsers(users, commandNode, output, cmd, objectMapper).execute();
+                break;
+            case "addFunds":
+                new AddFunds(users, commandNode, output, cmd,
+                        objectMapper, businessAccounts, graph).execute();
+                break;
+            case "createCard":
+                new CreateCard(users, cmd, 0, transactions, businessAccounts).execute();
+                break;
+            case "addAccount":
+                new AddAccount(users, commandNode, output, cmd, objectMapper,
+                        transactions, businessAccounts, graph).execute();
+                break;
+            case "deleteAccount":
+                new DeleteAccount(users, commandNode, output, cmd, objectMapper,
+                        transactions).execute();
+                break;
+            case "createOneTimeCard":
+                new CreateCard(users, cmd, 1, transactions,
+                        businessAccounts).execute();
+                break;
+            case "deleteCard":
+                new DeleteCard(users, cmd, transactions).execute();
+                break;
+            case "setMinimumBalanmce":
+                new SetMinimumBalance(users, cmd).execute();
+                break;
+            case "payOnline":
+                new PayOnline(users, cmd, graph, output, objectMapper, commandNode, transactions,
+                        spendingsReportTransactions, commerciants, businessAccounts).execute();
+                break;
+            case "sendMoney":
+                new SendMoney(users, cmd, graph, output, objectMapper, commandNode,
+                        transactions, businessAccounts).execute();
+                break;
+            case "printTransactions":
+                new PrintTransactions(users, commandNode, output, cmd, objectMapper,
+                        transactions).execute();
+                break;
+            case "checkCardStatus":
+                new CheckCardStatus(users, commandNode, output, cmd, objectMapper,
+                        transactions).execute();
+                break;
+            case "splitPayment":
+                new SplitPayment(graph, users, commandNode, output, cmd, objectMapper,
+                        transactions, queueSplitPayments).execute();
+                break;
+            case "report":
+                new Report(users, cmd, graph, output, objectMapper, commandNode,
+                        transactions).execute();
+                break;
+            case "spendingsReport":
+                new SpendingsReport(users, commandNode, output, cmd, objectMapper,
+                        transactions, spendingsReportTransactions).execute();
+                break;
+            case "addInterest":
+                new AddInterestRate(users, commandNode, output, cmd, objectMapper,
+                        transactions).execute();
+                break;
+            case "changeInterestRate":
+                new ChangeInterestRate(users, commandNode, output, cmd, objectMapper,
+                        transactions).execute();
+                break;
+            case "withdrawSavings":
+                new WithdrawSavings(graph, cmd, transactions, users).execute();
+                break;
+            case "upgradePlan":
+                new UpgradePlan(graph, cmd, transactions, users, objectMapper, output).execute();
+                break;
+            case "cashWithdrawal":
+                new CashWithdrawal(users, commandNode, output, cmd, objectMapper,
+                        transactions, graph).execute();
+                break;
+            case "acceptSplitPayment":
+                new SplitPayment(graph, users, commandNode, output, cmd, objectMapper,
+                        transactions, queueSplitPayments).execute();
+                break;
+            case "addNewBusinessAssociate":
+                new AddNewBusinessAssociate(users, commandNode, output, cmd, objectMapper,
+                        transactions, businessAccounts).execute();
+                break;
+            case "businessReport":
+                new BusinessReport(users, commandNode, output, cmd, objectMapper,
+                        transactions, businessAccounts).execute();
+                break;
+            case "changeSpendingLimit":
+                new ChangeSpendingLimit(users, cmd, transactions, businessAccounts,
+                        objectMapper, output).execute();
+                break;
+            case "changeDepositLimit":
+                new ChangeDepositLimit(users, cmd, transactions, businessAccounts,
+                        objectMapper, output).execute();
+                break;
+            case "rejectSplitPayment":
+                new SplitPayment(graph, users, commandNode, output, cmd, objectMapper,
+                        transactions, queueSplitPayments).execute();
+                break;
+            default:
+                break;
+        }
+    }
+
 }

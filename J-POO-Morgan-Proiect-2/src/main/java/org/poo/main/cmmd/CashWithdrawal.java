@@ -1,31 +1,47 @@
 package org.poo.main.cmmd;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
-import org.poo.main.userinfo.Account;
-import org.poo.main.userinfo.Card;
-import org.poo.main.userinfo.ExchangeGraph;
-import org.poo.main.userinfo.User;
+import org.poo.main.userinfo.*;
 import org.poo.main.userinfo.transactions.CreateTransaction;
 import org.poo.main.userinfo.transactions.Transaction;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Withdraws an amount from a savings account to a classic account.
+ */
 public class CashWithdrawal extends Command {
 
+    /**
+     * Constructs a CashWithdrawal command.
+     *
+     * @param users        The list of users in the system.
+     * @param commandNode  The ObjectNode containing details about the command.
+     * @param output       The ArrayNode where the results of the command will be stored.
+     * @param command      The input command containing the withdrawal details.
+     * @param objectMapper The ObjectMapper instance for JSON operations.
+     * @param transactions The list of transactions for logging purposes.
+     * @param graph        The ExchangeGraph instance for handling currency conversions.
+     */
     public CashWithdrawal(final ArrayList<User> users, final ObjectNode commandNode,
                           final ArrayNode output, final CommandInput command,
-                          final ObjectMapper objectMapper, final ArrayList<Transaction> transactions,
+                          final ObjectMapper objectMapper,
+                          final ArrayList<Transaction> transactions,
                           final ExchangeGraph graph) {
         super(users, commandNode, output, command, objectMapper, graph,
-                transactions, null, null, null);
+                transactions, null, null, null, null);
     }
 
-
+    /**
+     * Verifies if the card exists,
+     * checks if the account has sufficient funds, calculates comisions based on the user's plan,
+     * and logs the transaction. If the card is not found or the account has insufficient funds,
+     * an appropriate error message is added to the output.
+     */
     @Override
     public void execute() {
         for (User user : getUsers()) {
@@ -42,31 +58,32 @@ public class CashWithdrawal extends Command {
                             Transaction transaction = CreateTransaction.getInstance()
                                     .createTransaction("cashWithdrawal", params);
                             getTransactions().add(transaction);
-
-
                             return;
                         }
 
                         double cashback = 0;
-
-
                         if (user.getUserPlan().equals("standard")) {
-                            double comision = amount * 0.002;
-                            comision = getGraph().convertCurrency(comision, "RON", account.getCurrency());
-                            account.setBalance(account.getBalance() - comision);
+                            double commission = amount * Constants.STANDARD_CASHBACK_2 ;
+                            commission = getGraph().convertCurrency(commission, "RON",
+                                    account.getCurrency());
+                            account.setBalance(account.getBalance() - commission);
                         }
 
-                        if (user.getUserPlan().equals("silver") && amount >= 500) {
-                            double comision = amount * 0.001;
-                            comision = getGraph().convertCurrency(comision,"RON", account.getCurrency());
-                            account.setBalance(account.getBalance() - comision);
+                        if (user.getUserPlan().equals("silver")
+                                && amount >= Constants.THRESHOLD_3) {
+                            double commission = amount * Constants.STANDARD_CASHBACK_1;
+                            commission = getGraph().convertCurrency(commission, "RON",
+                                    account.getCurrency());
+                            account.setBalance(account.getBalance() - commission);
                         }
 
-                        double righAmount = getGraph().convertCurrency(amount, "RON", account.getCurrency());
-                        account.setBalance(account.getBalance() - righAmount + cashback);
+                        double withdrawalAmount = getGraph().convertCurrency(amount, "RON",
+                                account.getCurrency());
+                        account.setBalance(account.getBalance() - withdrawalAmount + cashback);
 
                         Map<String, Object> params = Map.of(
-                                "description", "Cash withdrawal of " + getCommand().getAmount(),
+                                "description", "Cash withdrawal of "
+                                        + getCommand().getAmount(),
                                 "timestamp", getCommand().getTimestamp(),
                                 "email", user.getUser().getEmail(),
                                 "iban", account.getAccountIban(),
@@ -92,6 +109,9 @@ public class CashWithdrawal extends Command {
         getOutput().add(getCommandNode());
     }
 
+    /**
+     * Reserved for future development to undo a cash withdrawal transaction.
+     */
     @Override
     public void undo() {
 

@@ -24,6 +24,8 @@ public class User {
     private ArrayList<Account> accounts;
     private ArrayList<Transaction> transactions;
     private String userPlan;
+    private double deposited;
+    private double spent;
 
     /**
      * Constructor to initialize the user with their data and associated accounts.

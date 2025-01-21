@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.fileio.CommandInput;
 import org.poo.main.userinfo.Account;
+import org.poo.main.userinfo.BusinessAccount;
+import org.poo.main.userinfo.ExchangeGraph;
 import org.poo.main.userinfo.User;
 
 import java.util.ArrayList;
@@ -26,9 +28,11 @@ public class AddFunds extends Command {
      */
     public AddFunds(final ArrayList<User> users, final ObjectNode commandNode,
                     final ArrayNode output, final CommandInput command,
-                    final ObjectMapper objectMapper) {
-        super(users, commandNode, output, command, objectMapper, null,
-                null, null, null, null);
+                    final ObjectMapper objectMapper,
+                    final ArrayList<BusinessAccount> businessAccounts,
+                    final ExchangeGraph graph) {
+        super(users, commandNode, output, command, objectMapper, graph,
+                null, null, null, null, businessAccounts);
     }
 
     /**
@@ -47,7 +51,33 @@ public class AddFunds extends Command {
                 }
             }
         }
-        throw new IllegalArgumentException("Account not found");
+
+        for (BusinessAccount account : getBusinessAccounts()) {
+            if (account.getAccountIban().equals(getCommand().getAccount())) {
+                // search through employees to check limits
+                for (User user : account.getEmployees()) {
+                    if (user.getUser().getEmail().equals(getCommand().getEmail())) {
+
+
+                        double rightAmount =
+                                getGraph().convertCurrency(
+                                        getCommand().getAmount(), account.getCurrency(), "RON");
+                        if (rightAmount >= 500) {
+                            System.out.printf("Employees cannot deposit more than 500 RON.");
+                            return;
+                        }
+                    }
+                }
+
+                account.setBalance(account.getBalance() + getCommand().getAmount());
+                for (User user : getUsers()) {
+                    if (user.getUser().getEmail().equals(getCommand().getEmail())) {
+                        user.setDeposited(user.getDeposited() + getCommand().getAmount());
+                    }
+                }
+                return;
+            }
+        }
     }
 
     /**
